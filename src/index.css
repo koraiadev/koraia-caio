@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "pretendard/dist/web/static/pretendard.css";
+
+* {
+  font-family: "Pretendard", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
