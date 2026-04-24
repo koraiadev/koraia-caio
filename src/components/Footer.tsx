@@ -1,45 +1,52 @@
+const topLinks = [
+  "한국인공지능협회",
+  "한국인공지능자격센터",
+  "한국인공지능인증센터",
+];
+
 export default function Footer() {
   return (
-    <footer>
-      <div className="bg-[#666666]">
-        <div className="mx-auto flex max-w-[1080px] flex-wrap items-center gap-x-4 gap-y-2 px-5 py-3 text-sm text-white sm:px-8 lg:px-0">
-          <a href="#" className="footer-link">
-            한국인공지능협회
-          </a>
-          <span className="text-white/34">|</span>
-          <a href="#" className="footer-link">
-            한국인공지능자격센터
-          </a>
-          <span className="text-white/34">|</span>
-          <a href="#" className="footer-link">
-            한국인공지능인증센터
-          </a>
+    <footer className="mt-0">
+      <div className="bg-[#6a6a6a]">
+        <div className="mx-auto flex max-w-[980px] flex-wrap items-center gap-x-4 gap-y-2 px-6 py-2.5 text-[12px] font-semibold text-white sm:px-8 lg:px-0">
+          {topLinks.map((link, index) => (
+            <div key={link} className="flex items-center gap-4">
+              {index > 0 && <span className="text-white/40">|</span>}
+              <a href="#" className="footer-link text-white/92">
+                {link}
+              </a>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="bg-[#2f2f31] py-14 text-white">
-        <div className="mx-auto max-w-[1080px] px-5 sm:px-8 lg:px-0">
-          <h3 className="text-[30px] font-black">사단법인 한국인공지능협회</h3>
-          <p className="mt-7 text-sm leading-7 text-white/54">
-            회장: 김현철 · 개인정보책임관리자: 나상현 · 사업자번호: 436-82-00239
-            · 사업자정보확인
-            <br />
-            사무국: 서울특별시 마포구 백범로 88, 경청빌딩 3층
-          </p>
+      <div className="bg-[#2f2f2f] text-white">
+        <div className="mx-auto max-w-[980px] px-6 py-10 sm:px-8 lg:px-0">
+          <h3 className="text-sm font-semibold tracking-[-0.01em] text-white">
+            사단법인 한국인공지능협회
+          </h3>
 
-          <div className="mt-8 border-t border-white/14 pt-5">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-              <a href="#" className="footer-link footer-link-strong">
+          <div className="mt-3 text-xs leading-7 text-white/80">
+            <p>
+              회장: 김현철 · 개인정보책임관리자: 나상원 · 사업자번호: 436-82-00239 · 사업자정보확인
+            </p>
+            <p>서울특별시 마포구 백범로 88, 경청빌딩 3층</p>
+            <p>Tel. 02-713-4800 · Email. info@koraia.org · 주중 9시~18시 (점심시간 12~13시 / 주말 및 공휴일 제외)</p>
+          </div>
+
+          <div className="mt-4 border-t border-white/18 pt-4">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
+              <a href="#" className="footer-link font-medium text-white/70">
                 이용약관
               </a>
               <span className="text-white/34">|</span>
-              <a href="#" className="footer-link footer-link-strong">
+              <a href="#" className="footer-link font-semibold text-white underline underline-offset-2">
                 개인정보처리방침
               </a>
             </div>
-            <p className="mt-5 text-sm leading-7 text-white/42">
-              전화번호 02-713-4800 · 이메일 info@koraia.org · 주중 9시~18시
-              (점심시간 12시~13시 / 주말 및 공휴일 제외)
+
+            <p className="mt-4 text-xs leading-7 text-white/60">
+                © BY KOREA ARTIFICIAL INTELLIGENCE ASSOCIATION, ALL RIGHTS RESERVED.
             </p>
           </div>
         </div>
