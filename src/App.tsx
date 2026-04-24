@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import DetailPage1 from "./pages/DetailPage1";
+import SeoulDetailPage from "./pages/SeoulDetailPage";
 import DetailPage2 from "./pages/DetailPage2";
 import DetailPage3 from "./pages/DetailPage3";
 
@@ -9,9 +9,9 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/detail/1" element={<DetailPage1 />} />
-        <Route path="/detail/2" element={<DetailPage2 />} />
-        <Route path="/detail/3" element={<DetailPage3 />} />
+        <Route path="/seoul" element={<SeoulDetailPage />} />
+        <Route path="/gwangju" element={<DetailPage2 />} />
+        <Route path="/cheonan" element={<DetailPage3 />} />
       </Routes>
     </BrowserRouter>
   );
