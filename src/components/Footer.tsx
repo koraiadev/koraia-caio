@@ -7,7 +7,7 @@ const topLinks = [
 export default function Footer() {
   return (
     <footer className="mt-0">
-      <div className="bg-[#6a6a6a]">
+      <div className="bg-black">
         <div className="mx-auto flex max-w-[980px] flex-wrap items-center gap-x-4 gap-y-2 px-6 py-2.5 text-[12px] font-semibold text-white sm:px-8 lg:px-0">
           {topLinks.map((link, index) => (
             <div key={link} className="flex items-center gap-4">
@@ -20,7 +20,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="bg-[#2f2f2f] text-white">
+      <div className="bg-black text-white">
         <div className="mx-auto max-w-[980px] px-6 py-10 sm:px-8 lg:px-0">
           <h3 className="text-sm font-semibold tracking-[-0.01em] text-white">
             사단법인 한국인공지능협회

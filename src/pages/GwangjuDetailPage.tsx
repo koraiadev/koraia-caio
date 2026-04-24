@@ -56,7 +56,7 @@ const perks = [
 
 export default function GwangjuDetailPage() {
     const pageTheme = {
-        "--page-primary": "#2F3C54",
+        "--page-primary": "#4E5F7E",
     } as CSSProperties;
 
     return (
@@ -74,10 +74,10 @@ export default function GwangjuDetailPage() {
                 <div className="relative mx-auto flex min-h-[calc(100svh-101px)] max-w-[1080px] items-center px-8 py-16 text-center">
                     <div className="w-full">
                         <p className="mb-8 text-sm uppercase tracking-[0.25em] text-white/62">
-                            Opened Course
+                            Chief AI Officer
                         </p>
 
-                        <h1 className="mb-8 text-[70px] font-bold leading-[1.05] text-white">
+                        <h1 className="mb-8 text-[70px] font-bold leading-[1.05] text-white/90">
                             CAIO IN
                             <br />
                             GWANGJU 2기
@@ -87,8 +87,13 @@ export default function GwangjuDetailPage() {
                             AI 시대, 의사결정의 기준을 다시 설계합니다.
                         </p>
 
-                        <button className="rounded-lg border border-white/16 bg-[var(--page-primary)] px-10 py-4 text-sm font-semibold text-white shadow-[0_18px_48px_rgba(12,18,32,0.28)]">
-                            수강 신청하기
+                        <button className="relative cursor-pointer py-4 px-8 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden">
+                            <span className="relative z-20">수강 신청하기</span>
+                            <span className="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"></span>
+                            <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute h-[20%] rounded-tl-lg border-l-1 border-t-1 top-0 left-0"></span>
+                            <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-1 border-t-1 top-0 right-0"></span>
+                            <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-1 border-b-1 left-0 bottom-0"></span>
+                            <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute h-[20%] rounded-br-lg border-r-1 border-b-1 right-0 bottom-0"></span>
                         </button>
 
                         <div className="mx-auto mt-20 max-w-[780px] bg-[rgba(10,16,31,0.26)] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.26)] backdrop-blur-[1px]">
@@ -120,7 +125,7 @@ export default function GwangjuDetailPage() {
 
                                 <div className="flex gap-6 py-7 md:pl-10">
                                     <span className="shrink-0 text-sm font-medium text-white">참가비</span>
-                                    <span className="text-sm font-semibold text-white">380만원 (VAT 포함)</span>
+                                    <span className="text-sm text-white">380만원 (VAT 포함)</span>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +214,7 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="bg-gradient-to-b from-[#F5F6FA] to-[#0F1035] py-24">
+            <section className="bg-[#f4f6ff] py-24">
                 <div className="mx-auto max-w-[1080px] px-8">
                     <p className="mb-6 text-xs uppercase tracking-[0.25em] text-gray-800">Instructor</p>
 
@@ -279,7 +284,7 @@ export default function GwangjuDetailPage() {
                                         index !== 0 ? "border-t border-white/30" : ""
                                     }`}
                                 >
-                                    <h3 className="bg-gradient-to-r from-[#6F7480] via-[#F5F7FA] to-[#8E949F] bg-clip-text text-center text-[24px] font-semibold text-transparent md:text-left">
+                                    <h3 className="bg-gradient-to-r from-[#8892aa] via-[#F5F7FA] to-[#8E949F] bg-clip-text text-center text-[24px] font-semibold text-transparent md:text-left">
                                         {item.title}
                                     </h3>
                                     <p className="text-center text-base leading-relaxed text-white/82 md:text-left">
