@@ -28,6 +28,58 @@ button {
   min-height: 100vh;
 }
 
+.hero-sequence {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: hero-rise 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-delay-1 {
+  animation-delay: 120ms;
+}
+
+.hero-delay-2 {
+  animation-delay: 220ms;
+}
+
+.hero-delay-3 {
+  animation-delay: 340ms;
+}
+
+.hero-delay-4 {
+  animation-delay: 460ms;
+}
+
+.hero-delay-5 {
+  animation-delay: 620ms;
+}
+
+.hero-image-pan {
+  animation: hero-pan 16s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(44px);
+  transition:
+    opacity 780ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 780ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-card {
+  transition-property: opacity, transform, box-shadow;
+}
+
+.reveal-card.is-visible {
+  box-shadow: 0 16px 34px rgba(38, 56, 90, 0.08);
+}
+
 .image-placeholder {
   position: relative;
   display: flex;
@@ -184,6 +236,28 @@ button {
   transform: translateY(-16px);
 }
 
+.poster-card {
+  box-shadow: 0 24px 54px rgba(60, 77, 111, 0.12);
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.poster-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 34px 70px rgba(60, 77, 111, 0.18);
+}
+
+.perks-ambient-light {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(181, 202, 255, 0.16), transparent 24%),
+    radial-gradient(circle at 78% 68%, rgba(132, 163, 255, 0.12), transparent 28%);
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  animation: perks-ambient-shift 13s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
 .instructor-swiper {
   overflow: visible;
 }
@@ -214,6 +288,40 @@ button {
   font-weight: 700;
 }
 
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-pan {
+  from {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: scale(1.07) translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes perks-ambient-shift {
+  from {
+    transform: translate3d(-1.5%, 0, 0) scale(1);
+    opacity: 0.42;
+  }
+
+  to {
+    transform: translate3d(1.5%, -2%, 0) scale(1.05);
+    opacity: 0.62;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -224,8 +332,23 @@ button {
   .header-chip,
   .slider-arrow,
   .footer-link,
-  .speaker-card {
+  .speaker-card,
+  .poster-card,
+  .reveal-on-scroll {
     transition: none;
+  }
+
+  .hero-sequence,
+  .hero-image-pan,
+  .reveal-on-scroll,
+  .perks-ambient-light {
+    animation: none;
+  }
+
+  .hero-sequence,
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
   }
 
   .cta-button:hover,
@@ -236,6 +359,10 @@ button {
   }
 
   .speaker-card:hover {
+    transform: none;
+  }
+
+  .poster-card:hover {
     transform: none;
   }
 }

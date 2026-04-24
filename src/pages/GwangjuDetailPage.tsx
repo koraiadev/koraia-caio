@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -87,13 +87,37 @@ export default function GwangjuDetailPage() {
         setIsEnd(instance.isEnd);
     };
 
+    useEffect(() => {
+        const revealElements = document.querySelectorAll<HTMLElement>(".reveal-on-scroll");
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                });
+            },
+            {
+                threshold: 0.18,
+                rootMargin: "0px 0px -8% 0px",
+            },
+        );
+
+        revealElements.forEach((element) => observer.observe(element));
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <div style={pageTheme}>
             <Header />
 
             <section className="relative h-screen overflow-hidden pt-[101px]">
                 <div
-                    className="absolute inset-x-0 bottom-0 top-[101px] bg-cover bg-center"
+                    className="hero-image-pan absolute inset-x-0 bottom-0 top-[101px] bg-cover bg-center"
                     style={{ backgroundImage: `url(${heroImage})` }}
                 />
                 <div className="absolute inset-x-0 bottom-0 top-[101px] bg-[linear-gradient(180deg,rgba(6,12,28,0.72)_0%,rgba(10,18,40,0.48)_42%,rgba(5,9,22,0.78)_100%)]" />
@@ -101,21 +125,21 @@ export default function GwangjuDetailPage() {
 
                 <div className="relative mx-auto flex min-h-[calc(100svh-101px)] max-w-[1080px] items-center px-8 py-16 text-center">
                     <div className="w-full">
-                        <p className="mb-8 text-sm uppercase tracking-[0.25em] text-white/62">
+                        <p className="hero-sequence hero-delay-1 mb-8 text-sm uppercase tracking-[0.25em] text-white/62">
                             Chief AI Officer
                         </p>
 
-                        <h1 className="mb-8 text-[70px] font-bold leading-[1.05] text-white/90">
+                        <h1 className="hero-sequence hero-delay-2 mb-8 text-[70px] font-bold leading-[1.05] text-white/90">
                             CAIO IN
                             <br />
                             GWANGJU 2기
                         </h1>
 
-                        <p className="mx-auto mb-12 max-w-[720px] text-lg text-white/90">
+                        <p className="hero-sequence hero-delay-3 mx-auto mb-12 max-w-[720px] text-lg text-white/90">
                             AI 시대, 의사결정의 기준을 다시 설계합니다.
                         </p>
 
-                        <button className="relative cursor-pointer py-4 px-8 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden">
+                        <button className="hero-sequence hero-delay-4 relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4">
                             <span className="relative z-20">수강 신청하기</span>
                             <span className="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"></span>
                             <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute h-[20%] rounded-tl-lg border-l-1 border-t-1 top-0 left-0"></span>
@@ -124,7 +148,7 @@ export default function GwangjuDetailPage() {
                             <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute h-[20%] rounded-br-lg border-r-1 border-b-1 right-0 bottom-0"></span>
                         </button>
 
-                        <div className="mx-auto mt-20 max-w-[780px] bg-[rgba(10,16,31,0.26)] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.26)] backdrop-blur-[1px]">
+                        <div className="hero-sequence hero-delay-5 mx-auto mt-20 max-w-[780px] bg-[rgba(10,16,31,0.26)] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.26)] backdrop-blur-[1px]">
                             <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-2">
                                 <div className="flex gap-6 border-y border-white/18 py-7">
                                     <span className="min-w-[68px] shrink-0 text-sm font-medium leading-snug text-white">
@@ -161,7 +185,7 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="relative h-[700px] overflow-hidden">
+            <section className="reveal-on-scroll relative h-[700px] overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${caioImage})` }}
@@ -180,7 +204,7 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="bg-white py-24">
+            <section className="reveal-on-scroll bg-white py-24">
                 <div className="mx-auto max-w-[1080px] px-8">
                     <p className="mb-6 text-sm font-semibold uppercase tracking-[0.15em] text-[var(--page-primary)]">
                         Reason
@@ -201,7 +225,11 @@ export default function GwangjuDetailPage() {
 
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                         {reasonCards.map((card) => (
-                            <div key={card.num} className="rounded-2xl bg-gray-50 p-7">
+                            <div
+                                key={card.num}
+                                className="reveal-on-scroll reveal-card rounded-2xl bg-gray-50 p-7"
+                                style={{ transitionDelay: `${Number(card.num) * 95}ms` }}
+                            >
                                 <p className="mb-4 text-sm font-semibold text-[var(--page-primary)]">혜택 {card.num}</p>
                                 <h3 className="mb-3 text-xl font-bold text-black">{card.title}</h3>
                                 <p className="text-sm leading-relaxed text-gray-500">{card.desc}</p>
@@ -211,7 +239,7 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section>
+            <section className="reveal-on-scroll">
                 <div className="bg-gradient-to-b from-[var(--page-primary)] to-[#AFC1FF] pt-16 pb-28 text-center">
           <span className="mb-7 inline-block rounded-full border border-white bg-transparent px-5 py-2 text-sm font-semibold text-white">
             Special Point
@@ -236,7 +264,7 @@ export default function GwangjuDetailPage() {
                             <a
                                 href="/files/img-gj2-poster.jpg"
                                 download="CAIO_IN_GWANGJU_2기_포스터.jpg"
-                                className="group relative m-auto block h-[280px] w-[380px] cursor-pointer overflow-hidden rounded-[28px] bg-white p-8 text-[#23304c]"
+                                className="poster-card group relative m-auto block h-[280px] w-[380px] cursor-pointer overflow-hidden rounded-[28px] bg-white p-8 text-[#23304c]"
                             >
                                 <div className="absolute -right-[72px] -top-[72px] z-0 h-36 w-36 rounded-full bg-[var(--page-primary)] transition-transform duration-500 group-hover:scale-[8]" />
                                 <div className="relative z-10 flex h-full flex-col justify-between">
@@ -262,7 +290,7 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="bg-[#f4f6ff] py-24">
+            <section className="reveal-on-scroll bg-[#f4f6ff] py-24">
                 <div className="mx-auto max-w-[1080px] px-8">
                     <p className="mb-6 text-xs uppercase tracking-[0.25em] text-gray-800">Instructor</p>
 
@@ -352,13 +380,14 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="relative overflow-hidden py-24">
+            <section className="reveal-on-scroll relative overflow-hidden py-24">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${perksImage})` }}
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,10,28,0.56)_0%,rgba(10,16,41,0.46)_42%,rgba(8,12,30,0.64)_100%)]" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(77,107,255,0.12),transparent_36%)]" />
+                <div className="perks-ambient-light absolute inset-0" />
 
                 <div className="relative z-10 mx-auto max-w-[1080px] px-8">
                     <div className="mx-auto max-w-[780px]">
@@ -390,7 +419,7 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="relative h-[520px] overflow-hidden">
+            <section className="reveal-on-scroll relative h-[520px] overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${ctaImage})` }}
