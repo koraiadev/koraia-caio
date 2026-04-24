@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { CSSProperties } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "swiper/css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -133,9 +133,9 @@ export default function GwangjuDetailPage() {
                                         장소
                                     </span>
                                     <div className="text-left text-sm leading-relaxed text-white/88">
-                                        <p>2026년 4월 7일 ~ 2026년 7월 7일</p>
+                                        <p>2026년 4월 14일 ~ 2026년 7월 14일</p>
                                         <p>매주 화요일 18:30 ~ 20:30</p>
-                                        <p>인공지능산업융합사업단 컨퍼런스홀 외</p>
+                                        <p>빛고을창업스테이션 코워킹스페이스 외</p>
                                     </div>
                                 </div>
 
@@ -233,10 +233,30 @@ export default function GwangjuDetailPage() {
                         </div>
 
                         <div className="shrink-0 pt-10">
-                            <div className="h-[280px] w-[380px] rounded-xl bg-gray-300" />
-                            <button className="mt-4 w-full rounded-lg bg-[var(--page-primary)] px-8 py-3 text-sm font-semibold text-white">
-                                브로슈어 다운로드
-                            </button>
+                            <a
+                                href="/files/img-gj2-poster.jpg"
+                                download="CAIO_IN_GWANGJU_2기_포스터.jpg"
+                                className="group relative m-auto block h-[280px] w-[380px] cursor-pointer overflow-hidden rounded-[28px] bg-white p-8 text-[#23304c]"
+                            >
+                                <div className="absolute -right-[72px] -top-[72px] z-0 h-36 w-36 rounded-full bg-[var(--page-primary)] transition-transform duration-500 group-hover:scale-[8]" />
+                                <div className="relative z-10 flex h-full flex-col justify-between">
+                                    <div>
+                                        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-[#7a869f] transition-colors duration-500 group-hover:text-white/80">
+                                            Brochure
+                                        </p>
+                                        <h3 className="w-full text-[32px] font-bold leading-tight text-[#23304c] transition-colors duration-500 group-hover:text-white">
+                                            CAIO IN GWANGJU
+                                            <br />
+                                            SEASON 2
+                                        </h3>
+                                    </div>
+
+                                    <span className="absolute bottom-8 left-0 inline-flex items-center gap-2 text-sm font-semibold text-[var(--page-primary)] transition-colors duration-500 group-hover:text-white">
+                                        <span>포스터 다운로드하기</span>
+                                        <FiArrowRight className="text-base" />
+                                    </span>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
