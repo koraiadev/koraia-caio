@@ -175,6 +175,33 @@ button {
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
 }
 
+.speaker-card {
+  will-change: transform;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.speaker-card:hover {
+  transform: translateY(-16px);
+}
+
+.instructor-swiper {
+  overflow: visible;
+}
+
+.instructor-swiper .swiper-wrapper {
+  will-change: transform;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.instructor-swiper .swiper-slide {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.instructor-swiper img {
+  transform: translateZ(0);
+}
+
 .footer-link {
   color: rgba(255, 255, 255, 0.72);
 }
@@ -196,7 +223,8 @@ button {
   .poster-button,
   .header-chip,
   .slider-arrow,
-  .footer-link {
+  .footer-link,
+  .speaker-card {
     transition: none;
   }
 
@@ -204,6 +232,10 @@ button {
   .poster-button:hover,
   .header-chip:hover,
   .slider-arrow:hover {
+    transform: none;
+  }
+
+  .speaker-card:hover {
     transform: none;
   }
 }

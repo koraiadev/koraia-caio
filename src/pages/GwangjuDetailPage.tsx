@@ -1,4 +1,9 @@
+import { useState } from "react";
 import type { CSSProperties } from "react";
+import type { Swiper as SwiperType } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import "swiper/css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import heroImage from "../assets/img/img-gwangju.png";
@@ -54,10 +59,33 @@ const perks = [
     },
 ];
 
+const instructorImages = Object.entries(
+    import.meta.glob("../assets/img/instructor/*.{png,jpg,jpeg,webp}", {
+        eager: true,
+        import: "default",
+    }),
+)
+    .sort(([pathA], [pathB]) => pathA.localeCompare(pathB))
+    .map(([path, src], index) => ({
+        id: index + 1,
+        src: src as string,
+        label: `연사 ${String(index + 1).padStart(2, "0")}`,
+        fileName: path.split("/").pop()?.replace(/\.[^.]+$/, "") ?? `Instructor ${index + 1}`,
+        lesson: path.match(/-(\d+)\.[^.]+$/)?.[1] ?? String(index + 1).padStart(2, "0"),
+    }));
+
 export default function GwangjuDetailPage() {
     const pageTheme = {
         "--page-primary": "#4E5F7E",
     } as CSSProperties;
+    const [swiper, setSwiper] = useState<SwiperType | null>(null);
+    const [isBeginning, setIsBeginning] = useState(true);
+    const [isEnd, setIsEnd] = useState(false);
+
+    const syncSwiperState = (instance: SwiperType) => {
+        setIsBeginning(instance.isBeginning);
+        setIsEnd(instance.isEnd);
+    };
 
     return (
         <div style={pageTheme}>
@@ -105,9 +133,9 @@ export default function GwangjuDetailPage() {
                                         장소
                                     </span>
                                     <div className="text-left text-sm leading-relaxed text-white/88">
-                                        <p>2026년 4월 14일 ~ 2026년 7월 14일</p>
+                                        <p>2026년 4월 7일 ~ 2026년 7월 7일</p>
                                         <p>매주 화요일 18:30 ~ 20:30</p>
-                                        <p>빛고을창업스테이션 코워킹스페이스 외</p>
+                                        <p>인공지능산업융합사업단 컨퍼런스홀 외</p>
                                     </div>
                                 </div>
 
@@ -218,11 +246,11 @@ export default function GwangjuDetailPage() {
                 <div className="mx-auto max-w-[1080px] px-8">
                     <p className="mb-6 text-xs uppercase tracking-[0.25em] text-gray-800">Instructor</p>
 
-                    <div className="mb-16 flex items-center">
+                    <div className="mb-16 flex items-center justify-between gap-8">
                         <h2 className="w-1/2 text-[42px] font-bold leading-tight text-gray-800">
-                            이번
-                            <br />
-                            커리큘럼은요
+                        이번
+                        <br />
+                        커리큘럼은요
                         </h2>
                         <p className="w-1/2 max-w-xs pt-3 text-left text-lg leading-relaxed text-gray-800">
                             전략부터 실행까지,
@@ -231,30 +259,75 @@ export default function GwangjuDetailPage() {
                         </p>
                     </div>
 
-                    <div className="mb-20 flex gap-12">
-                        <div className="flex-1">
-                            <div className="mb-8 rounded-2xl bg-[#1C1E4A] p-8">
-                                <p className="mb-4 text-xs text-gray-500">이번 강의 소개</p>
-                                <p className="text-[22px] font-bold leading-snug text-white">
-                                    "AI의 기능보다
-                                    <br />
-                                    조직에 필요한 질문을 먼저 설계하기"
-                                </p>
-                            </div>
-                            <h3 className="mb-2 text-[42px] font-bold text-white">안현수</h3>
-                            <p className="text-sm leading-relaxed text-white/50">
-                                Codes Ambassador @OpenAI
-                                <br />
-                                국내 AI 기술 및 거버넌스 자문위원
-                            </p>
-                        </div>
+                    <div className="relative overflow-hidden px-8">
+                        {!isBeginning && (
+                            <button
+                                type="button"
+                                onClick={() => swiper?.slidePrev()}
+                                className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
+                                aria-label="이전 연사 보기"
+                            >
+                                <FiChevronLeft size={24} />
+                            </button>
+                        )}
 
-                        <div className="relative w-[400px] shrink-0">
-                            <div className="h-[420px] w-full rounded-2xl bg-gray-700" />
-                            <span className="absolute top-4 right-4 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-black">
-                @OpenAI 공식 파트너
-              </span>
-                        </div>
+                        {!isEnd && (
+                            <button
+                                type="button"
+                                onClick={() => swiper?.slideNext()}
+                                className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
+                                aria-label="다음 연사 보기"
+                            >
+                                <FiChevronRight size={24} />
+                            </button>
+                        )}
+
+                        <Swiper
+                            className="instructor-swiper"
+                            onSwiper={(instance) => {
+                                setSwiper(instance);
+                                syncSwiperState(instance);
+                            }}
+                            onSlideChange={syncSwiperState}
+                            speed={900}
+                            slidesPerView={1.15}
+                            slidesPerGroup={1}
+                            spaceBetween={18}
+                            roundLengths
+                            watchOverflow
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 2.1,
+                                    spaceBetween: 20,
+                                },
+                                900: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 24,
+                                },
+                                1200: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 24,
+                                },
+                            }}
+                        >
+                            {instructorImages.map((instructor) => (
+                                <SwiperSlide key={instructor.id}>
+                                    <article className="group relative h-full overflow-hidden rounded-[28px] bg-transparent">
+                                        <span className="absolute left-1/2 top-5 z-10 -translate-x-1/2 rounded-full border border-gray-200 bg-white px-5 py-2 text-xs font-semibold tracking-[0.18em] text-[rgba(15,24,45,0.78)]">
+                                            {instructor.lesson}강
+                                        </span>
+                                        <div className="speaker-card relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-[28px]">
+                                            <img
+                                                src={instructor.src}
+                                                alt={instructor.label}
+                                                decoding="async"
+                                                className="max-h-full max-w-full object-contain"
+                                            />
+                                        </div>
+                                    </article>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
                 </div>
             </section>
