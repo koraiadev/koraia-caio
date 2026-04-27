@@ -30,33 +30,72 @@ button {
 
 .hero-sequence {
   opacity: 0;
-  transform: translateY(22px);
-  animation: hero-rise 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: translateY(30px);
+  animation: hero-rise 960ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .hero-delay-1 {
-  animation-delay: 120ms;
+  animation-delay: 240ms;
 }
 
 .hero-delay-2 {
-  animation-delay: 220ms;
+  animation-delay: 420ms;
 }
 
 .hero-delay-3 {
-  animation-delay: 340ms;
+  animation-delay: 640ms;
 }
 
 .hero-delay-4 {
-  animation-delay: 460ms;
+  animation-delay: 900ms;
 }
 
 .hero-delay-5 {
-  animation-delay: 620ms;
+  animation-delay: 1180ms;
 }
 
 .hero-image-pan {
   animation: hero-pan 16s ease-in-out infinite alternate;
   will-change: transform;
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  right: 40px;
+  bottom: 28px;
+  z-index: 10;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.hero-scroll-mouse {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  width: 26px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.hero-scroll-wheel {
+  width: 4px;
+  height: 9px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  animation: hero-scroll-wheel 1.8s ease-in-out infinite;
+}
+
+.hero-scroll-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
 }
 
 .reveal-on-scroll {
@@ -67,6 +106,12 @@ button {
     transform 780ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.reveal-on-scroll.reveal-soft {
+  transition:
+    opacity 1380ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .reveal-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
@@ -74,10 +119,11 @@ button {
 
 .reveal-card {
   transition-property: opacity, transform, box-shadow;
+  box-shadow: 0 6px 18px rgba(38, 56, 90, 0.04);
 }
 
 .reveal-card.is-visible {
-  box-shadow: 0 16px 34px rgba(38, 56, 90, 0.08);
+  box-shadow: 0 10px 24px rgba(38, 56, 90, 0.07);
 }
 
 .image-placeholder {
@@ -228,12 +274,16 @@ button {
 }
 
 .speaker-card {
+  overflow: hidden;
+}
+
+.speaker-card img {
   will-change: transform;
   transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.speaker-card:hover {
-  transform: translateY(-16px);
+.speaker-card:hover img {
+  transform: scale(1.04);
 }
 
 .poster-card {
@@ -291,7 +341,7 @@ button {
 @keyframes hero-rise {
   from {
     opacity: 0;
-    transform: translateY(22px);
+    transform: translateY(30px);
   }
 
   to {
@@ -307,6 +357,27 @@ button {
 
   to {
     transform: scale(1.07) translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes hero-scroll-wheel {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(12px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(12px);
   }
 }
 
@@ -334,14 +405,16 @@ button {
   .footer-link,
   .speaker-card,
   .poster-card,
-  .reveal-on-scroll {
+  .reveal-on-scroll,
+  .hero-scroll-wheel {
     transition: none;
   }
 
   .hero-sequence,
   .hero-image-pan,
   .reveal-on-scroll,
-  .perks-ambient-light {
+  .perks-ambient-light,
+  .hero-scroll-wheel {
     animation: none;
   }
 

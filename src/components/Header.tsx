@@ -13,7 +13,7 @@ export default function Header() {
           href="/contact"
           className="flex items-center gap-1 text-sm font-medium text-white/72 transition-colors hover:text-white"
         >
-          문의하기
+          원우회 수첩
           <FiExternalLink />
         </a>
       </div>
