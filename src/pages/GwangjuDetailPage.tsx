@@ -3,6 +3,10 @@ import type { CSSProperties } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { PiCertificateBold } from "react-icons/pi";
+import { FaChalkboardTeacher, FaNetworkWired } from "react-icons/fa";
+import { TbCertificate2 } from "react-icons/tb";
+import { IoBalloonOutline, IoPeopleSharp } from "react-icons/io5";
 import "swiper/css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -10,6 +14,15 @@ import heroImage from "../assets/img/img-gwangju.png";
 import caioImage from "../assets/img/bg-caio-01.jpg";
 import perksImage from "../assets/img/bg-caio-02.jpg";
 import ctaImage from "../assets/img/bg-caio-03.jpg";
+
+const reasonCardIcons = {
+    "01": PiCertificateBold,
+    "02": FaNetworkWired,
+    "03": TbCertificate2,
+    "04": IoBalloonOutline,
+    "05": FaChalkboardTeacher,
+    "06": IoPeopleSharp,
+} as const;
 
 const reasonCards = [
     {
@@ -153,6 +166,7 @@ export default function GwangjuDetailPage() {
 
     useEffect(() => {
         const revealElements = document.querySelectorAll<HTMLElement>(".reveal-on-scroll");
+        const timeoutIds: number[] = [];
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -160,8 +174,21 @@ export default function GwangjuDetailPage() {
                         return;
                     }
 
-                    entry.target.classList.add("is-visible");
-                    observer.unobserve(entry.target);
+                    const target = entry.target as HTMLElement;
+                    target.classList.add("is-visible");
+                    const styles = window.getComputedStyle(target);
+                    const transitionDelays = styles.transitionDelay.split(",").map((value) => Number.parseFloat(value) * 1000);
+                    const transitionDurations = styles.transitionDuration
+                        .split(",")
+                        .map((value) => Number.parseFloat(value) * 1000);
+                    const maxDelay = Math.max(...transitionDelays, 0);
+                    const maxDuration = Math.max(...transitionDurations, 0);
+                    timeoutIds.push(
+                        window.setTimeout(() => {
+                            target.style.transitionDelay = "0ms";
+                        }, maxDelay + maxDuration),
+                    );
+                    observer.unobserve(target);
                 });
             },
             {
@@ -172,7 +199,10 @@ export default function GwangjuDetailPage() {
 
         revealElements.forEach((element) => observer.observe(element));
 
-        return () => observer.disconnect();
+        return () => {
+            observer.disconnect();
+            timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId));
+        };
     }, []);
 
     return (
@@ -203,8 +233,8 @@ export default function GwangjuDetailPage() {
                             AI 시대, 의사결정의 기준을 다시 설계합니다.
                         </p>
 
-                        <button className="hero-sequence hero-delay-4 relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4">
-                            <span className="relative z-20">수강 신청하기</span>
+                        <button className="hero-sequence hero-delay-4 relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out group outline-offset-4">
+                            <span className="relative z-20">모집 신청 마감</span>
                             <span className="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"></span>
                             <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute h-[20%] rounded-tl-lg border-l-1 border-t-1 top-0 left-0"></span>
                             <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-1 border-t-1 top-0 right-0"></span>
@@ -267,7 +297,7 @@ export default function GwangjuDetailPage() {
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,8,20,0.82)_0%,rgba(7,13,32,0.58)_35%,rgba(10,18,44,0.5)_60%,rgba(7,11,24,0.88)_100%)]" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(77,107,255,0.16),transparent_38%)]" />
                 <div className="relative z-10 mx-auto flex h-full max-w-[1080px] items-center justify-center px-8 text-center">
-                    <div className="reveal-on-scroll reveal-soft" style={{ transitionDelay: "320ms" }}>
+                    <div className="reveal-on-scroll reveal-soft" style={{ transitionDelay: "180ms" }}>
                         <h2 className="mb-5 text-[48px] font-bold leading-tight text-white">
                             무엇이 이들을 움직였을까요?
                         </h2>
@@ -280,8 +310,8 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="reveal-on-scroll bg-white py-32">
-                <div className="mx-auto max-w-[1080px] px-8">
+            <section className="bg-white py-32">
+                <div className="reveal-on-scroll mx-auto max-w-[1080px] px-8">
                     <p className="mb-6 text-sm font-semibold uppercase tracking-[0.15em] text-[var(--page-primary)]">
                         Reason
                     </p>
@@ -306,7 +336,17 @@ export default function GwangjuDetailPage() {
                                 className="reveal-on-scroll reveal-card rounded-2xl border border-gray-100 bg-white p-7"
                                 style={{ transitionDelay: `${Number(card.num) * 95}ms` }}
                             >
-                                <p className="mb-4 text-sm font-semibold text-[var(--page-primary)]">혜택 {card.num}</p>
+                                <div className="mb-5 flex items-start justify-between gap-4">
+                                    <p className="text-sm font-semibold text-[var(--page-primary)]">혜택 {card.num}</p>
+                                    {(() => {
+                                        const Icon = reasonCardIcons[card.num as keyof typeof reasonCardIcons];
+                                        return (
+                                            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[rgba(78,95,126,0.08)] text-[var(--page-primary)]">
+                                                <Icon className="text-[22px]" />
+                                            </span>
+                                        );
+                                    })()}
+                                </div>
                                 <h3 className="mb-3 text-xl font-bold text-black">{card.title}</h3>
                                 <p className="text-sm leading-relaxed text-gray-500">{card.desc}</p>
                             </div>
@@ -315,16 +355,18 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="reveal-on-scroll">
+            <section>
                 <div className="bg-gradient-to-b from-[white] to-[#AFC1FF] pt-16 pb-28 text-center">
-          <span className="mb-7 inline-block rounded-full border border-[var(--page-primary)] bg-transparent px-5 py-2 text-sm font-semibold text-[var(--page-primary)]">
-            Special Point
-          </span>
-                    <h2 className="text-[36px] font-bold text-[var(--page-primary)]">네트워킹으로 완성되는 경험</h2>
+                    <div className="reveal-on-scroll">
+                        <span className="mb-7 inline-block rounded-full border border-[var(--page-primary)] bg-transparent px-5 py-2 text-sm font-semibold text-[var(--page-primary)]">
+                            Special Point
+                        </span>
+                        <h2 className="text-[36px] font-bold text-[var(--page-primary)]">네트워킹으로 완성되는 경험</h2>
+                    </div>
                 </div>
 
                 <div className="bg-[#F5F6FA] pt-[120px] pb-20">
-                    <div className="mx-auto -mt-10 flex max-w-[1080px] items-start gap-16 px-8">
+                    <div className="reveal-on-scroll mx-auto -mt-10 flex max-w-[1080px] items-start gap-16 px-8">
                         <div className="flex-1 pt-10">
                             <h3 className="mb-2 text-[28px] font-bold text-gray-800">평균 출석률</h3>
                             <p className="mb-10 text-[46px] font-bold leading-none text-[var(--page-primary)]">98.8%</p>
@@ -366,8 +408,8 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="reveal-on-scroll bg-[#f4f6ff] py-24">
-                <div className="mx-auto max-w-[1080px] px-8">
+            <section className="bg-[#f4f6ff] py-24">
+                <div className="reveal-on-scroll mx-auto max-w-[1080px] px-8">
                     <p className="mb-6 text-xs uppercase tracking-[0.25em] text-gray-800">Instructor</p>
 
                     <div className="mb-24 flex items-center justify-between gap-8">
@@ -462,7 +504,7 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="reveal-on-scroll relative overflow-hidden py-24">
+            <section className="relative overflow-hidden py-24">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${perksImage})` }}
@@ -473,18 +515,20 @@ export default function GwangjuDetailPage() {
 
                 <div className="relative z-10 mx-auto max-w-[1080px] px-8">
                     <div className="mx-auto max-w-[780px]">
-                        <p className="mb-8 text-left text-xs uppercase tracking-[0.25em] text-white/70">Perks</p>
-                        <h2 className="mb-14 text-left text-[36px] font-bold leading-tight text-white">
-                            단순 교육을 넘어,
-                            <br />
-                            자격 · 네트워크 · 실행 기회를 함께 제공합니다.
-                        </h2>
+                        <div className="reveal-on-scroll">
+                            <p className="mb-8 text-center text-xs uppercase tracking-[0.25em] text-white/70">Perks</p>
+                            <h2 className="mb-14 text-center text-[36px] font-bold leading-tight text-white">
+                                단순 교육을 넘어,
+                                <br />
+                                자격 · 네트워크 · 실행 기회를 함께 제공합니다.
+                            </h2>
+                        </div>
 
-                        <div className="overflow-hidden bg-black/1 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-[1px]">
+                        <div className="overflow-hidden">
                             {perks.map((item, index) => (
                                 <div
                                     key={item.title}
-                                    className={`grid grid-cols-1 items-center gap-8 px-3 py-8 backdrop-blur-sm md:grid-cols-[4fr_6fr] ${
+                                    className={`grid grid-cols-1 items-center gap-8 px-3 py-8 md:grid-cols-[4fr_6fr] ${
                                         index !== 0 ? "border-t border-white/30" : ""
                                     }`}
                                 >
@@ -501,7 +545,7 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="reveal-on-scroll relative h-[620px] overflow-hidden">
+            <section className="relative h-[620px] overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${ctaImage})` }}
@@ -509,22 +553,24 @@ export default function GwangjuDetailPage() {
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,10,24,0.58)_0%,rgba(8,15,35,0.42)_38%,rgba(8,14,32,0.72)_100%)]" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(18,30,68,0.16),transparent_46%)]" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center">
-                    <h2 className="mb-6 text-[52px] font-bold leading-tight text-white">
-                        AI 시대,
-                        <br />
-                        리더가 먼저 바뀌어야 합니다.
-                    </h2>
-                    <p className="mb-12 text-base text-white/80">
-                        지금 준비하지 않으면 격차는 더 벌어집니다.
-                    </p>
-                    <button className="relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4">
-                        <span className="relative z-20">지금 신청하기</span>
-                        <span className="absolute left-[-75%] top-0 z-10 h-full w-[50%] rotate-12 bg-white/20 blur-lg transition-all duration-1000 ease-in-out group-hover:left-[125%]"></span>
-                        <span className="absolute left-0 top-0 block h-[20%] w-1/2 rounded-tl-lg border-l-1 border-t-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300"></span>
-                        <span className="absolute right-0 top-0 block h-[60%] w-1/2 rounded-tr-lg border-r-1 border-t-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
-                        <span className="absolute bottom-0 left-0 block h-[60%] w-1/2 rounded-bl-lg border-b-1 border-l-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
-                        <span className="absolute bottom-0 right-0 block h-[20%] w-1/2 rounded-br-lg border-b-1 border-r-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300"></span>
-                    </button>
+                    <div className="reveal-on-scroll">
+                        <h2 className="mb-6 text-[52px] font-bold leading-tight text-white">
+                            AI 시대,
+                            <br />
+                            리더가 먼저 바뀌어야 합니다.
+                        </h2>
+                        <p className="mb-12 text-base text-white/80">
+                            지금 준비하지 않으면 격차는 더 벌어집니다.
+                        </p>
+                        <button className="group relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out outline-offset-4">
+                            <span className="relative z-20">모집 신청 마감</span>
+                            <span className="absolute left-[-75%] top-0 z-10 h-full w-[50%] rotate-12 bg-white/20 blur-lg transition-all duration-1000 ease-in-out group-hover:left-[125%]"></span>
+                            <span className="absolute left-0 top-0 block h-[20%] w-1/2 rounded-tl-lg border-l-1 border-t-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300"></span>
+                            <span className="absolute right-0 top-0 block h-[60%] w-1/2 rounded-tr-lg border-r-1 border-t-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
+                            <span className="absolute bottom-0 left-0 block h-[60%] w-1/2 rounded-bl-lg border-b-1 border-l-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
+                            <span className="absolute bottom-0 right-0 block h-[20%] w-1/2 rounded-br-lg border-b-1 border-r-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300"></span>
+                        </button>
+                    </div>
                 </div>
             </section>
 

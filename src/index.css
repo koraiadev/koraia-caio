@@ -13,6 +13,7 @@ html {
 body {
   margin: 0;
   color: #ffffff;
+  background-color: #000000;
 }
 
 a {
@@ -118,12 +119,22 @@ button {
 }
 
 .reveal-card {
-  transition-property: opacity, transform, box-shadow;
+  transition-property: opacity, transform, box-shadow, border-color, background-color;
+  transition-duration: 320ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 0 6px 18px rgba(38, 56, 90, 0.04);
 }
 
 .reveal-card.is-visible {
   box-shadow: 0 10px 24px rgba(38, 56, 90, 0.07);
+}
+
+.reveal-card:hover {
+  transition-delay: 0ms !important;
+  transform: translateY(-8px);
+  border-color: rgba(78, 95, 126, 0.18);
+  background-color: #fbfcff;
+  box-shadow: 0 20px 42px rgba(38, 56, 90, 0.12);
 }
 
 .image-placeholder {
