@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SeoulDetailPage from "./pages/SeoulDetailPage";
 import GwangjuDetailPage from "./pages/GwangjuDetailPage";
+import CheonanDetailPage from "./pages/CheonanDetailPage";
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/seoul" element={<SeoulDetailPage />} />
         <Route path="/gwangju" element={<GwangjuDetailPage />} />
+        <Route path="/cheonan" element={<CheonanDetailPage />} />
       </Routes>
     </BrowserRouter>
   );

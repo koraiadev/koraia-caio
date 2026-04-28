@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiArrowRight, FiBarChart2, FiChevronLeft, FiChevronRight, FiCpu, FiDatabase, FiUsers } from "react-icons/fi";
 import { PiCertificateBold } from "react-icons/pi";
 import { FaChalkboardTeacher, FaNetworkWired } from "react-icons/fa";
 import { TbCertificate2 } from "react-icons/tb";
@@ -10,10 +10,13 @@ import { IoBalloonOutline, IoPeopleSharp } from "react-icons/io5";
 import "swiper/css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import heroImage from "../assets/img/img-gwangju.png";
+import heroImage from "../assets/img/img-cheonan.png";
 import caioImage from "../assets/img/bg-caio-01.jpg";
 import perksImage from "../assets/img/bg-caio-02.jpg";
 import ctaImage from "../assets/img/bg-caio-03.jpg";
+import logoCtp from "../assets/img/logo/logo-ctp.png";
+import logoKicox from "../assets/img/logo/logo-kicox..png";
+import logoKoraia from "../assets/img/logo/logo-koraia.png";
 
 const reasonCardIcons = {
     "01": PiCertificateBold,
@@ -59,16 +62,57 @@ const reasonCards = [
 
 const perks = [
     {
-        title: "CAIO 자격 부여",
-        desc: "공식 인증으로 전문성을 증명합니다.",
+        title: "파이프라인 연계",
+        desc: "수요발굴-컨설팅-매칭-실증 지원",
     },
     {
-        title: "협회 프리미엄 혜택",
-        desc: "회원사 전용 리소스를 활용할 수 있습니다.",
+        title: "1:1 매칭 연계",
+        desc: "AI 전문가 자문과 멘토링 경험",
     },
     {
-        title: "원우 네트워크",
-        desc: "이수 이후에도 연결은 계속됩니다.",
+        title: "매칭데이 우선 참여권",
+        desc: "AI 도입 니즈 기반의 솔루션/파트너 수요-공급 매칭데이 참여권",
+    },
+];
+
+const transformationCards = [
+    {
+        title: "산업별 AI 적용 인사이트",
+        desc: "제조, 반도체, 디스플레이 등 실제 기업 사례를 통해 AI가 어떻게 적용되는지 이해합니다.",
+        Icon: FiCpu,
+    },
+    {
+        title: "데이터 기반 의사결정 경험",
+        desc: "공정 데이터, 딥러닝, 온톨로지 기반 분석까지 실무에서 활용 가능한 접근 방식을 학습합니다.",
+        Icon: FiDatabase,
+    },
+    {
+        title: "최신 AI 트렌드와 전략",
+        desc: "LLM, Agentic AI 등 최신 기술 흐름을 기반으로 조직에 적용할 수 있는 전략을 정리합니다.",
+        Icon: FiBarChart2,
+    },
+    {
+        title: "실행 중심 네트워크",
+        desc: "각 분야 리더들과의 교류를 통해 단순 학습을 넘어 실제 협업 기회를 만듭니다.",
+        Icon: FiUsers,
+    },
+];
+
+const partnerLogos = [
+    {
+        name: "충남테크노파크",
+        href: "https://www.ctp.or.kr/",
+        src: logoCtp,
+    },
+    {
+        name: "한국산업단지공단",
+        href: "https://www.kicox.or.kr/",
+        src: logoKicox,
+    },
+    {
+        name: "한국인공지능협회",
+        href: "https://koraia.org/",
+        src: logoKoraia,
     },
 ];
 
@@ -76,68 +120,39 @@ const curriculumCardMeta: Record<
     string,
     {
         schedule: string;
-        description: string;
     }
 > = {
     "01": {
-        schedule: "4.14 전남대학교 공과대학 코스모스홀",
-        description:
-            "지역과 대학의 경계를 넘어 대한민국 AI 연구의 기초 체력을 다지는 교육자이자, 차세대 컴퓨팅 환경의 설계자",
-    },
-    "02": {
-        schedule: "4.21 빛고을창업스테이션 코워킹스페이스2",
-        description:
-            "독일 언론학 박사이자 청와대 디지털소통센터장을 지낸, 기술과 사회의 접점을 설계하는 국내 최고의 미디어ㆍIT 전략가",
+        schedule: "4.29 충남지식산업센터 2층 대회의실",
     },
     "03": {
-        schedule: "4.28 빛고을창업스테이션 코워킹스페이스2",
-        description:
-            "연구소장에서 대표까지, AI 원천 기술의 상용화를 진두지휘하며 국내 최고의 AI 서비스 플랫폼을 구축한 기술 경영인",
+        schedule: "5.13 충남지식산업센터 2층 대회의실",
+    },
+    "04": {
+        schedule: "5.20 충남지식산업센터 2층 대회의실",
     },
     "05": {
-        schedule: "5.12 빛고을창업스테이션 코워킹스페이스2",
-        description:
-            "AI 시대에 필요한 창의적 사고와 인문학적 리더십을 강의하며, 리더들의 디지털 마인드셋을 일깨우는 경영 전략 멘토",
+        schedule: "5.27 충남지식산업센터 2층 대회의실",
     },
     "06": {
-        schedule: "5.19 전남대학교 공과대학 영명홀",
-        description:
-            "AI 기술의 객관적 검증과 표준을 정립하며, 기업들이 신뢰할 수 있는 AI 비즈니스를 펼칠 수 있도록 돕는 인증 전략 전문가",
+        schedule: "6.10 충남지식산업센터 2층 대회의실",
     },
     "07": {
-        schedule: "5.26 빛고을창업스테이션 코워킹스페이스2",
-        description:
-            "데이터 시각화 아티스트이자 기술 행정가로서, 차가운 알고리즘을 인간 중심의 시각 언어로 번역하는 데이터 아트 분야의 선구자",
+        schedule: "6.17 충남지식산업센터 2층 대회의실",
     },
     "08": {
-        schedule: "6.9 빛고을창업스테이션 코워킹스페이스2",
-        description:
-            "국내 최초 자바 챔피언 출신으로, AI 학습 데이터의 표준과 신뢰성을 구축하며 데이터 주도형 혁신을 이끄는 기술 리더",
+        schedule: "6.24 충남지식산업센터 2층 대회의실",
+    },
+    "09": {
+        schedule: "7.1 충남지식산업센터 2층 대회의실",
     },
     "10": {
-        schedule: "6.23 빛고을창업스테이션 코워킹스페이스2",
-        description:
-            "AI 기반의 사용자 경험과 상호작용을 연구하며, 지능형 시스템의 인간 중심 설계를 선도하는 AI 교육 및 연구 전문가",
-    },
-    "11": {
-        schedule: "6.30 전남대학교 공과대학 코스모스홀",
-        description:
-            "인공지능 알파고를 상대로 '신의 한 수'를 던진 인류 유일의 승리자이자, AI 시대의 서막을 온몸으로 겪어낸 통찰가",
-    },
-    "12": {
-        schedule: "7.7 빛고을창업스테이션 코워킹스페이스2",
-        description:
-            "인텔 글로벌 부사장 출신의 통찰력으로 반도체 인프라부터 클라우드까지 AI 하드웨어 생태계 전반을 꿰뚫는 ICT 업계의 거목",
-    },
-    "13": {
-        schedule: "7.14 빛고을창업스테이션 코워킹스페이스2",
-        description:
-            "차세대 AI 반도체의 시장 가치를 창출하고, 글로벌 테크 기업들과의 전략적 파트너십을 통해 실질적인 성장을 견인하는 수익 창출 전문가",
+        schedule: "7.8 충남지식산업센터 2층 대회의실",
     },
 };
 
 const instructorImages = Object.entries(
-    import.meta.glob("../assets/img/instructor/gwangju-2/*.{png,jpg,jpeg,webp}", {
+    import.meta.glob("../assets/img/instructor/cheonan/*.{png,jpg,jpeg,webp}", {
         eager: true,
         import: "default",
     }),
@@ -146,23 +161,38 @@ const instructorImages = Object.entries(
     .map(([path, src], index) => ({
         id: index + 1,
         src: src as string,
+        path,
         label: `연사 ${String(index + 1).padStart(2, "0")}`,
         fileName: path.split("/").pop()?.replace(/\.[^.]+$/, "") ?? `Instructor ${index + 1}`,
         lesson: path.match(/-(\d+)\.[^.]+$/)?.[1] ?? String(index + 1).padStart(2, "0"),
     }));
 
-export default function GwangjuDetailPage() {
+const cheonanInstructorImages = instructorImages.filter(
+    (instructor) => instructor.fileName.startsWith("Instructor-ch-") && curriculumCardMeta[instructor.lesson],
+);
+
+export default function CheonanDetailPage() {
     const pageTheme = {
-        "--page-primary": "#4E5F7E",
+        "--page-primary": "#093872",
     } as CSSProperties;
     const [swiper, setSwiper] = useState<SwiperType | null>(null);
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
+    const [hoveredTransformationIndex, setHoveredTransformationIndex] = useState<number | null>(null);
 
     const syncSwiperState = (instance: SwiperType) => {
         setIsBeginning(instance.isBeginning);
         setIsEnd(instance.isEnd);
     };
+
+    useEffect(() => {
+        const previousBackgroundColor = document.body.style.backgroundColor;
+        document.body.style.backgroundColor = "#ffffff";
+
+        return () => {
+            document.body.style.backgroundColor = previousBackgroundColor;
+        };
+    }, []);
 
     useEffect(() => {
         const revealElements = document.querySelectorAll<HTMLElement>(".reveal-on-scroll");
@@ -207,7 +237,7 @@ export default function GwangjuDetailPage() {
 
     return (
         <div style={pageTheme}>
-            <Header />
+            <Header variant="light" />
 
             <section className="relative h-screen overflow-hidden pt-[101px]">
                 <div
@@ -224,13 +254,11 @@ export default function GwangjuDetailPage() {
                         </p>
 
                         <h1 className="hero-sequence hero-delay-2 mb-8 text-[70px] font-bold leading-[1.05] text-white/90">
-                            CAIO IN
-                            <br />
-                            GWANGJU 2기
+                            기업대표교육 CAIO 과정
                         </h1>
 
                         <p className="hero-sequence hero-delay-3 mx-auto mb-12 max-w-[720px] text-lg text-white/90">
-                            AI 시대, 의사결정의 기준을 다시 설계합니다.
+                            충남 천안 AX 얼라이언스
                         </p>
 
                         <button className="hero-sequence hero-delay-4 relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out group outline-offset-4">
@@ -246,14 +274,12 @@ export default function GwangjuDetailPage() {
                             <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-2">
                                 <div className="flex gap-6 border-t border-white/18 py-7 transition-colors duration-300 hover:border-white/38">
                                     <span className="min-w-[68px] shrink-0 text-sm font-medium leading-snug text-white">
-                                        일시 및
-                                    <br />
-                                        장소
+                                        일시
                                     </span>
                                     <div className="text-left text-sm leading-relaxed text-white/88">
-                                        <p>2026년 4월 14일 ~ 2026년 7월 14일</p>
-                                        <p>매주 화요일 18:30 ~ 20:30</p>
-                                        <p>빛고을창업스테이션 코워킹스페이스 외</p>
+                                        <p>2026년 4월 29일 ~ 2026년 7월 8일</p>
+                                        <p>매주 수요일 16:30 ~ 18:30</p>
+                                        <p className="mt-1 text-xs text-white/64">단, 5월 7일 목요일, 26' 국제인공지능대전 참관</p>
                                     </div>
                                 </div>
 
@@ -263,15 +289,13 @@ export default function GwangjuDetailPage() {
                                 </div>
 
                                 <div className="flex gap-6 border-t border-white/18 py-7 transition-colors duration-300 hover:border-white/38">
-                                <span className="min-w-[68px] shrink-0 text-sm font-medium text-white">
-                                    신청 마감
-                                </span>
-                                    <span className="text-sm text-white/88">2026년 4월 24일까지</span>
+                                    <span className="min-w-[68px] shrink-0 text-sm font-medium text-white">장소</span>
+                                    <span className="text-sm text-white/88">충남지식산업센터 2층 대회의실</span>
                                 </div>
 
                                 <div className="flex gap-6 border-t border-white/18 py-7 transition-colors duration-300 hover:border-white/38 md:pl-10">
-                                    <span className="shrink-0 text-sm font-medium text-white">참가비</span>
-                                    <span className="text-sm text-white">380만원 (VAT 포함)</span>
+                                    <span className="shrink-0 text-sm font-medium text-white">참석자</span>
+                                    <span className="text-sm text-white">충남천안 산단내 제조기업 CEO 및 임원<br/>(40명 이내)</span>
                                 </div>
                             </div>
                         </div>
@@ -312,7 +336,7 @@ export default function GwangjuDetailPage() {
 
             <section className="bg-white py-32">
                 <div className="reveal-on-scroll mx-auto max-w-[1080px] px-8">
-                    <p className="mb-6 text-sm font-semibold uppercase tracking-[0.15em] text-[var(--page-primary)]">
+                    <p className="mb-6 text-sm font-semibold uppercase tracking-[0.15em] text-[#1DCFD9]">
                         Reason
                     </p>
 
@@ -322,7 +346,7 @@ export default function GwangjuDetailPage() {
                             <br />
                             선택해야 하는 이유.
                         </h2>
-                        <p className="w-1/2 pt-2 text-base leading-relaxed text-black">
+                        <p className="w-1/2 pt-3 text-left text-lg leading-relaxed text-gray-800">
                             인재 부족, 전략 부재, 실행 지연.
                             <br />
                             이 문제는 개인이 아닌 사회 구조의 문제입니다.
@@ -341,7 +365,7 @@ export default function GwangjuDetailPage() {
                                     {(() => {
                                         const Icon = reasonCardIcons[card.num as keyof typeof reasonCardIcons];
                                         return (
-                                            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[rgba(78,95,126,0.08)] text-[var(--page-primary)]">
+                                            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#e4fcfe] text-[var(--page-primary)]">
                                                 <Icon className="text-[22px]" />
                                             </span>
                                         );
@@ -356,7 +380,7 @@ export default function GwangjuDetailPage() {
             </section>
 
             <section>
-                <div className="bg-gradient-to-b from-[white] to-[#AFC1FF] pt-16 pb-28 text-center">
+                <div className="bg-gradient-to-b from-[white] to-[#1DCFD9] pt-16 pb-28 text-center">
                     <div className="reveal-on-scroll">
                         <span className="mb-7 inline-block rounded-full border border-[var(--page-primary)] bg-transparent px-5 py-2 text-sm font-semibold text-[var(--page-primary)]">
                             Special Point
@@ -365,7 +389,7 @@ export default function GwangjuDetailPage() {
                     </div>
                 </div>
 
-                <div className="bg-[#F5F6FA] pt-[120px] pb-20">
+                <div className="bg-[#F2F3F8] pt-[120px] pb-20">
                     <div className="reveal-on-scroll mx-auto -mt-10 flex max-w-[1080px] items-start gap-16 px-8">
                         <div className="flex-1 pt-10">
                             <h3 className="mb-2 text-[28px] font-bold text-gray-800">평균 출석률</h3>
@@ -380,20 +404,20 @@ export default function GwangjuDetailPage() {
 
                         <div className="shrink-0 pt-10">
                             <a
-                                href="/files/img-gj2-poster.jpg"
-                                download="CAIO_IN_GWANGJU_2기_포스터.jpg"
+                                href="/files/img-ch-poster.png"
+                                download="충남_천안_AX_얼라이언스_기업대표교육_CAIO과정_포스터.png"
                                 className="poster-card group relative m-auto block h-[280px] w-[380px] cursor-pointer overflow-hidden rounded-[28px] bg-white p-8 text-[#23304c]"
                             >
-                                <div className="absolute -right-[72px] -top-[72px] z-0 h-36 w-36 rounded-full bg-[var(--page-primary)] transition-transform duration-500 group-hover:scale-[8]" />
+                                <div className="absolute -right-[72px] -top-[72px] z-0 h-36 w-36 rounded-full bg-[#1DCFD9] transition-transform duration-500 group-hover:scale-[8]" />
                                 <div className="relative z-10 flex h-full flex-col justify-between">
                                     <div>
                                         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-[#7a869f] transition-colors duration-500 group-hover:text-white/80">
                                             Brochure
                                         </p>
                                         <h3 className="w-full text-[32px] font-bold leading-tight text-[#23304c] transition-colors duration-500 group-hover:text-white">
-                                            CAIO IN GWANGJU
+                                            충남 천안 AX 얼라이언스
                                             <br />
-                                            SEASON 2
+                                            기업대표교육 CAIO 과정
                                         </h3>
                                     </div>
 
@@ -408,98 +432,158 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="bg-[#f4f6ff] py-24">
+            <section className="bg-[#f5f6f8] py-24">
                 <div className="reveal-on-scroll mx-auto max-w-[1080px] px-8">
-                    <p className="mb-6 text-xs uppercase tracking-[0.25em] text-gray-800">Instructor</p>
+                    <p className="mb-6 text-xs uppercase tracking-[0.25em] text-gray-800">Curriculum</p>
 
-                    <div className="mb-24 flex items-center justify-between gap-8">
+                    <div className="mb-14 flex items-center justify-between gap-8">
                         <h2 className="w-1/2 text-[42px] font-bold leading-tight text-gray-800">
                         이번
                         <br />
                         커리큘럼은요
                         </h2>
-                        <p className="w-1/2 max-w-xs pt-3 text-left text-lg leading-relaxed text-gray-800">
-                            전략부터 실행까지,
+                        <p className="w-1/2 pt-3 text-left text-lg leading-relaxed text-gray-800">
+                            각 세션은 산업 현장의 실제 사례를 기반으로,
                             <br />
-                            현장에서 바로 쓰이는 AI를 다룹니다.
+                            AI 도입과 실행까지 이어지도록 설계되어 있습니다.
                         </p>
                     </div>
 
-                    <div className="relative overflow-hidden px-8">
-                        {!isBeginning && (
-                            <button
-                                type="button"
-                                onClick={() => swiper?.slidePrev()}
-                                className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
-                                aria-label="이전 연사 보기"
-                            >
-                                <FiChevronLeft size={24} />
-                            </button>
-                        )}
+                    <div>
+                        <div>
 
-                        {!isEnd && (
-                            <button
-                                type="button"
-                                onClick={() => swiper?.slideNext()}
-                                className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
-                                aria-label="다음 연사 보기"
-                            >
-                                <FiChevronRight size={24} />
-                            </button>
-                        )}
+                            <div className="px-6 py-10 md:px-10 mb-20">
+                                <div className="relative hidden md:block">
+                                    <div className="absolute left-0 right-0 top-4 h-4 rounded-full bg-gray-200" />
+                                    <div
+                                        className="absolute left-0 top-4 h-4 rounded-full bg-[#1DCFD9] transition-[width] duration-300 ease-out"
+                                        style={{
+                                            width:
+                                                hoveredTransformationIndex === null
+                                                    ? "0%"
+                                                    : `${((hoveredTransformationIndex + 0.5) / transformationCards.length) * 100}%`,
+                                        }}
+                                    />
+                                    <div className="grid grid-cols-4 gap-0">
+                                        {transformationCards.map((card, index) => (
+                                            <div
+                                                key={card.title}
+                                                className="group relative min-w-0"
+                                                style={{ transitionDelay: `${index * 70}ms` }}
+                                                onMouseEnter={() => setHoveredTransformationIndex(index)}
+                                                onMouseLeave={() => setHoveredTransformationIndex(null)}
+                                            >
+                                                <div className="mb-5 flex justify-center">
+                                                    <div className="relative z-10 inline-flex h-12 w-12 items-center justify-center rounded-md border border-[rgba(9,56,114,0.14)] bg-white text-[var(--page-primary)] shadow-[0_10px_24px_rgba(9,56,114,0.08)] transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(9,56,114,0.24)] group-hover:shadow-[0_16px_32px_rgba(9,56,114,0.14)]">
+                                                        <card.Icon className="text-[20px]" />
+                                                    </div>
+                                                </div>
+                                                <h4 className="mx-auto max-w-[220px] text-center text-sm font-semibold leading-6 text-gray-600 transition-colors duration-300 group-hover:text-[var(--page-primary)]">
+                                                    {card.title}
+                                                </h4>
+                                                <div
+                                                    className={`pointer-events-none absolute top-[94px] z-20 w-[220px] rounded-2xl border border-[rgba(9,56,114,0.12)] bg-white/98 p-4 opacity-0 shadow-[0_18px_36px_rgba(9,56,114,0.12)] transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-2 group-hover:opacity-100 ${
+                                                        index === 0
+                                                            ? "left-0"
+                                                            : index === transformationCards.length - 1
+                                                              ? "right-0"
+                                                              : "left-1/2 -translate-x-1/2"
+                                                    }`}
+                                                >
+                                                    <p className="text-sm leading-6 text-gray-600">{card.desc}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                        <Swiper
-                            className="instructor-swiper"
-                            onSwiper={(instance) => {
-                                setSwiper(instance);
-                                syncSwiperState(instance);
-                            }}
-                            onSlideChange={syncSwiperState}
-                            speed={900}
-                            slidesPerView={1.15}
-                            slidesPerGroup={1}
-                            spaceBetween={18}
-                            roundLengths
-                            watchOverflow
-                            breakpoints={{
-                                640: {
-                                    slidesPerView: 2.1,
-                                    spaceBetween: 20,
-                                },
-                                900: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 24,
-                                },
-                                1200: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 24,
-                                },
-                            }}
-                        >
-                            {instructorImages.map((instructor) => (
-                                <SwiperSlide key={instructor.id}>
-                                    <article className="group relative h-full bg-transparent">
-                                        <span className="mb-5 inline-flex border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold tracking-[0.18em] text-[rgba(15,24,45,0.78)]">
-                                            {instructor.lesson}강
-                                        </span>
-                                        <p className="mb-6 px-1 text-sm font-medium leading-6 text-[rgba(15,24,45,0.88)]">
-                                            {curriculumCardMeta[instructor.lesson]?.schedule ?? ""}
-                                        </p>
-                                        <div className="speaker-card relative flex items-center justify-center overflow-hidden rounded-[10px]">
-                                            <img
-                                                src={instructor.src}
-                                                alt={instructor.label}
-                                                decoding="async"
-                                                className="max-h-full max-w-full object-contain"
-                                            />
-                                        </div>
-                                        <p className="mt-5 px-1 text-sm leading-6 text-[rgba(15,24,45,0.78)]">
-                                            {curriculumCardMeta[instructor.lesson]?.description ?? ""}
-                                        </p>
-                                    </article>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                    <div className="mt-32">
+                        <div className="mb-10 flex items-end justify-center gap-8">
+                            <h3 className="text-[28px] font-semibold leading-tight text-gray-900">이번 과정을 함께할 연사들</h3>
+                        </div>
+
+                        <div className="relative overflow-hidden px-8 py-12">
+                            {!isBeginning && (
+                                <button
+                                    type="button"
+                                    onClick={() => swiper?.slidePrev()}
+                                    className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
+                                    aria-label="이전 연사 보기"
+                                >
+                                    <FiChevronLeft size={24} />
+                                </button>
+                            )}
+
+                            {!isEnd && (
+                                <button
+                                    type="button"
+                                    onClick={() => swiper?.slideNext()}
+                                    className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
+                                    aria-label="다음 연사 보기"
+                                >
+                                    <FiChevronRight size={24} />
+                                </button>
+                            )}
+
+                            <Swiper
+                                className="instructor-swiper"
+                                onSwiper={(instance) => {
+                                    setSwiper(instance);
+                                    syncSwiperState(instance);
+                                }}
+                                onSlideChange={syncSwiperState}
+                                speed={900}
+                                slidesPerView={1.15}
+                                slidesPerGroup={1}
+                                spaceBetween={18}
+                                roundLengths
+                                watchOverflow
+                                breakpoints={{
+                                    640: {
+                                        slidesPerView: 2.1,
+                                        spaceBetween: 20,
+                                    },
+                                    900: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 24,
+                                    },
+                                    1200: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 24,
+                                    },
+                                }}
+                            >
+                                {cheonanInstructorImages.map((instructor) => (
+                                    <SwiperSlide key={instructor.id}>
+                                        <article className="group relative h-full bg-transparent">
+                                            <span className="mb-5 inline-flex border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold tracking-[0.18em] text-[rgba(15,24,45,0.78)]">
+                                                {instructor.lesson}강
+                                            </span>
+                                            <p className="mb-6 px-1 text-sm font-medium leading-6 text-[rgba(15,24,45,0.88)]">
+                                                {curriculumCardMeta[instructor.lesson]?.schedule ?? ""}
+                                            </p>
+                                            <div className="speaker-card relative flex items-center justify-center overflow-hidden rounded-[10px]">
+                                                <img
+                                                    src={instructor.src}
+                                                    alt={instructor.label}
+                                                    decoding="async"
+                                                    className="max-h-full max-w-full object-contain"
+                                                />
+                                            </div>
+                                        </article>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                            <p className="mt-12 text-left text-sm tracking-[0.02em] leading-7 text-[#949494]">
+                                * 커리큘럼 내용과 일정은 변경될 수 있습니다.
+                                <br/>
+                                * 외부 행사 연계, 야유회 등의 네트워크 활동이 포함될 수 있습니다.
+                            </p>
+                        </div>
+
                     </div>
                 </div>
             </section>
@@ -574,7 +658,32 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <Footer />
+            <section className="bg-[#F2F3F8] py-20">
+                <div className="mx-auto max-w-[1080px] px-8">
+                    <div className="mb-10 text-center">
+                        <p className="mb-3 text-left text-xs font-semibold uppercase tracking-[0.24em] text-[var(--page-primary)]">
+                            Partners
+                        </p>
+                        <h2 className="text-left text-[32px] font-bold leading-tight text-[#162033]">협력사 · 후원사</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+                        {partnerLogos.map((partner) => (
+                            <a
+                                key={partner.name}
+                                href={partner.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="flex h-[150px] items-center rounded-xl justify-center bg-white px-8 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--page-primary)]/30 hover:shadow-[0_18px_36px_rgba(9,56,114,0.1)]"
+                            >
+                                <img src={partner.src} alt={partner.name} className="max-h-[64px] max-w-full object-contain" />
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <Footer variant="light" />
         </div>
     );
 }

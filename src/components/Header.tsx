@@ -1,27 +1,52 @@
-import logo from "../assets/logo-white.png";
+import logoDark from "../assets/logo.png";
+import logoLight from "../assets/logo-white.png";
 import { FiExternalLink } from "react-icons/fi";
 
-export default function Header() {
+type HeaderProps = {
+  variant?: "dark" | "light";
+};
+
+export default function Header({ variant = "dark" }: HeaderProps) {
+  const isLight = variant === "light";
+  const headerClassName = isLight
+    ? "fixed top-0 left-0 right-0 z-50 bg-white/88 text-[#162033] shadow-[0_1px_0_rgba(15,23,42,0.08)] backdrop-blur-md"
+    : "fixed top-0 left-0 right-0 z-50 bg-black/72 text-white shadow-[0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md";
+  const topRowClassName = isLight
+    ? "mx-auto flex h-14 max-w-[1080px] items-center justify-between px-8 text-[#162033]"
+    : "mx-auto flex h-14 max-w-[1080px] items-center justify-between px-8 text-white";
+  const notebookLinkClassName = isLight
+    ? "flex items-center gap-1 text-sm font-medium text-[#162033]/68 transition-colors hover:text-[#162033]"
+    : "flex items-center gap-1 text-sm font-medium text-white/72 transition-colors hover:text-white";
+  const tabBarClassName = isLight
+    ? "border-t border-[#162033]/10 text-[#162033]"
+    : "border-t border-white/10 text-white";
+  const tabInnerClassName = isLight
+    ? "mx-auto flex max-w-[1080px] divide-x divide-[#162033]/10 text-[#162033]"
+    : "mx-auto flex max-w-[1080px] divide-x divide-white/10 text-white";
+  const tabLinkClassName = isLight
+    ? "flex-1 py-3 text-center text-sm font-medium text-[#162033]/64 transition-colors hover:bg-[#162033]/[0.04] hover:text-[#162033]"
+    : "flex-1 py-3 text-center text-sm font-medium text-white/64 transition-colors hover:bg-white/6 hover:text-white";
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/72 text-white shadow-[0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-[1080px] items-center justify-between px-8 text-white">
+    <header className={headerClassName}>
+      <div className={topRowClassName}>
         <a href="/">
-          <img src={logo} alt="CAIO" className="h-7 w-auto" />
+          <img src={isLight ? logoDark : logoLight} alt="CAIO" className="h-7 w-auto" />
         </a>
 
         <a
           href="https://caiom.koraia.org/"
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-1 text-sm font-medium text-white/72 transition-colors hover:text-white"
+          className={notebookLinkClassName}
         >
           원우회 수첩
           <FiExternalLink />
         </a>
       </div>
 
-      <div className="border-t border-white/10 text-white">
-        <div className="mx-auto flex max-w-[1080px] divide-x divide-white/10 text-white">
+      <div className={tabBarClassName}>
+        <div className={tabInnerClassName}>
           {[
             { label: "서울", href: "/seoul" },
             { label: "광주", href: "/gwangju" },
@@ -30,7 +55,7 @@ export default function Header() {
             <a
               key={item.label}
               href={item.href}
-              className="flex-1 py-3 text-center text-sm font-medium text-white/64 transition-colors hover:bg-white/6 hover:text-white"
+              className={tabLinkClassName}
             >
               {item.label}
             </a>
