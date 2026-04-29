@@ -473,7 +473,7 @@ export default function GwangjuDetailPage() {
                                         <h3 className="w-full text-[32px] font-bold leading-tight text-[#23304c] transition-colors duration-500 group-hover:text-white">
                                             CAIO IN GWANGJU
                                             <br />
-                                            SEASON 2
+                                            2TH
                                         </h3>
                                     </div>
 

@@ -271,14 +271,19 @@ export default function SeoulDetailPage() {
                             경영진을 위한 실전 AI 전략 및 거버넌스 최고위과정.
                         </p>
 
-                        <button className="hero-sequence hero-delay-4 relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out group outline-offset-4">
-                            <span className="relative z-20">수강 신청</span>
+                        <a
+                            href="https://survey.koraia.org/public/caio4th"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="hero-sequence hero-delay-4 relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out group outline-offset-4"
+                        >
+                            <span className="relative z-20">수강 신청하기</span>
                             <span className="absolute left-[-75%] top-0 z-10 h-full w-[50%] rotate-12 bg-white/20 blur-lg transition-all duration-1000 ease-in-out group-hover:left-[125%]"></span>
                             <span className="absolute left-0 top-0 block h-[20%] w-1/2 rounded-tl-lg border-l-1 border-t-1 border-[#E8D6F4] drop-shadow-3xl transition-all duration-300"></span>
                             <span className="absolute right-0 top-0 block h-[60%] w-1/2 rounded-tr-lg border-r-1 border-t-1 border-[#E8D6F4] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
                             <span className="absolute bottom-0 left-0 block h-[60%] w-1/2 rounded-bl-lg border-b-1 border-l-1 border-[#E8D6F4] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
                             <span className="absolute bottom-0 right-0 block h-[20%] w-1/2 rounded-br-lg border-b-1 border-r-1 border-[#E8D6F4] drop-shadow-3xl transition-all duration-300"></span>
-                        </button>
+                        </a>
 
                         <div className="hero-sequence hero-delay-5 mx-auto mt-20 max-w-[860px] bg-[rgba(27,9,39,0.3)] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.26)] backdrop-blur-[1px]">
                             <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-2">
@@ -312,7 +317,7 @@ export default function SeoulDetailPage() {
                                     <span className="shrink-0 text-sm font-medium text-white">교육비</span>
                                     <div className="text-sm leading-relaxed text-white/88">
                                         <p className="text-white">380만원 (VAT 별도)</p>
-                                        <p className="mt-2 text-white/76">
+                                        <p className="mt-1 text-xs text-white/64">
                                             5월 6일 ~ 5월 8일 AI EXPO KOREA 기간 내 등록 신청 시 20% 할인
                                         </p>
                                     </div>
@@ -661,21 +666,26 @@ export default function SeoulDetailPage() {
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center">
                     <div className="reveal-on-scroll">
                         <h2 className="mb-6 text-[52px] font-bold leading-tight text-white">
-                            AI 시대,
+                            미래 비즈니스의
                             <br />
-                            리더가 먼저 바뀌어야 합니다.
+                            지휘권을 확보하십시오.
                         </h2>
                         <p className="mb-12 text-base text-white/80">
                             지금 준비하지 않으면 격차는 더 벌어집니다.
                         </p>
-                        <button className="group relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out outline-offset-4">
-                            <span className="relative z-20">모집 신청 마감</span>
+                        <a
+                            href="https://survey.koraia.org/public/caio4th"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out outline-offset-4"
+                        >
+                            <span className="relative z-20">지금 신청하세요</span>
                             <span className="absolute left-[-75%] top-0 z-10 h-full w-[50%] rotate-12 bg-white/20 blur-lg transition-all duration-1000 ease-in-out group-hover:left-[125%]"></span>
                             <span className="absolute left-0 top-0 block h-[20%] w-1/2 rounded-tl-lg border-l-1 border-t-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300"></span>
                             <span className="absolute right-0 top-0 block h-[60%] w-1/2 rounded-tr-lg border-r-1 border-t-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
                             <span className="absolute bottom-0 left-0 block h-[60%] w-1/2 rounded-bl-lg border-b-1 border-l-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
                             <span className="absolute bottom-0 right-0 block h-[20%] w-1/2 rounded-br-lg border-b-1 border-r-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300"></span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </section>

@@ -48,16 +48,31 @@ export default function Header({ variant = "dark" }: HeaderProps) {
       <div className={tabBarClassName}>
         <div className={tabInnerClassName}>
           {[
-            { label: "서울", href: "/seoul" },
-            { label: "광주", href: "/gwangju" },
-            { label: "천안", href: "/cheonan" },
+            { id: "seoul", label: "서울 4기", href: "/seoul" },
+            { id: "gwangju", label: "광주 2기", href: "/gwangju" },
+            { id: "cheonan", label: "천안", href: "/cheonan" },
           ].map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className={tabLinkClassName}
+              className={`${tabLinkClassName} inline-flex items-center justify-center gap-2`}
             >
-              {item.label}
+              <span>{item.label}</span>
+              {item.id === "seoul" && (
+                <span className="rounded-full bg-transparent px-2 py-0.5 text-[11px] font-medium leading-none text-blue-400">
+                  모집 중
+                </span>
+              )}
+              {item.id === "gwangju" && (
+                <span className="rounded-full bg-transparent px-2 py-0.5 text-[11px] font-medium leading-none text-blue-400">
+                  진행 중
+                </span>
+              )}
+              {item.id === "cheonan" && (
+                <span className="rounded-full bg-transparent px-2 py-0.5 text-[11px] font-medium leading-none text-blue-400">
+                  진행 중
+                </span>
+              )}
             </a>
           ))}
         </div>
