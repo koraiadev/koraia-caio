@@ -337,6 +337,32 @@ button {
   transform: translateZ(0);
 }
 
+.instructor-swiper .swiper-pagination {
+  position: static;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.instructor-swiper .swiper-pagination-bullet {
+  margin: 0 !important;
+  height: 0.5rem;
+  width: 0.5rem;
+  background: rgba(116, 96, 175, 0.24);
+  opacity: 1;
+}
+
+.instructor-swiper .swiper-pagination-bullet-active {
+  background: #7460af;
+}
+
+@media (min-width: 1024px) {
+  .instructor-swiper .swiper-pagination {
+    display: none;
+  }
+}
+
 .footer-link {
   color: rgba(255, 255, 255, 0.72);
 }
