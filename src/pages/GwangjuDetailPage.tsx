@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiArrowRight, FiBarChart2, FiChevronLeft, FiChevronRight, FiCpu, FiDatabase, FiLayers, FiTarget } from "react-icons/fi";
 import { PiCertificateBold } from "react-icons/pi";
 import { FaChalkboardTeacher, FaNetworkWired } from "react-icons/fa";
 import { TbCertificate2 } from "react-icons/tb";
@@ -14,6 +14,14 @@ import heroImage from "../assets/img/img-gwangju.png";
 import caioImage from "../assets/img/bg-caio-01.jpg";
 import perksImage from "../assets/img/bg-caio-02.jpg";
 import ctaImage from "../assets/img/bg-caio-03.jpg";
+import logoJnu from "../assets/img/logo/logo-jnu.png";
+import logoMicrosoft from "../assets/img/logo/logo-microsoft.png";
+import logoDimoa from "../assets/img/logo/logo-dimoa.png";
+import logoAws from "../assets/img/logo/logo-aws.png";
+import logoCheongchul from "../assets/img/logo/logo-cheongchul.png";
+import logoRaonsecure from "../assets/img/logo/logo-raonsecure.png";
+import logoKfq from "../assets/img/logo/logo-kfq.jpg";
+import logoSeriCeo from "../assets/img/logo/logo-seri-ceo.png";
 
 const reasonCardIcons = {
     "01": PiCertificateBold,
@@ -69,6 +77,77 @@ const perks = [
     {
         title: "원우 네트워크",
         desc: "이수 이후에도 연결은 계속됩니다.",
+    },
+];
+
+const partnerLogos = [
+    {
+        name: "전남대학교 공과대학",
+        href: "https://eng.jnu.ac.kr/eng/index.do",
+        src: logoJnu,
+    },
+    {
+        name: "마이크로소프트(Microsoft)",
+        href: "https://www.microsoft.com/ko-kr",
+        src: logoMicrosoft,
+    },
+    {
+        name: "디모아",
+        href: "https://www.dimoa.co.kr/",
+        src: logoDimoa,
+    },
+    {
+        name: "아마존웹서비스(AWS)",
+        href: "https://aws.amazon.com/ko/",
+        src: logoAws,
+    },
+    {
+        name: "법무법인청출",
+        href: "https://cheongchul.com/",
+        src: logoCheongchul,
+    },
+    {
+        name: "라온시큐어",
+        href: "https://www.raonsecure.com/ko",
+        src: logoRaonsecure,
+    },
+    {
+        name: "한국품질재단",
+        href: "https://www.kfq.or.kr/",
+        src: logoKfq,
+    },
+    {
+        name: "SERI CEO",
+        href: "https://www.sericeo.org/",
+        src: logoSeriCeo,
+    },
+];
+
+const curriculumProgressCards = [
+    {
+        title: "AI 개념과 미래 방향 이해",
+        desc: "피지컬 AI부터 생성형 AI까지 기술의 흐름과 AI가 사회와 산업에 미치는 영향을 구조적으로 이해합니다.",
+        Icon: FiCpu,
+    },
+    {
+        title: "데이터 기반 산업 혁신 사례",
+        desc: "제조, 디스플레이 등 실제 기업 사례를 통해 데이터와 AI가 어떻게 산업 경쟁력을 만드는지 확인합니다.",
+        Icon: FiDatabase,
+    },
+    {
+        title: "현장 중심 AI 적용과 기술 이해",
+        desc: "공정 데이터, 딥러닝 등 실제 적용 사례를 바탕으로 AI 기술이 현장에서 어떻게 활용되는지 학습합니다.",
+        Icon: FiLayers,
+    },
+    {
+        title: "AX 전환과 기업 적용 전략",
+        desc: "기업이 겪는 AI 도입의 문제를 분석하고 효과적인 AX 전환 전략과 실행 방안을 정리합니다.",
+        Icon: FiTarget,
+    },
+    {
+        title: "AI 시대 리더십과 미래 전략",
+        desc: "LLM·Agent 흐름과 인간-AI 협업을 바탕으로 조직과 리더의 의사결정 방향을 설계합니다.",
+        Icon: FiBarChart2,
     },
 ];
 
@@ -158,6 +237,7 @@ export default function GwangjuDetailPage() {
     const [swiper, setSwiper] = useState<SwiperType | null>(null);
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
+    const [hoveredCurriculumIndex, setHoveredCurriculumIndex] = useState<number | null>(null);
 
     const syncSwiperState = (instance: SwiperType) => {
         setIsBeginning(instance.isBeginning);
@@ -410,96 +490,166 @@ export default function GwangjuDetailPage() {
 
             <section className="bg-[#f4f6ff] py-24">
                 <div className="reveal-on-scroll mx-auto max-w-[1080px] px-8">
-                    <p className="mb-6 text-xs uppercase tracking-[0.25em] text-gray-800">Instructor</p>
+                    <p className="mb-6 text-xs uppercase tracking-[0.25em] text-gray-800">Curriculum</p>
 
-                    <div className="mb-24 flex items-center justify-between gap-8">
+                    <div className="mb-14 flex items-center justify-between gap-8">
                         <h2 className="w-1/2 text-[42px] font-bold leading-tight text-gray-800">
                         이번
                         <br />
                         커리큘럼은요
                         </h2>
-                        <p className="w-1/2 max-w-xs pt-3 text-left text-lg leading-relaxed text-gray-800">
+                        <p className="w-1/2 pt-3 text-left text-lg leading-relaxed text-gray-800">
                             전략부터 실행까지,
                             <br />
                             현장에서 바로 쓰이는 AI를 다룹니다.
                         </p>
                     </div>
 
-                    <div className="relative overflow-hidden px-8">
-                        {!isBeginning && (
-                            <button
-                                type="button"
-                                onClick={() => swiper?.slidePrev()}
-                                className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
-                                aria-label="이전 연사 보기"
-                            >
-                                <FiChevronLeft size={24} />
-                            </button>
-                        )}
-
-                        {!isEnd && (
-                            <button
-                                type="button"
-                                onClick={() => swiper?.slideNext()}
-                                className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
-                                aria-label="다음 연사 보기"
-                            >
-                                <FiChevronRight size={24} />
-                            </button>
-                        )}
-
-                        <Swiper
-                            className="instructor-swiper"
-                            onSwiper={(instance) => {
-                                setSwiper(instance);
-                                syncSwiperState(instance);
-                            }}
-                            onSlideChange={syncSwiperState}
-                            speed={900}
-                            slidesPerView={1.15}
-                            slidesPerGroup={1}
-                            spaceBetween={18}
-                            roundLengths
-                            watchOverflow
-                            breakpoints={{
-                                640: {
-                                    slidesPerView: 2.1,
-                                    spaceBetween: 20,
-                                },
-                                900: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 24,
-                                },
-                                1200: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 24,
-                                },
-                            }}
-                        >
-                            {instructorImages.map((instructor) => (
-                                <SwiperSlide key={instructor.id}>
-                                    <article className="group relative h-full bg-transparent">
-                                        <span className="mb-5 inline-flex border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold tracking-[0.18em] text-[rgba(15,24,45,0.78)]">
-                                            {instructor.lesson}강
-                                        </span>
-                                        <p className="mb-6 px-1 text-sm font-medium leading-6 text-[rgba(15,24,45,0.88)]">
-                                            {curriculumCardMeta[instructor.lesson]?.schedule ?? ""}
-                                        </p>
-                                        <div className="speaker-card relative flex items-center justify-center overflow-hidden rounded-[10px]">
-                                            <img
-                                                src={instructor.src}
-                                                alt={instructor.label}
-                                                decoding="async"
-                                                className="max-h-full max-w-full object-contain"
-                                            />
+                    <div className="px-6 py-10 md:px-10 mb-20">
+                        <div className="relative hidden md:block">
+                            <div className="absolute left-0 right-0 top-4 h-4 rounded-full bg-gray-200" />
+                            <div
+                                className="absolute left-0 top-4 h-4 rounded-full bg-[var(--page-primary)] transition-[width] duration-300 ease-out"
+                                style={{
+                                    width:
+                                        hoveredCurriculumIndex === null
+                                            ? "0%"
+                                            : `${((hoveredCurriculumIndex + 0.5) / curriculumProgressCards.length) * 100}%`,
+                                }}
+                            />
+                            <div className="grid grid-cols-5 gap-0">
+                                {curriculumProgressCards.map((card, index) => (
+                                    <div
+                                        key={card.title}
+                                        className="group relative min-w-0"
+                                        onMouseEnter={() => setHoveredCurriculumIndex(index)}
+                                        onMouseLeave={() => setHoveredCurriculumIndex(null)}
+                                    >
+                                        <div className="mb-5 flex justify-center">
+                                            <div className="relative z-10 inline-flex h-12 w-12 items-center justify-center rounded-md border border-[rgba(78,95,126,0.14)] bg-white text-[var(--page-primary)] shadow-[0_10px_24px_rgba(78,95,126,0.08)] transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[rgba(78,95,126,0.24)] group-hover:shadow-[0_16px_32px_rgba(78,95,126,0.14)]">
+                                                <card.Icon className="text-[20px]" />
+                                            </div>
                                         </div>
-                                        <p className="mt-5 px-1 text-sm leading-6 text-[rgba(15,24,45,0.78)]">
-                                            {curriculumCardMeta[instructor.lesson]?.description ?? ""}
-                                        </p>
-                                    </article>
-                                </SwiperSlide>
+                                        <h4 className="mx-auto max-w-[220px] text-center text-sm font-semibold leading-6 text-gray-600 transition-colors duration-300 group-hover:text-[var(--page-primary)]">
+                                            {card.title}
+                                        </h4>
+                                        <div
+                                            className={`pointer-events-none absolute top-[94px] z-20 w-[190px] rounded-2xl border border-[rgba(78,95,126,0.12)] bg-white/98 p-4 opacity-0 shadow-[0_18px_36px_rgba(78,95,126,0.12)] transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-2 group-hover:opacity-100 ${
+                                                index === 0
+                                                    ? "left-0"
+                                                    : index === curriculumProgressCards.length - 1
+                                                      ? "right-0"
+                                                      : "left-1/2 -translate-x-1/2"
+                                            }`}
+                                        >
+                                            <p className="text-sm leading-6 text-gray-600">{card.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-4 md:hidden">
+                            {curriculumProgressCards.map((card) => (
+                                <div key={card.title} className="rounded-[22px] border border-[rgba(78,95,126,0.12)] bg-white p-5">
+                                    <div className="mb-3 flex items-center gap-3">
+                                        <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(78,95,126,0.08)] text-[var(--page-primary)]">
+                                            <card.Icon className="text-[18px]" />
+                                        </span>
+                                        <h4 className="text-base font-bold text-gray-900">{card.title}</h4>
+                                    </div>
+                                    <p className="text-sm leading-6 text-gray-600">{card.desc}</p>
+                                </div>
                             ))}
-                        </Swiper>
+                        </div>
+                    </div>
+
+                    <div className="mt-32">
+                        <div className="mb-10 flex items-end justify-center gap-8">
+                            <h3 className="text-[28px] font-semibold leading-tight text-gray-900">이번 과정을 함께할 연사들</h3>
+                        </div>
+
+                        <div className="relative overflow-hidden px-8 py-12">
+                            {!isBeginning && (
+                                <button
+                                    type="button"
+                                    onClick={() => swiper?.slidePrev()}
+                                    className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
+                                    aria-label="이전 연사 보기"
+                                >
+                                    <FiChevronLeft size={24} />
+                                </button>
+                            )}
+
+                            {!isEnd && (
+                                <button
+                                    type="button"
+                                    onClick={() => swiper?.slideNext()}
+                                    className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
+                                    aria-label="다음 연사 보기"
+                                >
+                                    <FiChevronRight size={24} />
+                                </button>
+                            )}
+
+                            <Swiper
+                                className="instructor-swiper"
+                                onSwiper={(instance) => {
+                                    setSwiper(instance);
+                                    syncSwiperState(instance);
+                                }}
+                                onSlideChange={syncSwiperState}
+                                speed={900}
+                                slidesPerView={1.15}
+                                slidesPerGroup={1}
+                                spaceBetween={18}
+                                roundLengths
+                                watchOverflow
+                                breakpoints={{
+                                    640: {
+                                        slidesPerView: 2.1,
+                                        spaceBetween: 20,
+                                    },
+                                    900: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 24,
+                                    },
+                                    1200: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 24,
+                                    },
+                                }}
+                            >
+                                {instructorImages.map((instructor) => (
+                                    <SwiperSlide key={instructor.id}>
+                                        <article className="group relative h-full bg-transparent">
+                                            <span className="mb-5 inline-flex border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold tracking-[0.18em] text-[rgba(15,24,45,0.78)]">
+                                                {instructor.lesson}강
+                                            </span>
+                                            <p className="mb-6 px-1 text-sm font-medium leading-6 text-[rgba(15,24,45,0.88)]">
+                                                {curriculumCardMeta[instructor.lesson]?.schedule ?? ""}
+                                            </p>
+                                            <div className="speaker-card relative flex items-center justify-center overflow-hidden rounded-[10px]">
+                                                <img
+                                                    src={instructor.src}
+                                                    alt={instructor.label}
+                                                    decoding="async"
+                                                    className="max-h-full max-w-full object-contain"
+                                                />
+                                            </div>
+                                            <p className="mt-5 px-1 text-sm leading-6 text-[rgba(15,24,45,0.78)]">
+                                                {curriculumCardMeta[instructor.lesson]?.description ?? ""}
+                                            </p>
+                                        </article>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                            <p className="mt-12 text-left text-sm tracking-[0.02em] leading-7 text-[#949494]">
+                                * 커리큘럼 내용과 일정은 변경될 수 있습니다.
+                                <br/>
+                                * 외부 행사 연계, 야유회 등의 네트워크 활동이 포함될 수 있습니다.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -570,6 +720,32 @@ export default function GwangjuDetailPage() {
                             <span className="absolute bottom-0 left-0 block h-[60%] w-1/2 rounded-bl-lg border-b-1 border-l-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
                             <span className="absolute bottom-0 right-0 block h-[20%] w-1/2 rounded-br-lg border-b-1 border-r-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300"></span>
                         </button>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-[#F2F3F8] py-20">
+                <div className="mx-auto max-w-[1080px] px-8">
+                    <div className="mb-10 text-center">
+                        <p className="mb-3 text-left text-xs font-semibold uppercase tracking-[0.24em] text-[var(--page-primary)]">
+                            Partners
+                        </p>
+                        <h2 className="text-left text-[32px] font-bold leading-tight text-[#162033]">후원사ㆍ협력사</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+                        {partnerLogos.map((partner) => (
+                            <a
+                                key={partner.name}
+                                href={partner.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                title={partner.name}
+                                className="flex h-[150px] items-center justify-center rounded-xl border border-gray-100 bg-white px-8 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--page-primary)]/30 hover:shadow-[0_18px_36px_rgba(9,56,114,0.1)]"
+                            >
+                                <img src={partner.src} alt={partner.name} className="max-h-[64px] max-w-full object-contain" />
+                            </a>
+                        ))}
                     </div>
                 </div>
             </section>

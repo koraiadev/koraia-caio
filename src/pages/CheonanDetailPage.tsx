@@ -664,7 +664,7 @@ export default function CheonanDetailPage() {
                         <p className="mb-3 text-left text-xs font-semibold uppercase tracking-[0.24em] text-[var(--page-primary)]">
                             Partners
                         </p>
-                        <h2 className="text-left text-[32px] font-bold leading-tight text-[#162033]">협력사 · 후원사</h2>
+                        <h2 className="text-left text-[32px] font-bold leading-tight text-[#162033]">후원사ㆍ협력사</h2>
                     </div>
 
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
@@ -674,7 +674,8 @@ export default function CheonanDetailPage() {
                                 href={partner.href}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="flex h-[150px] items-center rounded-xl justify-center bg-white px-8 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--page-primary)]/30 hover:shadow-[0_18px_36px_rgba(9,56,114,0.1)]"
+                                title={partner.name}
+                                className="flex h-[150px] items-center justify-center rounded-xl border border-gray-100 bg-white px-8 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--page-primary)]/30 hover:shadow-[0_18px_36px_rgba(9,56,114,0.1)]"
                             >
                                 <img src={partner.src} alt={partner.name} className="max-h-[64px] max-w-full object-contain" />
                             </a>
