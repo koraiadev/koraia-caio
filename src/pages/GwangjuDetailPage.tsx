@@ -477,7 +477,7 @@ export default function GwangjuDetailPage() {
                                         <h3 className="w-full text-[28px] font-bold leading-tight text-[#23304c] transition-colors duration-500 group-hover:text-white sm:text-[32px]">
                                             CAIO IN GWANGJU
                                             <br />
-                                            2TH
+                                            2ND
                                         </h3>
                                     </div>
 

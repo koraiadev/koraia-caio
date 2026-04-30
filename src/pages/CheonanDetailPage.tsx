@@ -287,7 +287,7 @@ export default function CheonanDetailPage() {
 
                                 <div className="flex gap-6 border-t border-white/18 py-7 transition-colors duration-300 hover:border-white/38 md:pl-10">
                                     <span className="shrink-0 text-sm font-medium text-white">문의</span>
-                                    <span className="text-sm text-white/88">062-376-8840</span>
+                                    <span className="text-sm text-white/88">한국인공지능협회 사무국 02-713-4800</span>
                                 </div>
 
                                 <div className="flex gap-6 border-t border-white/18 py-7 transition-colors duration-300 hover:border-white/38">

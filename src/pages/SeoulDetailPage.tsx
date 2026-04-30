@@ -715,7 +715,7 @@ export default function SeoulDetailPage() {
                                 target="_blank"
                                 rel="noreferrer"
                                 title={organizer.name}
-                                className="flex h-[160px] w-full items-center justify-center rounded-[24px] border border-gray-100 bg-white px-8 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--page-primary)]/30 hover:shadow-[0_18px_36px_rgba(134,105,148,0.1)] sm:h-[180px] md:w-[calc((100%-2.5rem)/3)]"
+                                className="flex h-[150px] w-full items-center justify-center rounded-xl border border-gray-100 bg-white px-8 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--page-primary)]/20 hover:shadow-[0_18px_36px_rgba(134,105,148,0.1)] sm:h-[180px] md:w-[calc((100%-2.5rem)/3)]"
                             >
                                 <img src={organizer.src} alt={organizer.name} className="max-h-[78px] max-w-full object-contain" />
                             </a>

@@ -20,12 +20,6 @@ export default function Footer({ variant = "dark" }: FooterProps) {
   const headingClassName = isLight ? "text-sm font-semibold tracking-[-0.01em] text-[#162033]" : "text-sm font-semibold tracking-[-0.01em] text-white";
   const bodyTextClassName = isLight ? "mt-3 text-xs leading-7 text-[#162033]/78" : "mt-3 text-xs leading-7 text-white/80";
   const dividerClassName = isLight ? "mt-4 border-t border-[#162033]/12 pt-4" : "mt-4 border-t border-white/18 pt-4";
-  const policyLinkClassName = isLight
-    ? "footer-link font-medium !text-[#162033]/68 hover:!text-[#162033]"
-    : "footer-link font-medium text-white/70";
-  const privacyLinkClassName = isLight
-    ? "footer-link font-semibold !text-[#162033] underline underline-offset-2 hover:!text-[#162033]"
-    : "footer-link font-semibold text-white underline underline-offset-2";
   const businessInfoLinkClassName = isLight
     ? "footer-link underline underline-offset-2 !text-[#162033]/78 hover:!text-[#162033]"
     : "footer-link underline underline-offset-2";
@@ -74,16 +68,6 @@ export default function Footer({ variant = "dark" }: FooterProps) {
           </div>
 
           <div className={dividerClassName}>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
-              <a href="#" className={policyLinkClassName}>
-                이용약관
-              </a>
-              <span className={separatorClassName}>|</span>
-              <a href="#" className={privacyLinkClassName}>
-                개인정보처리방침
-              </a>
-            </div>
-
             <p className={copyrightClassName}>
                 © BY KOREA ARTIFICIAL INTELLIGENCE ASSOCIATION, ALL RIGHTS RESERVED.
             </p>
