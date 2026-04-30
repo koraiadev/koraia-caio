@@ -9,8 +9,8 @@ type HeaderProps = {
 
 const navigationItems = [
   { id: "seoul", label: "서울 4기", href: "/seoul", status: "모집 중" },
-  { id: "gwangju", label: "광주 2기", href: "/gwangju", status: "진행 중" },
-  { id: "cheonan", label: "천안", href: "/cheonan", status: "진행 중" },
+  { id: "cheonan", label: "천안 1기", href: "/cheonan", status: "진행 중" },
+  { id: "gwangju", label: "광주 2기", href: "/gwangju", status: "모집 예정" },
 ] as const;
 
 export default function Header({ variant = "dark" }: HeaderProps) {

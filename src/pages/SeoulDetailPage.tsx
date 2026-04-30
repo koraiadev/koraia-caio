@@ -545,7 +545,7 @@ export default function SeoulDetailPage() {
                                 <button
                                     type="button"
                                     onClick={() => swiper?.slidePrev()}
-                                    className="absolute left-0 top-[calc(50%+52px)] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#8b69a4] transition-colors duration-300 hover:text-[#5d1f82] lg:flex"
+                                    className="absolute left-0 top-[48%] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#8b69a4] transition-colors duration-300 hover:text-[#5d1f82] lg:flex"
                                     aria-label="이전 연사 보기"
                                 >
                                     <FiChevronLeft size={24} />
@@ -556,7 +556,7 @@ export default function SeoulDetailPage() {
                                 <button
                                     type="button"
                                     onClick={() => swiper?.slideNext()}
-                                    className="absolute right-0 top-[calc(50%+52px)] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#8b69a4] transition-colors duration-300 hover:text-[#5d1f82] lg:flex"
+                                    className="absolute right-0 top-[48%] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#8b69a4] transition-colors duration-300 hover:text-[#5d1f82] lg:flex"
                                     aria-label="다음 연사 보기"
                                 >
                                     <FiChevronRight size={24} />

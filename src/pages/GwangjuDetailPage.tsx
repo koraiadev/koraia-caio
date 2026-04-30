@@ -16,14 +16,6 @@ import heroImage from "../assets/img/img-gwangju.png";
 import caioImage from "../assets/img/bg-caio-01.jpg";
 import perksImage from "../assets/img/bg-caio-02.jpg";
 import ctaImage from "../assets/img/bg-caio-03.jpg";
-import logoJnu from "../assets/img/logo/logo-jnu.png";
-import logoMicrosoft from "../assets/img/logo/logo-microsoft.png";
-import logoDimoa from "../assets/img/logo/logo-dimoa.png";
-import logoAws from "../assets/img/logo/logo-aws.png";
-import logoCheongchul from "../assets/img/logo/logo-cheongchul.png";
-import logoRaonsecure from "../assets/img/logo/logo-raonsecure.png";
-import logoKfq from "../assets/img/logo/logo-kfq.jpg";
-import logoSeriCeo from "../assets/img/logo/logo-seri-ceo.png";
 
 const reasonCardIcons = {
     "01": PiCertificateBold,
@@ -82,48 +74,48 @@ const perks = [
     },
 ];
 
-const partnerLogos = [
-    {
-        name: "전남대학교 공과대학",
-        href: "https://eng.jnu.ac.kr/eng/index.do",
-        src: logoJnu,
-    },
-    {
-        name: "마이크로소프트(Microsoft)",
-        href: "https://www.microsoft.com/ko-kr",
-        src: logoMicrosoft,
-    },
-    {
-        name: "디모아",
-        href: "https://www.dimoa.co.kr/",
-        src: logoDimoa,
-    },
-    {
-        name: "아마존웹서비스(AWS)",
-        href: "https://aws.amazon.com/ko/",
-        src: logoAws,
-    },
-    {
-        name: "법무법인청출",
-        href: "https://cheongchul.com/",
-        src: logoCheongchul,
-    },
-    {
-        name: "라온시큐어",
-        href: "https://www.raonsecure.com/ko",
-        src: logoRaonsecure,
-    },
-    {
-        name: "한국품질재단",
-        href: "https://www.kfq.or.kr/",
-        src: logoKfq,
-    },
-    {
-        name: "SERI CEO",
-        href: "https://www.sericeo.org/",
-        src: logoSeriCeo,
-    },
-];
+// const partnerLogos = [
+//     {
+//         name: "전남대학교 공과대학",
+//         href: "https://eng.jnu.ac.kr/eng/index.do",
+//         src: logoJnu,
+//     },
+//     {
+//         name: "마이크로소프트(Microsoft)",
+//         href: "https://www.microsoft.com/ko-kr",
+//         src: logoMicrosoft,
+//     },
+//     {
+//         name: "디모아",
+//         href: "https://www.dimoa.co.kr/",
+//         src: logoDimoa,
+//     },
+//     {
+//         name: "아마존웹서비스(AWS)",
+//         href: "https://aws.amazon.com/ko/",
+//         src: logoAws,
+//     },
+//     {
+//         name: "법무법인청출",
+//         href: "https://cheongchul.com/",
+//         src: logoCheongchul,
+//     },
+//     {
+//         name: "라온시큐어",
+//         href: "https://www.raonsecure.com/ko",
+//         src: logoRaonsecure,
+//     },
+//     {
+//         name: "한국품질재단",
+//         href: "https://www.kfq.or.kr/",
+//         src: logoKfq,
+//     },
+//     {
+//         name: "SERI CEO",
+//         href: "https://www.sericeo.org/",
+//         src: logoSeriCeo,
+//     },
+// ];
 
 const curriculumProgressCards = [
     {
@@ -161,57 +153,57 @@ const curriculumCardMeta: Record<
     }
 > = {
     "01": {
-        schedule: "4.14 전남대학교 공과대학 코스모스홀",
+        schedule: "전남대학교 공과대학 코스모스홀",
         description:
             "지역과 대학의 경계를 넘어 대한민국 AI 연구의 기초 체력을 다지는 교육자이자, 차세대 컴퓨팅 환경의 설계자",
     },
     "02": {
-        schedule: "4.21 빛고을창업스테이션 코워킹스페이스2",
+        schedule: "빛고을창업스테이션 코워킹스페이스2",
         description:
             "독일 언론학 박사이자 청와대 디지털소통센터장을 지낸, 기술과 사회의 접점을 설계하는 국내 최고의 미디어ㆍIT 전략가",
     },
     "03": {
-        schedule: "4.28 빛고을창업스테이션 코워킹스페이스2",
+        schedule: "빛고을창업스테이션 코워킹스페이스2",
         description:
             "연구소장에서 대표까지, AI 원천 기술의 상용화를 진두지휘하며 국내 최고의 AI 서비스 플랫폼을 구축한 기술 경영인",
     },
     "05": {
-        schedule: "5.12 빛고을창업스테이션 코워킹스페이스2",
+        schedule: "빛고을창업스테이션 코워킹스페이스2",
         description:
             "AI 시대에 필요한 창의적 사고와 인문학적 리더십을 강의하며, 리더들의 디지털 마인드셋을 일깨우는 경영 전략 멘토",
     },
     "06": {
-        schedule: "5.19 전남대학교 공과대학 영명홀",
+        schedule: "전남대학교 공과대학 영명홀",
         description:
             "AI 기술의 객관적 검증과 표준을 정립하며, 기업들이 신뢰할 수 있는 AI 비즈니스를 펼칠 수 있도록 돕는 인증 전략 전문가",
     },
     "07": {
-        schedule: "5.26 빛고을창업스테이션 코워킹스페이스2",
+        schedule: "빛고을창업스테이션 코워킹스페이스2",
         description:
             "데이터 시각화 아티스트이자 기술 행정가로서, 차가운 알고리즘을 인간 중심의 시각 언어로 번역하는 데이터 아트 분야의 선구자",
     },
     "08": {
-        schedule: "6.9 빛고을창업스테이션 코워킹스페이스2",
+        schedule: "빛고을창업스테이션 코워킹스페이스2",
         description:
             "국내 최초 자바 챔피언 출신으로, AI 학습 데이터의 표준과 신뢰성을 구축하며 데이터 주도형 혁신을 이끄는 기술 리더",
     },
     "10": {
-        schedule: "6.23 빛고을창업스테이션 코워킹스페이스2",
+        schedule: "빛고을창업스테이션 코워킹스페이스2",
         description:
             "AI 기반의 사용자 경험과 상호작용을 연구하며, 지능형 시스템의 인간 중심 설계를 선도하는 AI 교육 및 연구 전문가",
     },
     "11": {
-        schedule: "6.30 전남대학교 공과대학 코스모스홀",
+        schedule: "전남대학교 공과대학 코스모스홀",
         description:
             "인공지능 알파고를 상대로 '신의 한 수'를 던진 인류 유일의 승리자이자, AI 시대의 서막을 온몸으로 겪어낸 통찰가",
     },
     "12": {
-        schedule: "7.7 빛고을창업스테이션 코워킹스페이스2",
+        schedule: "빛고을창업스테이션 코워킹스페이스2",
         description:
             "인텔 글로벌 부사장 출신의 통찰력으로 반도체 인프라부터 클라우드까지 AI 하드웨어 생태계 전반을 꿰뚫는 ICT 업계의 거목",
     },
     "13": {
-        schedule: "7.14 빛고을창업스테이션 코워킹스페이스2",
+        schedule: "빛고을창업스테이션 코워킹스페이스2",
         description:
             "차세대 AI 반도체의 시장 가치를 창출하고, 글로벌 테크 기업들과의 전략적 파트너십을 통해 실질적인 성장을 견인하는 수익 창출 전문가",
     },
@@ -316,7 +308,7 @@ export default function GwangjuDetailPage() {
                         </p>
 
                         <button className="hero-sequence hero-delay-4 relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-6 py-3 text-center font-barlow text-sm uppercase text-white transition-transform duration-300 ease-in-out group outline-offset-4 sm:px-8 sm:py-4 sm:text-base">
-                            <span className="relative z-20">모집 신청 마감</span>
+                            <span className="relative z-20">COMMING SOON</span>
                             <span className="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"></span>
                             <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute h-[20%] rounded-tl-lg border-l-1 border-t-1 top-0 left-0"></span>
                             <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-1 border-t-1 top-0 right-0"></span>
@@ -328,14 +320,10 @@ export default function GwangjuDetailPage() {
                             <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-2">
                                 <div className="flex gap-6 border-t border-white/18 py-7 transition-colors duration-300 hover:border-white/38">
                                     <span className="min-w-[68px] shrink-0 text-sm font-medium leading-snug text-white">
-                                        일시 및
-                                    <br />
-                                        장소
+                                        예정 일시
                                     </span>
                                     <div className="text-left text-sm leading-relaxed text-white/88">
-                                        <p>2026년 4월 14일 ~ 2026년 7월 14일</p>
-                                        <p>매주 화요일 18:30 ~ 20:30</p>
-                                        <p>빛고을창업스테이션 코워킹스페이스 외</p>
+                                        <p>2026년 하반기 예정</p>
                                     </div>
                                 </div>
 
@@ -348,7 +336,7 @@ export default function GwangjuDetailPage() {
                                 <span className="min-w-[68px] shrink-0 text-sm font-medium text-white">
                                     신청 마감
                                 </span>
-                                    <span className="text-sm text-white/88">2026년 4월 24일까지</span>
+                                    <span className="text-sm text-white/88">2026년 하반기 예정</span>
                                 </div>
 
                                 <div className="flex gap-6 border-t border-white/18 py-7 transition-colors duration-300 hover:border-white/38 md:pl-10">
@@ -464,7 +452,6 @@ export default function GwangjuDetailPage() {
 
                         <div className="shrink-0 pt-2 md:pt-10">
                             <a
-                                href="/files/img-gj2-poster.jpg"
                                 download="CAIO_IN_GWANGJU_2기_포스터.jpg"
                                 className="poster-card group relative m-auto block h-[260px] w-full max-w-[380px] cursor-pointer overflow-hidden rounded-[28px] bg-white p-6 text-[#23304c] sm:h-[280px] sm:p-8"
                             >
@@ -482,7 +469,7 @@ export default function GwangjuDetailPage() {
                                     </div>
 
                                     <span className="absolute bottom-8 left-0 inline-flex items-center gap-2 text-sm font-semibold text-[var(--page-primary)] transition-colors duration-500 group-hover:text-white">
-                                        <span>포스터 다운로드하기</span>
+                                        <span>준비 예정입니다.</span>
                                         <FiArrowRight className="text-base" />
                                     </span>
                                 </div>
@@ -570,7 +557,7 @@ export default function GwangjuDetailPage() {
 
                     <div className="mt-20 sm:mt-24 lg:mt-32">
                         <div className="mb-10 flex items-end justify-center gap-8">
-                            <h3 className="text-center text-[24px] font-semibold leading-tight text-gray-900 sm:text-[28px]">이번 과정을 함께할 연사들</h3>
+                            <h3 className="text-center text-[24px] font-semibold leading-tight text-gray-900 sm:text-[28px]">함께할 연사 기획안</h3>
                         </div>
 
                         <div className="relative overflow-hidden px-2 py-8 sm:px-8 sm:py-12">
@@ -578,7 +565,7 @@ export default function GwangjuDetailPage() {
                                 <button
                                     type="button"
                                     onClick={() => swiper?.slidePrev()}
-                                    className="absolute left-0 top-[calc(50%+52px)] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
+                                    className="absolute left-0 top-[42%] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
                                     aria-label="이전 연사 보기"
                                 >
                                     <FiChevronLeft size={24} />
@@ -589,7 +576,7 @@ export default function GwangjuDetailPage() {
                                 <button
                                     type="button"
                                     onClick={() => swiper?.slideNext()}
-                                    className="absolute right-0 top-[calc(50%+52px)] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
+                                    className="absolute right-0 top-[42%] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
                                     aria-label="다음 연사 보기"
                                 >
                                     <FiChevronRight size={24} />
@@ -721,39 +708,13 @@ export default function GwangjuDetailPage() {
                             지금 준비하지 않으면 격차는 더 벌어집니다.
                         </p>
                         <button className="group relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-6 py-3 text-center font-barlow text-sm uppercase text-white transition-transform duration-300 ease-in-out outline-offset-4 sm:px-8 sm:py-4 sm:text-base">
-                            <span className="relative z-20">모집 신청 마감</span>
+                            <span className="relative z-20">광주 CAIO 오픈 예정</span>
                             <span className="absolute left-[-75%] top-0 z-10 h-full w-[50%] rotate-12 bg-white/20 blur-lg transition-all duration-1000 ease-in-out group-hover:left-[125%]"></span>
                             <span className="absolute left-0 top-0 block h-[20%] w-1/2 rounded-tl-lg border-l-1 border-t-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300"></span>
                             <span className="absolute right-0 top-0 block h-[60%] w-1/2 rounded-tr-lg border-r-1 border-t-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
                             <span className="absolute bottom-0 left-0 block h-[60%] w-1/2 rounded-bl-lg border-b-1 border-l-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
                             <span className="absolute bottom-0 right-0 block h-[20%] w-1/2 rounded-br-lg border-b-1 border-r-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300"></span>
                         </button>
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-[#F2F3F8] py-20">
-                <div className="mx-auto max-w-[1080px] px-5 sm:px-8">
-                    <div className="mb-10 text-center">
-                        <p className="mb-3 text-left text-xs font-semibold uppercase tracking-[0.24em] text-[var(--page-primary)]">
-                            Partners
-                        </p>
-                        <h2 className="text-left text-[32px] font-bold leading-tight text-[#162033]">후원사ㆍ협력사</h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-                        {partnerLogos.map((partner) => (
-                            <a
-                                key={partner.name}
-                                href={partner.href}
-                                target="_blank"
-                                rel="noreferrer"
-                                title={partner.name}
-                                className="flex h-[150px] items-center justify-center rounded-xl border border-gray-100 bg-white px-8 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--page-primary)]/30 hover:shadow-[0_18px_36px_rgba(9,56,114,0.1)]"
-                            >
-                                <img src={partner.src} alt={partner.name} className="max-h-[64px] max-w-full object-contain" />
-                            </a>
-                        ))}
                     </div>
                 </div>
             </section>
