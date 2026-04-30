@@ -16,6 +16,8 @@ import heroImage from "../assets/img/img-cheonan.png";
 import caioImage from "../assets/img/bg-caio-01.jpg";
 import perksImage from "../assets/img/bg-caio-02.jpg";
 import ctaImage from "../assets/img/bg-caio-03.jpg";
+import logoChungnam from "../assets/img/logo/logo-chungnam.png";
+import logoCheonan from "../assets/img/logo/logo-cheonan.jpg";
 import logoCtp from "../assets/img/logo/logo-ctp.png";
 import logoKicox from "../assets/img/logo/logo-kicox..png";
 import logoKoraia from "../assets/img/logo/logo-koraia.png";
@@ -100,16 +102,29 @@ const transformationCards = [
     },
 ];
 
-const partnerLogos = [
+const hostLogos = [
     {
-        name: "충남테크노파크",
-        href: "https://www.ctp.or.kr/",
-        src: logoCtp,
+        name: "충청남도",
+        href: "https://www.chungnam.go.kr",
+        src: logoChungnam,
     },
+    {
+        name: "천안시",
+        href: "https://www.cheonan.go.kr",
+        src: logoCheonan,
+    },
+];
+
+const organizerLogos = [
     {
         name: "한국산업단지공단",
         href: "https://www.kicox.or.kr/",
         src: logoKicox,
+    },
+    {
+        name: "충남테크노파크",
+        href: "https://www.ctp.or.kr/",
+        src: logoCtp,
     },
     {
         name: "한국인공지능협회",
@@ -686,22 +701,45 @@ export default function CheonanDetailPage() {
                         <p className="mb-3 text-left text-xs font-semibold uppercase tracking-[0.24em] text-[var(--page-primary)]">
                             Partners
                         </p>
-                        <h2 className="text-left text-[32px] font-bold leading-tight text-[#162033]">후원사ㆍ협력사</h2>
+                        <h2 className="text-left text-[32px] font-bold leading-tight text-[#162033]">주최사ㆍ주관사</h2>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-                        {partnerLogos.map((partner) => (
-                            <a
-                                key={partner.name}
-                                href={partner.href}
-                                target="_blank"
-                                rel="noreferrer"
-                                title={partner.name}
-                                className="flex h-[150px] items-center justify-center rounded-xl border border-gray-100 bg-white px-8 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--page-primary)]/30 hover:shadow-[0_18px_36px_rgba(9,56,114,0.1)]"
-                            >
-                                <img src={partner.src} alt={partner.name} className="max-h-[64px] max-w-full object-contain" />
-                            </a>
-                        ))}
+                    <div className="space-y-14">
+                        <div>
+                            <h3 className="mb-5 text-left text-[20px] font-semibold leading-tight text-[#162033]">주최사</h3>
+                            <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+                                {hostLogos.map((partner) => (
+                                    <a
+                                        key={partner.name}
+                                        href={partner.href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        title={partner.name}
+                                        className="flex h-[150px] items-center justify-center rounded-xl border border-gray-100 bg-white px-8 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--page-primary)]/30 hover:shadow-[0_18px_36px_rgba(9,56,114,0.1)]"
+                                    >
+                                        <img src={partner.src} alt={partner.name} className="max-h-[64px] max-w-full object-contain" />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 className="mb-5 text-left text-[20px] font-semibold leading-tight text-[#162033]">주관사</h3>
+                            <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+                                {organizerLogos.map((partner) => (
+                                    <a
+                                        key={partner.name}
+                                        href={partner.href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        title={partner.name}
+                                        className="flex h-[150px] items-center justify-center rounded-xl border border-gray-100 bg-white px-8 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--page-primary)]/30 hover:shadow-[0_18px_36px_rgba(9,56,114,0.1)]"
+                                    >
+                                        <img src={partner.src} alt={partner.name} className="max-h-[64px] max-w-full object-contain" />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
