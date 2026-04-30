@@ -38,21 +38,24 @@ export default function Header({ variant = "dark" }: HeaderProps) {
     ? "flex h-16 items-center justify-between px-5 text-[#162033]"
     : "flex h-16 items-center justify-between px-5 text-white";
   const mobileMenuButtonClassName = isLight
-    ? "inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#162033]/12 text-[#162033]/78 transition-colors hover:bg-[#162033]/[0.04] hover:text-[#162033]"
-    : "inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-white/78 transition-colors hover:bg-white/6 hover:text-white";
+    ? "inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#162033]/[0.03] text-[#162033]/82 transition-colors hover:bg-[#162033]/[0.07] hover:text-[#162033]"
+    : "inline-flex h-10 w-10 items-center justify-center rounded-full text-white/78 transition-colors hover:bg-white/6 hover:text-white";
   const mobilePanelClassName = isLight
-    ? "border-t border-[#162033]/10 bg-white/96 text-[#162033]"
-    : "border-t border-white/10 bg-[#090909]/96 text-white";
+    ? "absolute inset-y-0 right-0 w-full max-w-[320px] border-l border-[#162033]/10 bg-white/96 text-[#162033] shadow-[-16px_0_48px_rgba(15,23,42,0.12)] transition-transform duration-300 ease-out"
+    : "absolute inset-y-0 right-0 w-full max-w-[320px] border-l border-white/10 bg-[#090909]/96 text-white shadow-[-16px_0_48px_rgba(0,0,0,0.3)] transition-transform duration-300 ease-out";
+  const mobileOverlayClassName = isLight
+    ? "absolute inset-0 bg-[#162033]/20 transition-opacity duration-300 ease-out"
+    : "absolute inset-0 bg-black/40 transition-opacity duration-300 ease-out";
   const mobileNavLinkClassName = isLight
-    ? "flex items-center justify-between rounded-2xl border border-[#162033]/10 bg-[#162033]/[0.03] px-4 py-4 text-[#162033] transition-colors hover:bg-[#162033]/[0.06]"
-    : "flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4 text-white transition-colors hover:bg-white/[0.06]";
+    ? "flex items-center justify-between px-4 py-4 text-[#162033] transition-colors hover:text-[#162033]/72"
+    : "flex items-center justify-between px-4 py-4 text-white transition-colors hover:text-white/72";
   const mobileNotebookLinkClassName = isLight
-    ? "mt-4 inline-flex w-full items-center justify-center gap-1 text-sm font-medium text-[#162033]/68 transition-colors hover:text-[#162033]"
-    : "mt-4 inline-flex w-full items-center justify-center gap-1 text-sm font-medium text-white/72 transition-colors hover:text-white";
+    ? "mt-3 flex items-center justify-between px-4 py-4 text-[#162033] transition-colors hover:text-[#162033]/72"
+    : "mt-3 flex items-center justify-between px-4 py-4 text-white transition-colors hover:text-white/72";
 
   return (
     <header className={headerClassName}>
-      <div className="md:hidden">
+      <div className="relative md:hidden">
         <div className={mobileTopRowClassName}>
           <a href="/">
             <img src={isLight ? logoDark : logoLight} alt="CAIO" className="h-7 w-auto" />
@@ -69,8 +72,21 @@ export default function Header({ variant = "dark" }: HeaderProps) {
           </button>
         </div>
 
-        {isMobileMenuOpen && (
-          <div className={mobilePanelClassName}>
+        <div
+          className={`absolute left-0 top-full z-40 h-[calc(100svh-4rem)] w-full overflow-hidden transition-[visibility] duration-300 ${
+            isMobileMenuOpen ? "visible" : "invisible"
+          }`}
+          aria-hidden={!isMobileMenuOpen}
+        >
+          <button
+            type="button"
+            className={`${mobileOverlayClassName} ${isMobileMenuOpen ? "opacity-100" : "opacity-0"}`}
+            aria-label="메뉴 닫기"
+            tabIndex={isMobileMenuOpen ? 0 : -1}
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+
+          <div className={`${mobilePanelClassName} ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
             <div className="px-5 pb-5 pt-4">
               <nav className="space-y-3">
                 {navigationItems.map((item) => (
@@ -94,12 +110,12 @@ export default function Header({ variant = "dark" }: HeaderProps) {
                 rel="noreferrer"
                 className={mobileNotebookLinkClassName}
               >
-                원우회 수첩 바로가기
+                <span className="text-sm font-semibold">원우회 수첩 바로가기</span>
                 <FiExternalLink />
               </a>
             </div>
           </div>
-        )}
+        </div>
       </div>
 
       <div className="hidden md:block">

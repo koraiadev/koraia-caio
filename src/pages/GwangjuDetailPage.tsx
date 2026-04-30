@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
+import { Pagination } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FiArrowRight, FiBarChart2, FiChevronLeft, FiChevronRight, FiCpu, FiDatabase, FiLayers, FiTarget } from "react-icons/fi";
@@ -8,6 +9,7 @@ import { FaChalkboardTeacher, FaNetworkWired } from "react-icons/fa";
 import { TbCertificate2 } from "react-icons/tb";
 import { IoBalloonOutline, IoPeopleSharp } from "react-icons/io5";
 import "swiper/css";
+import "swiper/css/pagination";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import heroImage from "../assets/img/img-gwangju.png";
@@ -289,31 +291,31 @@ export default function GwangjuDetailPage() {
         <div style={pageTheme}>
             <Header />
 
-            <section className="relative h-screen overflow-hidden pt-[101px]">
+            <section className="relative min-h-screen overflow-hidden pt-16 md:pt-[101px] lg:h-screen">
                 <div
-                    className="hero-image-pan absolute inset-x-0 bottom-0 top-[101px] bg-cover bg-center"
+                    className="hero-image-pan absolute inset-x-0 bottom-0 top-16 bg-cover bg-center md:top-[101px]"
                     style={{ backgroundImage: `url(${heroImage})` }}
                 />
-                <div className="absolute inset-x-0 bottom-0 top-[101px] bg-[linear-gradient(180deg,rgba(6,12,28,0.72)_0%,rgba(10,18,40,0.48)_42%,rgba(5,9,22,0.78)_100%)]" />
-                <div className="absolute inset-x-0 bottom-0 top-[101px] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_34%)]" />
+                <div className="absolute inset-x-0 bottom-0 top-16 bg-[linear-gradient(180deg,rgba(6,12,28,0.72)_0%,rgba(10,18,40,0.48)_42%,rgba(5,9,22,0.78)_100%)] md:top-[101px]" />
+                <div className="absolute inset-x-0 bottom-0 top-16 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_34%)] md:top-[101px]" />
 
-                <div className="relative mx-auto flex min-h-[calc(100svh-101px)] max-w-[1080px] items-center px-8 py-16 text-center">
+                <div className="relative mx-auto flex min-h-[calc(100svh-64px)] max-w-[1080px] items-center px-5 py-12 text-center sm:px-8 sm:py-16 md:min-h-[calc(100svh-101px)]">
                     <div className="w-full">
                         <p className="hero-sequence hero-delay-1 mb-8 text-sm uppercase tracking-[0.25em] text-white/62">
                             Chief AI Officer
                         </p>
 
-                        <h1 className="hero-sequence hero-delay-2 mb-8 text-[70px] font-bold leading-[1.05] text-white/90">
+                        <h1 className="hero-sequence hero-delay-2 mb-6 text-[42px] font-bold leading-[1.05] text-white/90 sm:mb-8 sm:text-[58px] lg:text-[70px]">
                             CAIO IN
                             <br />
                             GWANGJU 2기
                         </h1>
 
-                        <p className="hero-sequence hero-delay-3 mx-auto mb-12 max-w-[720px] text-lg text-white/90">
+                        <p className="hero-sequence hero-delay-3 mx-auto mb-10 max-w-[720px] text-base text-white/90 sm:mb-12 sm:text-lg">
                             AI 시대, 의사결정의 기준을 다시 설계합니다.
                         </p>
 
-                        <button className="hero-sequence hero-delay-4 relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out group outline-offset-4">
+                        <button className="hero-sequence hero-delay-4 relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-6 py-3 text-center font-barlow text-sm uppercase text-white transition-transform duration-300 ease-in-out group outline-offset-4 sm:px-8 sm:py-4 sm:text-base">
                             <span className="relative z-20">모집 신청 마감</span>
                             <span className="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"></span>
                             <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute h-[20%] rounded-tl-lg border-l-1 border-t-1 top-0 left-0"></span>
@@ -322,7 +324,7 @@ export default function GwangjuDetailPage() {
                             <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D6E0E5] absolute h-[20%] rounded-br-lg border-r-1 border-b-1 right-0 bottom-0"></span>
                         </button>
 
-                        <div className="hero-sequence hero-delay-5 mx-auto mt-20 max-w-[780px] bg-[rgba(10,16,31,0.26)] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.26)] backdrop-blur-[1px]">
+                        <div className="hero-sequence hero-delay-5 mx-auto mt-14 max-w-[780px] bg-[rgba(10,16,31,0.26)] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.26)] backdrop-blur-[1px] sm:mt-20 sm:p-8">
                             <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-2">
                                 <div className="flex gap-6 border-t border-white/18 py-7 transition-colors duration-300 hover:border-white/38">
                                     <span className="min-w-[68px] shrink-0 text-sm font-medium leading-snug text-white">
@@ -357,31 +359,33 @@ export default function GwangjuDetailPage() {
                         </div>
                     </div>
                 </div>
-                <a
-                    href="#hero-next-section"
-                    className="hero-scroll-indicator hero-sequence hero-delay-5"
-                    aria-label="다음 섹션으로 스크롤"
-                >
-                    <span className="hero-scroll-mouse">
-                        <span className="hero-scroll-wheel" />
-                    </span>
-                    <span className="hero-scroll-text">SCROLL</span>
-                </a>
+                <div className="hidden md:block">
+                    <a
+                        href="#hero-next-section"
+                        className="hero-scroll-indicator hero-sequence hero-delay-5"
+                        aria-label="다음 섹션으로 스크롤"
+                    >
+                        <span className="hero-scroll-mouse">
+                            <span className="hero-scroll-wheel" />
+                        </span>
+                        <span className="hero-scroll-text">SCROLL</span>
+                    </a>
+                </div>
             </section>
 
-            <section id="hero-next-section" className="relative h-[700px] overflow-hidden">
+            <section id="hero-next-section" className="relative min-h-[560px] overflow-hidden sm:min-h-[640px] lg:h-[700px]">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${caioImage})` }}
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,8,20,0.82)_0%,rgba(7,13,32,0.58)_35%,rgba(10,18,44,0.5)_60%,rgba(7,11,24,0.88)_100%)]" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(77,107,255,0.16),transparent_38%)]" />
-                <div className="relative z-10 mx-auto flex h-full max-w-[1080px] items-center justify-center px-8 text-center">
+                <div className="relative z-10 mx-auto flex min-h-[560px] max-w-[1080px] items-center justify-center px-5 py-16 text-center sm:min-h-[640px] sm:px-8 lg:h-full lg:min-h-0">
                     <div className="reveal-on-scroll reveal-soft" style={{ transitionDelay: "180ms" }}>
-                        <h2 className="mb-5 text-[48px] font-bold leading-tight text-white">
+                        <h2 className="mb-5 text-[34px] font-bold leading-tight text-white sm:text-[40px] lg:text-[48px]">
                             무엇이 이들을 움직였을까요?
                         </h2>
-                        <p className="mt-12 text-xl font-semibold leading-relaxed text-white/90">
+                        <p className="mt-8 text-base font-semibold leading-relaxed text-white/90 sm:mt-12 sm:text-xl">
                             AI는 이미 업무와 의사결정의 기준을 바꾸고 있습니다.
                             <br />
                             그래서 이들은 실행 기준을 세우고, 방향을 주도하기 시작했습니다.
@@ -390,19 +394,19 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="bg-white py-32">
-                <div className="reveal-on-scroll mx-auto max-w-[1080px] px-8">
+            <section className="bg-white py-20 sm:py-24 lg:py-32">
+                <div className="reveal-on-scroll mx-auto max-w-[1080px] px-5 sm:px-8">
                     <p className="mb-6 text-sm font-semibold uppercase tracking-[0.15em] text-[var(--page-primary)]">
                         Reason
                     </p>
 
-                    <div className="mb-16 flex items-center">
-                        <h2 className="w-1/2 text-[42px] font-bold leading-tight text-black">
+                    <div className="mb-12 flex flex-col gap-5 md:mb-16 md:flex-row md:items-center">
+                        <h2 className="w-full text-[32px] font-bold leading-tight text-black md:w-1/2 md:text-[42px]">
                             CAIO 최고위과정을
                             <br />
                             선택해야 하는 이유.
                         </h2>
-                        <p className="w-1/2 pt-2 text-base leading-relaxed text-black">
+                        <p className="w-full pt-0 text-base leading-relaxed text-black md:w-1/2 md:pt-2">
                             인재 부족, 전략 부재, 실행 지연.
                             <br />
                             이 문제는 개인이 아닌 사회 구조의 문제입니다.
@@ -441,16 +445,16 @@ export default function GwangjuDetailPage() {
                         <span className="mb-7 inline-block rounded-full border border-[var(--page-primary)] bg-transparent px-5 py-2 text-sm font-semibold text-[var(--page-primary)]">
                             Special Point
                         </span>
-                        <h2 className="text-[36px] font-bold text-[var(--page-primary)]">네트워킹으로 완성되는 경험</h2>
+                        <h2 className="text-[30px] font-bold text-[var(--page-primary)] sm:text-[36px]">네트워킹으로 완성되는 경험</h2>
                     </div>
                 </div>
 
-                <div className="bg-[#F5F6FA] pt-[120px] pb-20">
-                    <div className="reveal-on-scroll mx-auto -mt-10 flex max-w-[1080px] items-start gap-16 px-8">
-                        <div className="flex-1 pt-10">
-                            <h3 className="mb-2 text-[28px] font-bold text-gray-800">평균 출석률</h3>
-                            <p className="mb-10 text-[46px] font-bold leading-none text-[var(--page-primary)]">98.8%</p>
-                            <p className="mb-10 text-lg text-gray-700">끝까지 참여하는 이유는 명확합니다.</p>
+                <div className="bg-[#F5F6FA] pb-20 pt-[104px] sm:pt-[120px]">
+                    <div className="reveal-on-scroll mx-auto -mt-10 flex max-w-[1080px] flex-col gap-10 px-5 sm:px-8 md:flex-row md:items-start md:gap-16">
+                        <div className="flex-1 pt-6 md:pt-10">
+                            <h3 className="mb-2 text-[24px] font-bold text-gray-800 sm:text-[28px]">평균 출석률</h3>
+                            <p className="mb-8 text-[40px] font-bold leading-none text-[var(--page-primary)] sm:mb-10 sm:text-[46px]">98.8%</p>
+                            <p className="mb-8 text-base text-gray-700 sm:mb-10 sm:text-lg">끝까지 참여하는 이유는 명확합니다.</p>
                             <p className="text-base leading-relaxed text-gray-400">
                                 출석률 80% 이상 시
                                 <br />
@@ -458,11 +462,11 @@ export default function GwangjuDetailPage() {
                             </p>
                         </div>
 
-                        <div className="shrink-0 pt-10">
+                        <div className="shrink-0 pt-2 md:pt-10">
                             <a
                                 href="/files/img-gj2-poster.jpg"
                                 download="CAIO_IN_GWANGJU_2기_포스터.jpg"
-                                className="poster-card group relative m-auto block h-[280px] w-[380px] cursor-pointer overflow-hidden rounded-[28px] bg-white p-8 text-[#23304c]"
+                                className="poster-card group relative m-auto block h-[260px] w-full max-w-[380px] cursor-pointer overflow-hidden rounded-[28px] bg-white p-6 text-[#23304c] sm:h-[280px] sm:p-8"
                             >
                                 <div className="absolute -right-[72px] -top-[72px] z-0 h-36 w-36 rounded-full bg-[var(--page-primary)] transition-transform duration-500 group-hover:scale-[8]" />
                                 <div className="relative z-10 flex h-full flex-col justify-between">
@@ -470,7 +474,7 @@ export default function GwangjuDetailPage() {
                                         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-[#7a869f] transition-colors duration-500 group-hover:text-white/80">
                                             Brochure
                                         </p>
-                                        <h3 className="w-full text-[32px] font-bold leading-tight text-[#23304c] transition-colors duration-500 group-hover:text-white">
+                                        <h3 className="w-full text-[28px] font-bold leading-tight text-[#23304c] transition-colors duration-500 group-hover:text-white sm:text-[32px]">
                                             CAIO IN GWANGJU
                                             <br />
                                             2TH
@@ -488,17 +492,17 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="bg-[#f4f6ff] py-24">
-                <div className="reveal-on-scroll mx-auto max-w-[1080px] px-8">
+            <section className="bg-[#f4f6ff] py-20 sm:py-24">
+                <div className="reveal-on-scroll mx-auto max-w-[1080px] px-5 sm:px-8">
                     <p className="mb-6 text-xs uppercase tracking-[0.25em] text-gray-800">Curriculum</p>
 
-                    <div className="mb-14 flex items-center justify-between gap-8">
-                        <h2 className="w-1/2 text-[42px] font-bold leading-tight text-gray-800">
+                    <div className="mb-10 flex flex-col gap-5 md:mb-14 md:flex-row md:items-center md:justify-between md:gap-8">
+                        <h2 className="w-full text-[32px] font-bold leading-tight text-gray-800 md:w-1/2 md:text-[42px]">
                         이번
                         <br />
                         커리큘럼은요
                         </h2>
-                        <p className="w-1/2 pt-3 text-left text-lg leading-relaxed text-gray-800">
+                        <p className="w-full pt-0 text-left text-base leading-relaxed text-gray-800 md:w-1/2 md:pt-3 md:text-lg">
                             전략부터 실행까지,
                             <br />
                             현장에서 바로 쓰이는 AI를 다룹니다.
@@ -564,17 +568,17 @@ export default function GwangjuDetailPage() {
                         </div>
                     </div>
 
-                    <div className="mt-32">
+                    <div className="mt-20 sm:mt-24 lg:mt-32">
                         <div className="mb-10 flex items-end justify-center gap-8">
-                            <h3 className="text-[28px] font-semibold leading-tight text-gray-900">이번 과정을 함께할 연사들</h3>
+                            <h3 className="text-center text-[24px] font-semibold leading-tight text-gray-900 sm:text-[28px]">이번 과정을 함께할 연사들</h3>
                         </div>
 
-                        <div className="relative overflow-hidden px-8 py-12">
+                        <div className="relative overflow-hidden px-2 py-8 sm:px-8 sm:py-12">
                             {!isBeginning && (
                                 <button
                                     type="button"
                                     onClick={() => swiper?.slidePrev()}
-                                    className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
+                                    className="absolute left-0 top-[calc(50%+52px)] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
                                     aria-label="이전 연사 보기"
                                 >
                                     <FiChevronLeft size={24} />
@@ -585,7 +589,7 @@ export default function GwangjuDetailPage() {
                                 <button
                                     type="button"
                                     onClick={() => swiper?.slideNext()}
-                                    className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
+                                    className="absolute right-0 top-[calc(50%+52px)] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
                                     aria-label="다음 연사 보기"
                                 >
                                     <FiChevronRight size={24} />
@@ -594,6 +598,10 @@ export default function GwangjuDetailPage() {
 
                             <Swiper
                                 className="instructor-swiper"
+                                modules={[Pagination]}
+                                pagination={{
+                                    clickable: true,
+                                }}
                                 onSwiper={(instance) => {
                                     setSwiper(instance);
                                     syncSwiperState(instance);
@@ -626,7 +634,7 @@ export default function GwangjuDetailPage() {
                                             <span className="mb-5 inline-flex border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold tracking-[0.18em] text-[rgba(15,24,45,0.78)]">
                                                 {instructor.lesson}강
                                             </span>
-                                            <p className="mb-6 px-1 text-sm font-medium leading-6 text-[rgba(15,24,45,0.88)]">
+                                            <p className="mb-4 px-1 text-sm font-medium leading-6 text-[rgba(15,24,45,0.88)] sm:mb-6">
                                                 {curriculumCardMeta[instructor.lesson]?.schedule ?? ""}
                                             </p>
                                             <div className="speaker-card relative flex items-center justify-center overflow-hidden rounded-[10px]">
@@ -654,7 +662,7 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="relative overflow-hidden py-24">
+            <section className="relative overflow-hidden py-20 sm:py-24">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${perksImage})` }}
@@ -663,11 +671,11 @@ export default function GwangjuDetailPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(77,107,255,0.12),transparent_36%)]" />
                 <div className="perks-ambient-light absolute inset-0" />
 
-                <div className="relative z-10 mx-auto max-w-[1080px] px-8">
+                <div className="relative z-10 mx-auto max-w-[1080px] px-5 sm:px-8">
                     <div className="mx-auto max-w-[780px]">
                         <div className="reveal-on-scroll">
                             <p className="mb-8 text-center text-xs uppercase tracking-[0.25em] text-white/70">Perks</p>
-                            <h2 className="mb-14 text-center text-[36px] font-bold leading-tight text-white">
+                            <h2 className="mb-12 text-center text-[30px] font-bold leading-tight text-white sm:mb-14 sm:text-[36px]">
                                 단순 교육을 넘어,
                                 <br />
                                 자격 · 네트워크 · 실행 기회를 함께 제공합니다.
@@ -695,24 +703,24 @@ export default function GwangjuDetailPage() {
                 </div>
             </section>
 
-            <section className="relative h-[620px] overflow-hidden">
+            <section className="relative min-h-[520px] overflow-hidden sm:min-h-[620px]">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${ctaImage})` }}
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,10,24,0.58)_0%,rgba(8,15,35,0.42)_38%,rgba(8,14,32,0.72)_100%)]" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(18,30,68,0.16),transparent_46%)]" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center">
+                <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center sm:px-8">
                     <div className="reveal-on-scroll">
-                        <h2 className="mb-6 text-[52px] font-bold leading-tight text-white">
+                        <h2 className="mb-6 text-[34px] font-bold leading-tight text-white sm:text-[44px] lg:text-[52px]">
                             AI 시대,
                             <br />
                             리더가 먼저 바뀌어야 합니다.
                         </h2>
-                        <p className="mb-12 text-base text-white/80">
+                        <p className="mb-10 text-sm text-white/80 sm:mb-12 sm:text-base">
                             지금 준비하지 않으면 격차는 더 벌어집니다.
                         </p>
-                        <button className="group relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-8 py-4 text-center font-barlow text-base uppercase text-white transition-transform duration-300 ease-in-out outline-offset-4">
+                        <button className="group relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-6 py-3 text-center font-barlow text-sm uppercase text-white transition-transform duration-300 ease-in-out outline-offset-4 sm:px-8 sm:py-4 sm:text-base">
                             <span className="relative z-20">모집 신청 마감</span>
                             <span className="absolute left-[-75%] top-0 z-10 h-full w-[50%] rotate-12 bg-white/20 blur-lg transition-all duration-1000 ease-in-out group-hover:left-[125%]"></span>
                             <span className="absolute left-0 top-0 block h-[20%] w-1/2 rounded-tl-lg border-l-1 border-t-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300"></span>
@@ -725,7 +733,7 @@ export default function GwangjuDetailPage() {
             </section>
 
             <section className="bg-[#F2F3F8] py-20">
-                <div className="mx-auto max-w-[1080px] px-8">
+                <div className="mx-auto max-w-[1080px] px-5 sm:px-8">
                     <div className="mb-10 text-center">
                         <p className="mb-3 text-left text-xs font-semibold uppercase tracking-[0.24em] text-[var(--page-primary)]">
                             Partners

@@ -13,7 +13,7 @@ export default function Footer({ variant = "dark" }: FooterProps) {
   const topSectionClassName = isLight ? "bg-white" : "bg-black";
   const topInnerClassName = isLight
     ? "mx-auto flex max-w-[980px] flex-wrap items-center gap-x-4 gap-y-2 px-6 py-2.5 pt-10 text-[12px] font-semibold text-[#162033] sm:px-8 lg:px-0"
-    : "mx-auto flex max-w-[980px] flex-wrap items-center gap-x-4 gap-y-2 px-6 py-2.5 pt-10 text-[12px] font-semibold text-white sm:px-8 lg:px-0";
+    : "mx-auto flex max-w-[980px] flex-wrap items-center gap-x-2 sm:gap-x-4 gap-y-2 px-6 py-2.5 pt-10 text-[12px] font-semibold text-white sm:px-8 lg:px-0";
   const separatorClassName = isLight ? "text-[#162033]/24" : "text-white/40";
   const topLinkClassName = isLight ? "footer-link !text-[#162033]/88 hover:!text-[#162033]" : "footer-link text-white/92";
   const bottomSectionClassName = isLight ? "bg-white text-[#162033]" : "bg-black text-white";
@@ -36,7 +36,7 @@ export default function Footer({ variant = "dark" }: FooterProps) {
       <div className={topSectionClassName}>
         <div className={topInnerClassName}>
           {topLinks.map((link, index) => (
-            <div key={link.label} className="flex items-center gap-4">
+            <div key={link.label} className="flex items-center gap-1.5 md:gap-4">
               {index > 0 && <span className={separatorClassName}>|</span>}
               <a
                 href={link.href}

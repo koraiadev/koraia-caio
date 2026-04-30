@@ -349,12 +349,13 @@ button {
   margin: 0 !important;
   height: 0.5rem;
   width: 0.5rem;
-  background: rgba(116, 96, 175, 0.24);
-  opacity: 1;
+  background: var(--page-primary);
+  opacity: 0.24;
 }
 
 .instructor-swiper .swiper-pagination-bullet-active {
-  background: #7460af;
+  background: var(--page-primary);
+  opacity: 1;
 }
 
 @media (min-width: 1024px) {
