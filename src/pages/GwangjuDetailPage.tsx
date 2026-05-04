@@ -289,9 +289,9 @@ export default function GwangjuDetailPage() {
                         </p>
 
                         <h1 className="hero-sequence hero-delay-2 mb-6 text-[42px] font-bold leading-[1.05] text-white/90 sm:mb-8 sm:text-[58px] lg:text-[70px]">
-                            CAIO IN
+                            CAIO
                             <br />
-                            GWANGJU 2기
+                            in GWANGJU 2기
                         </h1>
 
                         <p className="hero-sequence hero-delay-3 mx-auto mb-10 max-w-[720px] text-base text-white/90 sm:mb-12 sm:text-lg">
