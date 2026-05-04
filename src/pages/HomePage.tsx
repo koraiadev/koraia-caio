@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -12,7 +13,7 @@ import logoKoraia from "../assets/img/logo/logo-koraia.png";
 import logoPwc from "../assets/img/logo/logo-pwc.png";
 import homePageCss from "../styles/home-page.css?raw";
 
-const asset = (fileName: string) => `/assets/home/${fileName}`;
+const asset = (fileName: string) => `${import.meta.env.BASE_URL}assets/home/${fileName}`;
 
 const HOME_PAGE_STYLES = homePageCss
   .replace(/^(\s*)html\s*\{/m, "$1:host {")
@@ -214,9 +215,9 @@ const pressItems = [
 ] as const;
 
 const locations = [
-  { city: "서울", sub: "한국인공지능협회 × PwC", cohort: "1~4기", bg: asset("location-seoul.png"), href: "/#/seoul" },
-  { city: "광주", sub: "지역 특화 AI 최고위과정", cohort: "1~2기", bg: asset("location-gwangju.png"), href: "/#/gwangju" },
-  { city: "천안", sub: "충청권 AX 얼라이언스", cohort: "1기", bg: asset("location-cheonan.png"), href: "/#/cheonan" },
+  { city: "서울", sub: "한국인공지능협회 × PwC", cohort: "1~4기", bg: asset("location-seoul.png"), to: "/seoul" },
+  { city: "광주", sub: "지역 특화 AI 최고위과정", cohort: "1~2기", bg: asset("location-gwangju.png"), to: "/gwangju" },
+  { city: "천안", sub: "충청권 AX 얼라이언스", cohort: "1기", bg: asset("location-cheonan.png"), to: "/cheonan" },
 ] as const;
 
 const partnerLogos = [
@@ -704,7 +705,7 @@ function HomePageContent() {
         </div>
         <div className="city-cards-grid">
           {locations.map((location) => (
-            <a className="city-photo-card" href={location.href} key={location.city}>
+            <Link className="city-photo-card" to={location.to} key={location.city}>
               <div className="city-photo-card-bg" style={{ backgroundImage: `url("${location.bg}")` }} />
               <div className="city-photo-card-overlay" />
               <div className="city-photo-card-content">
@@ -713,7 +714,7 @@ function HomePageContent() {
                 <div className="city-photo-card-sub">{location.sub}</div>
               </div>
               <div className="city-photo-card-arrow">↗</div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -732,15 +733,15 @@ function HomePageContent() {
             <p className="impact-cta-sub">가장 먼저 준비한 리더가 변화를 주도합니다.</p>
           </div>
           <div className="impact-cta-btns">
-            <a className="impact-btn-primary" href="/#/seoul">
+            <Link className="impact-btn-primary" to="/seoul">
               서울 4기
-            </a>
-            <a className="impact-btn-outline" href="/#/cheonan">
+            </Link>
+            <Link className="impact-btn-outline" to="/cheonan">
               천안 1기
-            </a>
-            <a className="impact-btn-outline" href="/#/gwangju">
+            </Link>
+            <Link className="impact-btn-outline" to="/gwangju">
               광주 2기
-            </a>
+            </Link>
           </div>
         </div>
       </section>

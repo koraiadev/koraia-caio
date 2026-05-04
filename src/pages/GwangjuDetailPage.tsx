@@ -238,6 +238,10 @@ export default function GwangjuDetailPage() {
         setIsEnd(instance.isEnd);
     };
 
+    const scrollToHeroNextSection = () => {
+        document.getElementById("hero-next-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
     useEffect(() => {
         const revealElements = document.querySelectorAll<HTMLElement>(".reveal-on-scroll");
         const timeoutIds: number[] = [];
@@ -348,16 +352,17 @@ export default function GwangjuDetailPage() {
                     </div>
                 </div>
                 <div className="hidden md:block">
-                    <a
-                        href="#hero-next-section"
-                        className="hero-scroll-indicator hero-sequence hero-delay-5"
+                    <button
+                        type="button"
+                        onClick={scrollToHeroNextSection}
+                        className="hero-scroll-indicator hero-sequence hero-delay-5 border-0 bg-transparent p-0"
                         aria-label="다음 섹션으로 스크롤"
                     >
                         <span className="hero-scroll-mouse">
                             <span className="hero-scroll-wheel" />
                         </span>
                         <span className="hero-scroll-text">SCROLL</span>
-                    </a>
+                    </button>
                 </div>
             </section>
 

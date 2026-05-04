@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logoDark from "../assets/logo.png";
 import logoLight from "../assets/logo-white.png";
 import { FiExternalLink, FiMenu, FiX } from "react-icons/fi";
@@ -8,9 +9,9 @@ type HeaderProps = {
 };
 
 const navigationItems = [
-  { id: "seoul", label: "서울 4기", href: "/#/seoul", status: "모집 중" },
-  { id: "cheonan", label: "천안 1기", href: "/#/cheonan", status: "진행 중" },
-  { id: "gwangju", label: "광주 2기", href: "/#/gwangju", status: "모집 예정" },
+  { id: "seoul", label: "서울 4기", to: "/seoul", status: "모집 중" },
+  { id: "cheonan", label: "천안 1기", to: "/cheonan", status: "진행 중" },
+  { id: "gwangju", label: "광주 2기", to: "/gwangju", status: "모집 예정" },
 ] as const;
 
 export default function Header({ variant = "dark" }: HeaderProps) {
@@ -57,9 +58,9 @@ export default function Header({ variant = "dark" }: HeaderProps) {
     <header className={headerClassName}>
       <div className="relative md:hidden">
         <div className={mobileTopRowClassName}>
-          <a href="/#/">
+          <Link to="/">
             <img src={isLight ? logoDark : logoLight} alt="CAIO" className="h-7 w-auto" />
-          </a>
+          </Link>
 
           <button
             type="button"
@@ -90,9 +91,9 @@ export default function Header({ variant = "dark" }: HeaderProps) {
             <div className="px-5 pb-5 pt-4">
               <nav className="space-y-3">
                 {navigationItems.map((item) => (
-                  <a
+                  <Link
                     key={item.id}
-                    href={item.href}
+                    to={item.to}
                     className={mobileNavLinkClassName}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -100,7 +101,7 @@ export default function Header({ variant = "dark" }: HeaderProps) {
                     <span className="px-2 py-0.5 text-[11px] font-medium leading-none text-blue-400">
                       {item.status}
                     </span>
-                  </a>
+                  </Link>
                 ))}
               </nav>
 
@@ -120,9 +121,9 @@ export default function Header({ variant = "dark" }: HeaderProps) {
 
       <div className="hidden md:block">
         <div className={topRowClassName}>
-          <a href="/#/">
+          <Link to="/">
             <img src={isLight ? logoDark : logoLight} alt="CAIO" className="h-7 w-auto" />
-          </a>
+          </Link>
 
           <a
             href="https://caiom.koraia.org/"
@@ -138,16 +139,16 @@ export default function Header({ variant = "dark" }: HeaderProps) {
         <div className={tabBarClassName}>
           <div className={tabInnerClassName}>
             {navigationItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                to={item.to}
                 className={`${tabLinkClassName} inline-flex items-center justify-center gap-2`}
               >
                 <span>{item.label}</span>
                 <span className="rounded-full bg-transparent px-2 py-0.5 text-[11px] font-medium leading-none text-blue-400">
                   {item.status}
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

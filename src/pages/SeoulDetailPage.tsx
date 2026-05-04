@@ -194,6 +194,7 @@ export default function SeoulDetailPage() {
     const pageTheme = {
         "--page-primary": "#7460af",
     } as CSSProperties;
+    const posterHref = `${import.meta.env.BASE_URL}files/img-su4-poster.png`;
     const [swiper, setSwiper] = useState<SwiperType | null>(null);
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
@@ -202,6 +203,10 @@ export default function SeoulDetailPage() {
     const syncSwiperState = (instance: SwiperType) => {
         setIsBeginning(instance.isBeginning);
         setIsEnd(instance.isEnd);
+    };
+
+    const scrollToHeroNextSection = () => {
+        document.getElementById("hero-next-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
     useEffect(() => {
@@ -330,16 +335,17 @@ export default function SeoulDetailPage() {
                 </div>
 
                 <div className="hidden md:block">
-                    <a
-                        href="#hero-next-section"
-                        className="hero-scroll-indicator hero-sequence hero-delay-5"
+                    <button
+                        type="button"
+                        onClick={scrollToHeroNextSection}
+                        className="hero-scroll-indicator hero-sequence hero-delay-5 border-0 bg-transparent p-0"
                         aria-label="다음 섹션으로 스크롤"
                     >
                         <span className="hero-scroll-mouse">
                             <span className="hero-scroll-wheel" />
                         </span>
                         <span className="hero-scroll-text">SCROLL</span>
-                    </a>
+                    </button>
                 </div>
             </section>
 
@@ -431,7 +437,7 @@ export default function SeoulDetailPage() {
 
                         <div className="w-full shrink-0 pt-0 lg:w-auto lg:pt-10">
                             <a
-                                href="/files/img-su4-poster.png"
+                                href={posterHref}
                                 download="CAIO_IN_SEOUL_4TH.png"
                                 className="poster-card group relative m-auto block h-[260px] w-full max-w-[380px] cursor-pointer overflow-hidden rounded-[28px] bg-white p-6 text-[#2c1838] sm:h-[280px] sm:p-8"
                             >
