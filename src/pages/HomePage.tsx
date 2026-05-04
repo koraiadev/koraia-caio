@@ -214,9 +214,9 @@ const pressItems = [
 ] as const;
 
 const locations = [
-  { city: "서울", sub: "한국인공지능협회 × PwC", cohort: "1~4기", bg: asset("location-seoul.png"), href: "/seoul" },
-  { city: "광주", sub: "지역 특화 AI 최고위과정", cohort: "1~2기", bg: asset("location-gwangju.png"), href: "/gwangju" },
-  { city: "천안", sub: "충청권 AX 얼라이언스", cohort: "1기", bg: asset("location-cheonan.png"), href: "/cheonan" },
+  { city: "서울", sub: "한국인공지능협회 × PwC", cohort: "1~4기", bg: asset("location-seoul.png"), href: "/#/seoul" },
+  { city: "광주", sub: "지역 특화 AI 최고위과정", cohort: "1~2기", bg: asset("location-gwangju.png"), href: "/#/gwangju" },
+  { city: "천안", sub: "충청권 AX 얼라이언스", cohort: "1기", bg: asset("location-cheonan.png"), href: "/#/cheonan" },
 ] as const;
 
 const partnerLogos = [
@@ -732,13 +732,13 @@ function HomePageContent() {
             <p className="impact-cta-sub">가장 먼저 준비한 리더가 변화를 주도합니다.</p>
           </div>
           <div className="impact-cta-btns">
-            <a className="impact-btn-primary" href="/seoul">
+            <a className="impact-btn-primary" href="/#/seoul">
               서울 4기
             </a>
-            <a className="impact-btn-outline" href="/cheonan">
+            <a className="impact-btn-outline" href="/#/cheonan">
               천안 1기
             </a>
-            <a className="impact-btn-outline" href="/gwangju">
+            <a className="impact-btn-outline" href="/#/gwangju">
               광주 2기
             </a>
           </div>

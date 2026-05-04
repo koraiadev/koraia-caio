@@ -20,7 +20,7 @@ export default function NotFoundPage() {
 
           <div className="mt-20 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="/"
+              href="/#/"
               className="inline-flex min-w-[180px] items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#0b0f19] transition-transform duration-200 hover:-translate-y-0.5"
             >
               홈으로 이동
