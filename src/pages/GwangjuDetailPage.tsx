@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
-import { Pagination } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FiArrowRight, FiBarChart2, FiChevronLeft, FiChevronRight, FiCpu, FiDatabase, FiLayers, FiTarget } from "react-icons/fi";
+import { FiArrowRight, FiBarChart2, FiCpu, FiDatabase, FiLayers, FiTarget } from "react-icons/fi";
 import { PiCertificateBold } from "react-icons/pi";
 import { FaChalkboardTeacher, FaNetworkWired } from "react-icons/fa";
 import { TbCertificate2 } from "react-icons/tb";
 import { IoBalloonOutline, IoPeopleSharp } from "react-icons/io5";
-import "swiper/css";
-import "swiper/css/pagination";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import heroImage from "../assets/img/img-gwangju.png";
@@ -228,15 +223,7 @@ export default function GwangjuDetailPage() {
     const pageTheme = {
         "--page-primary": "#4E5F7E",
     } as CSSProperties;
-    const [swiper, setSwiper] = useState<SwiperType | null>(null);
-    const [isBeginning, setIsBeginning] = useState(true);
-    const [isEnd, setIsEnd] = useState(false);
     const [hoveredCurriculumIndex, setHoveredCurriculumIndex] = useState<number | null>(null);
-
-    const syncSwiperState = (instance: SwiperType) => {
-        setIsBeginning(instance.isBeginning);
-        setIsEnd(instance.isEnd);
-    };
 
     const scrollToHeroNextSection = () => {
         document.getElementById("hero-next-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -565,85 +552,32 @@ export default function GwangjuDetailPage() {
                             <h3 className="text-center text-[24px] font-semibold leading-tight text-gray-900 sm:text-[28px]">함께할 연사 기획안</h3>
                         </div>
 
-                        <div className="relative overflow-hidden px-2 py-8 sm:px-8 sm:py-12">
-                            {!isBeginning && (
-                                <button
-                                    type="button"
-                                    onClick={() => swiper?.slidePrev()}
-                                    className="absolute left-0 top-[42%] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
-                                    aria-label="이전 연사 보기"
-                                >
-                                    <FiChevronLeft size={24} />
-                                </button>
-                            )}
-
-                            {!isEnd && (
-                                <button
-                                    type="button"
-                                    onClick={() => swiper?.slideNext()}
-                                    className="absolute right-0 top-[42%] z-20 hidden -translate-y-1/2 items-center justify-center text-[56px] text-[#5c6780] transition-colors duration-300 hover:text-[#1f2b44] lg:flex"
-                                    aria-label="다음 연사 보기"
-                                >
-                                    <FiChevronRight size={24} />
-                                </button>
-                            )}
-
-                            <Swiper
-                                className="instructor-swiper"
-                                modules={[Pagination]}
-                                pagination={{
-                                    clickable: true,
-                                }}
-                                onSwiper={(instance) => {
-                                    setSwiper(instance);
-                                    syncSwiperState(instance);
-                                }}
-                                onSlideChange={syncSwiperState}
-                                speed={900}
-                                slidesPerView={1.15}
-                                slidesPerGroup={1}
-                                spaceBetween={18}
-                                roundLengths
-                                watchOverflow
-                                breakpoints={{
-                                    640: {
-                                        slidesPerView: 2.1,
-                                        spaceBetween: 20,
-                                    },
-                                    900: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 24,
-                                    },
-                                    1200: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 24,
-                                    },
-                                }}
-                            >
+                        <div className="px-2 py-8 sm:px-8 sm:py-12">
+                            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
                                 {instructorImages.map((instructor) => (
-                                    <SwiperSlide key={instructor.id}>
-                                        <article className="group relative h-full bg-transparent">
-                                            <span className="mb-5 inline-flex border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold tracking-[0.18em] text-[rgba(15,24,45,0.78)]">
+                                    <article key={instructor.id} className="group relative flex h-full flex-col items-center bg-transparent text-center">
+                                        <div className="mb-5 flex flex-wrap items-center justify-center gap-3">
+                                            <span className="inline-flex rounded-full border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold tracking-[0.18em] text-[rgba(15,24,45,0.78)]">
                                                 {instructor.lesson}강
                                             </span>
-                                            <p className="mb-4 px-1 text-sm font-medium leading-6 text-[rgba(15,24,45,0.88)] sm:mb-6">
+                                            <p className="text-sm font-medium leading-6 text-[rgba(15,24,45,0.88)]">
                                                 {curriculumCardMeta[instructor.lesson]?.schedule ?? ""}
                                             </p>
-                                            <div className="speaker-card relative flex items-center justify-center overflow-hidden rounded-[10px]">
-                                                <img
-                                                    src={instructor.src}
-                                                    alt={instructor.label}
-                                                    decoding="async"
-                                                    className="max-h-full max-w-full object-contain"
-                                                />
-                                            </div>
-                                            <p className="mt-5 px-1 text-sm leading-6 text-[rgba(15,24,45,0.78)]">
-                                                {curriculumCardMeta[instructor.lesson]?.description ?? ""}
-                                            </p>
-                                        </article>
-                                    </SwiperSlide>
+                                        </div>
+                                        <div className="speaker-card relative flex items-center justify-center overflow-hidden rounded-[10px]">
+                                            <img
+                                                src={instructor.src}
+                                                alt={instructor.label}
+                                                decoding="async"
+                                                className="max-h-full max-w-full object-contain"
+                                            />
+                                        </div>
+                                        <p className="mt-5 text-sm leading-6 text-[rgba(15,24,45,0.78)]">
+                                            {curriculumCardMeta[instructor.lesson]?.description ?? ""}
+                                        </p>
+                                    </article>
                                 ))}
-                            </Swiper>
+                            </div>
                             <p className="mt-12 text-left text-sm tracking-[0.02em] leading-7 text-[#949494]">
                                 * 커리큘럼 내용과 일정은 변경될 수 있습니다.
                                 <br/>

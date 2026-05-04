@@ -14,6 +14,14 @@ import logoPwc from "../assets/img/logo/logo-pwc.png";
 import homePageCss from "../styles/home-page.css?raw";
 
 const asset = (fileName: string) => `${import.meta.env.BASE_URL}assets/home/${fileName}`;
+const mainInstructorImages = Object.entries(
+  import.meta.glob("../assets/img/instructor/main/*.{png,jpg,jpeg,webp}", {
+    eager: true,
+    import: "default",
+  }),
+)
+  .sort(([pathA], [pathB]) => pathA.localeCompare(pathB))
+  .map(([, src]) => src as string);
 
 const HOME_PAGE_STYLES = homePageCss
   .replace(/^(\s*)html\s*\{/m, "$1:host {")
@@ -203,9 +211,16 @@ const targetAudience = [
 ] as const;
 
 const instructors = [
-  { name: "김갑진", role: "KAIST 교수", bg: asset("speaker-kim-gapjin.png") },
-  { name: "이세돌", role: "UNIST 교수", bg: asset("speaker-lee-sedol.png") },
-  { name: "한재권", role: "한양대 교수", bg: asset("speaker-han-jaegwon.png") },
+  { name: "임우형", role: "LG AI연구원 상무", bg: mainInstructorImages[0] },
+  { name: "이주석", role: "연세대학교 교수", bg: mainInstructorImages[1] },
+  { name: "정명훈", role: "구글 파트너", bg: mainInstructorImages[2] },
+  { name: "김필수", role: "네이버클라우드 리더", bg: mainInstructorImages[3] },
+  { name: "최홍섭", role: "마음AI 대표", bg: mainInstructorImages[4] },
+  { name: "한재권", role: "한양대학교 교수", bg: mainInstructorImages[5] },
+  { name: "신형섭", role: "에이아이플랫폼 대표", bg: mainInstructorImages[6] },
+  { name: "이세돌", role: "울산과학기술원 교수", bg: mainInstructorImages[7] },
+  { name: "김대식", role: "KAIST 교수", bg: mainInstructorImages[8] },
+  { name: "김갑진", role: "KAIST 교수", bg: mainInstructorImages[9] },
 ] as const;
 
 const pressItems = [
@@ -396,16 +411,11 @@ function HomePageContent() {
           <div className="instructor-grid">
             {instructors.map((instructor) => (
               <div className="instructor-card" key={instructor.name}>
-                <div className="instructor-card-bg" style={{ backgroundImage: `url("${instructor.bg}")` }} />
-                <div className="instructor-card-overlay" />
-                <div className="instructor-info">
-                  <div className="instructor-name">{instructor.name}</div>
-                  <div className="instructor-role">{instructor.role}</div>
-                </div>
+                <img className="instructor-card-img" src={instructor.bg} alt={instructor.name} />
               </div>
             ))}
-            <p style={{ fontSize: 12, fontWeight: 500, color: "rgb(166 166 198)" }}>※ 매 기수별로 연사진은 달라질 수 있습니다.</p>
           </div>
+          <p style={{ fontSize: 12, fontWeight: 500, color: "rgb(166 166 198)" }}>※ 매 기수별로 연사진은 달라질 수 있습니다.</p>
         </div>
       </section>
 
