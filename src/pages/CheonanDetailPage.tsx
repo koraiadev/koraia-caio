@@ -276,11 +276,11 @@ export default function CheonanDetailPage() {
                         </p>
 
                         <h1 className="hero-sequence hero-delay-2 mb-6 text-[40px] font-bold leading-[1.05] text-white/90 sm:mb-8 sm:text-[56px] lg:text-[70px]">
-                            기업대표교육 CAIO 과정
+                            CAIO<br />in CHEONAN 1기
                         </h1>
 
                         <p className="hero-sequence hero-delay-3 mx-auto mb-10 max-w-[720px] text-base text-white/90 sm:mb-12 sm:text-lg">
-                            충남 천안 AX 얼라이언스
+                            충남 천안 AX 얼라이언스 기업대표교육 CAIO 과정
                         </p>
 
                         <button className="hero-sequence hero-delay-4 relative inline-flex cursor-pointer justify-center overflow-hidden rounded-lg border-solid px-6 py-3 text-center font-barlow text-sm uppercase text-white transition-transform duration-300 ease-in-out group outline-offset-4 sm:px-8 sm:py-4 sm:text-base">

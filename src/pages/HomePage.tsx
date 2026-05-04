@@ -267,7 +267,7 @@ function HomePageContent() {
         <div className="vision-bg" />
         <div className="vision-blur" />
         <div className="vision-content">
-          <div className="vision-tag">AI LEADERSHIP · 2023-2026</div>
+          <div className="vision-tag">CAIO SINCE 2023</div>
           <h1 className="vision-h1">
             경영진이 직접
             <br />
@@ -280,10 +280,15 @@ function HomePageContent() {
             <br />
             C레벨을 위한 최고위과정 CAIO.
           </p>
+          <div className="vision-cta-group">
+            <Link className="vision-cta-button" to="/seoul">
+              <span className="vision-cta-label">CAIO 서울 4기 모집중</span>
+            </Link>
+          </div>
         </div>
       </section>
 
-      <div className="strip-section fluid">
+      <div className="strip-section fluid" style={{paddingTop: '100px'}}>
         <div className="strip-track">
           {allStripImages.map((src, index) => (
             <div className="strip-img" key={`${src}-${index}`}>

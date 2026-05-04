@@ -269,9 +269,7 @@ export default function SeoulDetailPage() {
                         </p>
 
                         <h1 className="hero-sequence hero-delay-2 mb-6 text-[44px] font-bold leading-[1.05] text-white/92 sm:mb-8 sm:text-[58px] lg:text-[70px]">
-                            CAIO IN
-                            <br />
-                            SEOUL 4기
+                            CAIO<br />in SEOUL 4기
                         </h1>
 
                         <p className="hero-sequence hero-delay-3 mx-auto mb-10 max-w-[760px] text-base text-white/88 sm:mb-12 sm:text-lg">
@@ -325,7 +323,8 @@ export default function SeoulDetailPage() {
                                     <div className="text-sm leading-relaxed text-white/88">
                                         <p className="text-white">380만원 (VAT 별도)</p>
                                         <p className="mt-1 text-xs text-white/64">
-                                            5월 6일 ~ 5월 8일 AI EXPO KOREA 기간 내 등록 신청 시 20% 할인
+                                            {/*5월 6일 ~ 5월 8일 AI EXPO KOREA 기간 내 등록 신청 시 20% 할인*/}
+                                            * AI EXPO KOREA 기간내 (~5월 10일) 신청 및 입금시<br/>20% 할인된 300만원(VAT별도)
                                         </p>
                                     </div>
                                 </div>
