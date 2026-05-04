@@ -285,7 +285,7 @@ export default function GwangjuDetailPage() {
 
             <section className="relative min-h-screen overflow-hidden pt-16 md:pt-[101px] lg:h-screen">
                 <div
-                    className="hero-image-pan absolute inset-x-0 bottom-0 top-16 bg-cover bg-center md:top-[101px]"
+                    className="absolute inset-x-0 bottom-0 top-16 bg-cover bg-center md:top-[101px]"
                     style={{ backgroundImage: `url(${heroImage})` }}
                 />
                 <div className="absolute inset-x-0 bottom-0 top-16 bg-[linear-gradient(180deg,rgba(6,12,28,0.72)_0%,rgba(10,18,40,0.48)_42%,rgba(5,9,22,0.78)_100%)] md:top-[101px]" />

@@ -251,7 +251,7 @@ export default function SeoulDetailPage() {
 
             <section className="relative min-h-screen overflow-hidden pt-16 md:pt-[101px] lg:h-screen">
                 <div
-                    className="hero-image-pan absolute inset-x-0 bottom-0 top-16 bg-cover bg-center md:top-[101px]"
+                    className="absolute inset-x-0 bottom-0 top-16 bg-cover bg-center md:top-[101px]"
                     style={{ backgroundImage: `url(${heroImage})` }}
                 />
                 <div className="absolute inset-x-0 bottom-0 top-16 bg-[linear-gradient(180deg,rgba(20,6,30,0.76)_0%,rgba(58,12,87,0.54)_42%,rgba(22,5,34,0.82)_100%)] md:top-[101px]" />
