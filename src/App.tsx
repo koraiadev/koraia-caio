@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SeoulDetailPage from "./pages/SeoulDetailPage";
 import GwangjuDetailPage from "./pages/GwangjuDetailPage";
@@ -7,7 +7,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/seoul" element={<SeoulDetailPage />} />
@@ -15,6 +15,6 @@ export default function App() {
         <Route path="/cheonan" element={<CheonanDetailPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
