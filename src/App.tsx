@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import SeoulDetailPage from "./pages/SeoulDetailPage";
 import GwangjuDetailPage from "./pages/GwangjuDetailPage";
 import CheonanDetailPage from "./pages/CheonanDetailPage";
+import ForumPage from "./pages/ForumPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function ScrollToTop() {
@@ -31,6 +32,7 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/forum" element={<ForumPage />} />
         <Route path="/seoul" element={<SeoulDetailPage />} />
         <Route path="/gwangju" element={<GwangjuDetailPage />} />
         <Route path="/cheonan" element={<CheonanDetailPage />} />
