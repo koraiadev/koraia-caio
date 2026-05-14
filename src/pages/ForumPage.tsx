@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import forumBackground from "../assets/img/bg-caio-full.png";
+import { FiExternalLink } from "react-icons/fi";
 
 type OrganizationCard = {
   eyebrow: string;
@@ -24,8 +25,8 @@ const whyForumCards = [
     description: "AI 관련 법안과 정책 수립 과정에서 산업계의 의견을 전달합니다.",
   },
   {
-    title: "산·학·연 네트워크",
-    description: "산업계, 학계, 공공기관의 AI 의사결정권자를 연결합니다.",
+    title: "산·학·연·관 네트워크",
+    description: "산·학·연·관의 AI 의사결정권자를 연결합니다.",
   },
   {
     title: "C-Level 리더십",
@@ -39,8 +40,8 @@ const purposeCards = [
     description: "AI 도입 확산에 따른 윤리적·기술적 이슈에 대응하고, CAIO 중심의 자율 규제 체계와 가이드라인 수립을 논의합니다.",
   },
   {
-    title: "산·학·연 협의체 구축",
-    description: "산업계, 학계, 공공기관의 AI 의사결정권자를 결집해 대한민국 AI 산업의 주요 의제를 논의하는 대표 협의체를 지향합니다.",
+    title: "산·학·연·관 협의체 구축",
+    description: "산·학·연·관의 AI 의사결정권자를 결집해 대한민국 AI 산업의 주요 의제를 논의하는 대표 협의체를 지향합니다.",
   },
   {
     title: "차세대 AI 리더십 양성",
@@ -60,7 +61,7 @@ const organizationCards: readonly OrganizationCard[] = [
   {
     eyebrow: "공동의장",
     title: "최재식 KAIST 교수",
-    description: "공동의장단은 포럼의 비전과 대외 대표성을 이끌며, 산·학·연 AI 리더십 네트워크의 방향성을 제시합니다.",
+    description: "공동의장단은 포럼의 비전과 대외 대표성을 이끌며, 산·학·연·관 AI 리더십 네트워크의 방향성을 제시합니다.",
     secondary: "삼일PwC",
   },
   {
@@ -92,6 +93,14 @@ const programCards = [
   {
     title: "세미나 및 컨퍼런스",
     description: "연 2회, 국제인공지능대전 및 한국인공지능협회 기업인의 밤과 연계해 AI 거버넌스, 산업 적용, 정책 대응을 주제로 한 성과 공유 세미나를 개최합니다.",
+  },
+  {
+    title: "AI 성숙도 진단 무료 제공",
+    description: "포럼 참석 기업에게 AI 수준 진단을 무료로 제공해, 우리 회사의 AI 도입 현황과 개선 과제를 객관적으로 확인할 수 있도록 지원합니다.",
+  },
+  {
+    title: "CAIO Deal Day",
+    description: "포럼 회원에게 수요기업 CAIO와 C-Level 의사결정권자 앞에서 솔루션과 사업 제안을 발표할 수 있는 PT 기회를 제공합니다.",
   },
 ] as const;
 
@@ -128,6 +137,24 @@ const seminarRows = [
   { time: "15:40-16:00", topic: "중소기업 AI 지원 제도 소개", speaker: "중소벤처기업부 AI단 이상영 사무관" },
   { time: "16:00-16:20", topic: "중소기업 AI 지원사업 소개", speaker: "기술정보진흥원 AI실 송치평 실장" },
   { time: "16:20", topic: "폐회", speaker: "" },
+] as const;
+
+const forumHistoryItems = [
+  {
+    eyebrow: "Launch Seminar",
+    date: "2026.05.07 (목)",
+    title: "한국 CAIO포럼 발족식 및 기념 세미나",
+    description:
+      "산·학·연·관 AI 최고책임자 간 자율적 규제 및 협의체를 구성하고, AI 관련 법안과 정책 수립을 위한 민간 의견을 수렴·전달합니다.",
+    details: [
+      { label: "Venue", value: "COEX 3F 300" },
+      { label: "Time", value: "14:30-16:00" },
+      { label: "Host", value: "KORAIA · PwC" },
+      { label: "공동 주최", value: "한국인공지능협회 · 삼일PwC" },
+      { label: "참석 대상", value: "산·학·연·관 CAIO 등 C-Level 및 관련 전문가 100여 명" },
+    ],
+    rows: seminarRows,
+  },
 ] as const;
 
 const effectCards = [
@@ -206,22 +233,22 @@ export default function ForumPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(81,115,255,0.18),transparent_32%),linear-gradient(180deg,rgba(5,7,11,0.18),rgba(5,7,11,0.72))]" />
 
           <div className="relative mx-auto flex min-h-[calc(100svh-64px)] max-w-[1180px] items-center justify-center px-5 py-12 sm:px-8 sm:py-16 md:min-h-[calc(100svh-106px)] lg:px-10">
-            <div className="reveal-on-scroll reveal-soft max-w-[920px] text-center">
-              <p className="mb-5 text-sm font-semibold uppercase tracking-[0.26em] text-[#d7cdaa]">KOREA CAIO FORUM</p>
-              <h1 className="mb-6 text-[36px] font-bold leading-[1.04] tracking-[-0.05em] sm:text-[48px] lg:text-[64px]">
+            <div className="max-w-[920px] text-center">
+              <p className="hero-sequence hero-delay-1 mb-5 text-sm font-semibold uppercase tracking-[0.26em] text-[#d7cdaa]">KOREA CAIO FORUM</p>
+              <h1 className="hero-sequence hero-delay-2 mb-6 text-[36px] font-bold leading-[1.04] tracking-[-0.05em] sm:text-[48px] lg:text-[64px]">
                 한국 CAIO 포럼
               </h1>
-              <p className="mx-auto max-w-[760px] text-[22px] font-semibold leading-[1.22] tracking-[-0.035em] text-white/94 sm:text-[28px] lg:text-[34px]">
+              <p className="hero-sequence hero-delay-3 mx-auto max-w-[760px] text-[22px] font-semibold leading-[1.22] tracking-[-0.035em] text-white/94 sm:text-[28px] lg:text-[34px]">
                 대한민국 AI 전환을 이끄는
                   C-Level 리더십 네트워크
               </p>
-              <p className="mx-auto mt-6 max-w-[620px] text-[15px] leading-7 text-white/72 sm:mt-8 sm:text-lg sm:leading-8">
-                  산업계, 학계, 공공기관의 AI 의사결정권자가 함께 모여
+              <p className="hero-sequence hero-delay-3 mx-auto mt-6 max-w-[620px] text-[15px] leading-7 text-white/72 sm:mt-8 sm:text-lg sm:leading-8">
+                  산·학·연·관의 AI 의사결정권자가 함께 모여
                   AI 거버넌스, 정책, 산업 적용 전략을 논의하는
                   민간 주도 AI 리더십 협의체입니다.
               </p>
 
-              <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <div className="hero-sequence hero-delay-4 mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <button
                   type="button"
                   onClick={() => scrollToSection("forum-overview")}
@@ -229,16 +256,18 @@ export default function ForumPage() {
                 >
                   포럼 소개 보기
                 </button>
-                <button
-                  type="button"
-                  onClick={() => scrollToSection("forum-launch")}
-                  className="inline-flex items-center justify-center rounded-full border border-white/16 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 cursor-pointer"
+                <a
+                  href="https://survey.koraia.org/share/koraia-caio-forum"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/16 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 cursor-pointer"
                 >
-                  발족식 안내
-                </button>
+                  포럼 신청하기
+                  <FiExternalLink aria-hidden="true" className="text-base" />
+                </a>
               </div>
 
-              <div className="mt-12 grid gap-5 border-t border-white/10 px-0 pt-8 text-center sm:mt-14 sm:grid-cols-3 sm:px-6 lg:px-16">
+              <div className="hero-sequence hero-delay-5 mt-12 grid gap-5 border-t border-white/10 px-0 pt-8 text-center sm:mt-14 sm:grid-cols-3 sm:px-6 lg:px-16">
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.24em] text-white/46">Network</p>
                   <p className="mt-2 text-sm leading-7 text-white/72">산업계, 학계, 공공기관 AI 리더를 연결하는 공식 협의체</p>
@@ -259,7 +288,7 @@ export default function ForumPage() {
             <button
               type="button"
               onClick={scrollToHeroNextSection}
-              className="hero-scroll-indicator border-0 bg-transparent p-0"
+              className="hero-scroll-indicator hero-sequence hero-delay-5 border-0 bg-transparent p-0"
               aria-label="다음 섹션으로 스크롤"
             >
               <span className="hero-scroll-mouse">
@@ -275,14 +304,14 @@ export default function ForumPage() {
             <div className="reveal-on-scroll max-w-[520px]">
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#d7cdaa]">Why Forum</p>
               <h2 className="mb-6 text-[30px] font-bold leading-tight tracking-[-0.035em] text-white sm:text-[44px]">
-                왜 CAIO 포럼인가
+                왜 한국 CAIO 포럼인가
               </h2>
               <p className="text-base leading-8 text-white/70 sm:text-lg">
                 AI 도입이 확산되면서 기업과 기관은 기술 활용을 넘어 윤리, 규제, 책임, 조직 운영의 문제까지 함께
                 마주하고 있습니다.
               </p>
               <p className="mt-5 text-base leading-8 text-white/70 sm:text-lg">
-                개별 기업의 대응만으로는 부족한 시점에서, 산·학·연의 AI 의사결정권자가 함께 논의하고 실행 방향을
+                개별 기업의 대응만으로는 부족한 시점에서, 산·학·연·관의 AI 의사결정권자가 함께 논의하고 실행 방향을
                 제시하는 공식 협의의 장이 필요합니다.
               </p>
             </div>
@@ -349,9 +378,9 @@ export default function ForumPage() {
             <div className="space-y-6 sm:space-y-8">
               <div className="reveal-on-scroll reveal-soft mx-auto max-w-[680px] rounded-[22px] border border-white/12 bg-white/[0.03] p-6 text-center sm:p-7">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/48">{organizationCards[0].eyebrow}</p>
-                <div className="mt-3 space-y-2">
+                <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:items-center sm:gap-0">
                   <p className="text-[22px] font-semibold tracking-[-0.03em] text-white sm:text-[28px]">{organizationCards[0].title}</p>
-                  <p className="text-[22px] font-semibold tracking-[-0.03em] text-white sm:text-[28px]">{organizationCards[0].secondary}</p>
+                  <p className="border-white/12 text-[22px] font-semibold tracking-[-0.03em] text-white sm:border-l sm:text-[28px]">{organizationCards[0].secondary}</p>
                 </div>
                 <p className="mt-5 text-sm leading-7 text-white/66">{organizationCards[0].description}</p>
               </div>
@@ -400,12 +429,12 @@ export default function ForumPage() {
                 주요 운영 프로그램
               </h2>
               <p className="text-base leading-8 text-white/68 sm:text-lg">
-                포럼은 단발성 행사가 아니라, 멤버십 기반의 정기 운영 프로그램을 통해 지속적인 의제 발굴과 교류를
-                이어갑니다.
+                포럼은 단발성 행사가 아니라, 멤버십 기반의 정기 운영 프로그램과 실질적인 참여 혜택을 통해 지속적인
+                의제 발굴과 교류를 이어갑니다.
               </p>
             </div>
 
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {programCards.map((card, index) => (
                 <article
                   key={card.title}
@@ -458,86 +487,77 @@ export default function ForumPage() {
           </div>
         </section>
 
-        <section id="forum-launch" className="border-t border-white/6 bg-[#0a0d14] px-5 py-20 text-white sm:px-8 sm:py-24">
+        <section id="forum-history" className="border-t border-white/6 bg-[#0a0d14] px-5 py-20 text-white sm:px-8 sm:py-24">
           <div className="mx-auto max-w-[1180px]">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
-              <div className="reveal-on-scroll">
-                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#d7cdaa]">Launch Seminar</p>
-                <h2 className="text-[30px] font-bold leading-tight tracking-[-0.035em] text-white sm:text-[44px]">
-                  한국 CAIO포럼
-                  <br />
-                  발족식 및 기념 세미나
-                </h2>
-                <div className="mt-8 border-t border-white/12 pt-8">
-                  <p className="text-[20px] font-semibold tracking-[-0.05em] text-white sm:text-[34px]">2026.05.07 (목)</p>
-                  <div className="mt-8 grid gap-4 md:grid-cols-3">
-                    <div className="border-l border-white/12 pl-4">
-                      <p className="text-[11px] uppercase tracking-[0.24em] text-white/48">Venue</p>
-                      <p className="mt-2 text-lg font-semibold tracking-[-0.02em] text-white">COEX 3F 300</p>
+            {/*<div className="reveal-on-scroll mb-12 max-w-[760px]">*/}
+            {/*  <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#d7cdaa]">History</p>*/}
+            {/*  <h2 className="text-[30px] font-bold leading-tight tracking-[-0.035em] text-white sm:text-[44px]">*/}
+            {/*    포럼 연혁*/}
+            {/*  </h2>*/}
+            {/*  <p className="mt-5 text-base leading-8 text-white/68 sm:text-lg">*/}
+            {/*    한국 CAIO포럼의 주요 프로그램과 성과를 진행 순서대로 기록합니다.*/}
+            {/*  </p>*/}
+            {/*</div>*/}
+
+            <div className="grid gap-12">
+              {forumHistoryItems.map((item, historyIndex) => (
+                <article
+                  key={`${item.date}-${item.title}`}
+                  className="reveal-on-scroll rounded-[22px] border border-white/12 bg-white/[0.025] p-6 sm:p-8"
+                  style={{ transitionDelay: `${100 + historyIndex * 90}ms` }}
+                >
+                  <div className="grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
+                    <div>
+                      <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#d7cdaa]">{item.eyebrow}</p>
+                      <h3 className="text-[28px] font-bold leading-tight tracking-[-0.035em] text-white sm:text-[38px]">
+                        {item.title}
+                      </h3>
+                      <p className="mt-8 border-t border-white/12 pt-8 text-[20px] font-semibold tracking-[-0.05em] text-white sm:text-[34px]">
+                        {item.date}
+                      </p>
                     </div>
-                    <div className="border-l border-white/12 pl-4">
-                      <p className="text-[11px] uppercase tracking-[0.24em] text-white/48">Time</p>
-                      <p className="mt-2 text-lg font-semibold tracking-[-0.02em] text-white">14:30-16:00</p>
-                    </div>
-                    <div className="border-l border-white/12 pl-4">
-                      <p className="text-[11px] uppercase tracking-[0.24em] text-white/48">Host</p>
-                      <p className="mt-2 text-lg font-semibold tracking-[-0.02em] text-white">KORAIA · PwC</p>
+
+                    <div className="rounded-[20px] border border-white/12 bg-white/[0.03] p-6 sm:p-8">
+                      <p className="text-sm leading-8 text-white/70 sm:text-base">{item.description}</p>
+                      <div className="mt-8 grid gap-5 border-t border-white/12 pt-8 sm:grid-cols-2">
+                        {item.details.map((detail) => (
+                          <div key={`${item.date}-${detail.label}`}>
+                            <p className="text-[11px] uppercase tracking-[0.24em] text-white/48">{detail.label}</p>
+                            <p className="mt-2 text-base font-semibold leading-7 text-white">{detail.value}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <div
-                className="reveal-on-scroll reveal-soft rounded-[20px] border border-white/12 bg-white/[0.03] p-6 sm:p-8"
-                style={{ transitionDelay: "140ms" }}
-              >
-                <p className="text-sm leading-8 text-white/70 sm:text-base">
-                  산·학·연 AI 최고책임자 간 자율적 규제 및 협의체를 구성하고, AI 관련 법안과 정책 수립을 위한 민간
-                  의견을 수렴·전달합니다.
-                </p>
-                <div className="mt-8 grid gap-5 border-t border-white/12 pt-8 sm:grid-cols-2">
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.24em] text-white/48">공동 주최</p>
-                    <p className="mt-2 text-base font-semibold text-white">한국인공지능협회 · 삼일PwC</p>
+                  <div className="mt-10">
+                    <div className="hidden md:block">
+                      <div className="border-t border-white/12">
+                        {item.rows.map((row) => (
+                          <div
+                            key={`${item.date}-${row.time}-${row.topic}`}
+                            className="grid grid-cols-[160px_minmax(0,1fr)_220px] gap-6 border-b border-white/12 py-6 lg:grid-cols-[180px_minmax(0,1fr)_240px] lg:gap-8"
+                          >
+                            <p className="text-sm font-semibold tracking-[0.04em] text-[#d7cdaa]">{row.time}</p>
+                            <h4 className="text-[20px] font-semibold tracking-[-0.02em] text-white">{row.topic}</h4>
+                            <p className="text-sm leading-7 text-white/66">{row.speaker || "-"}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="grid gap-3 md:hidden">
+                      {item.rows.map((row) => (
+                        <div key={`${item.date}-${row.time}-${row.topic}`} className="rounded-[18px] border border-white/12 bg-white/[0.03] p-5">
+                          <p className="text-sm font-semibold tracking-[0.04em] text-[#d7cdaa]">{row.time}</p>
+                          <h4 className="mt-3 text-[18px] font-semibold leading-7 tracking-[-0.02em] text-white">{row.topic}</h4>
+                          <p className="mt-3 text-sm leading-7 text-white/66">{row.speaker || "-"}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.24em] text-white/48">참석 대상</p>
-                    <p className="mt-2 text-base font-semibold text-white">산·학·연 CAIO 등 C-Level 및 관련 전문가 100여 명</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-14">
-              <div className="hidden md:block">
-                <div className="border-t border-white/12">
-                  {seminarRows.map((row, index) => (
-                    <article
-                      key={`${row.time}-${row.topic}`}
-                      className="reveal-on-scroll grid grid-cols-[160px_minmax(0,1fr)_220px] gap-6 border-b border-white/12 py-6 lg:grid-cols-[180px_minmax(0,1fr)_240px] lg:gap-8"
-                      style={{ transitionDelay: `${80 + index * 45}ms` }}
-                    >
-                      <p className="text-sm font-semibold tracking-[0.04em] text-[#d7cdaa]">{row.time}</p>
-                      <h3 className="text-[20px] font-semibold tracking-[-0.02em] text-white">{row.topic}</h3>
-                      <p className="text-sm leading-7 text-white/66">{row.speaker || "-"}</p>
-                    </article>
-                  ))}
-                </div>
-              </div>
-
-              <div className="grid gap-3 md:hidden">
-                {seminarRows.map((row, index) => (
-                  <article
-                    key={`${row.time}-${row.topic}`}
-                    className="reveal-on-scroll rounded-[18px] border border-white/12 bg-white/[0.03] p-5"
-                    style={{ transitionDelay: `${80 + index * 45}ms` }}
-                  >
-                    <p className="text-sm font-semibold tracking-[0.04em] text-[#d7cdaa]">{row.time}</p>
-                    <h3 className="mt-3 text-[18px] font-semibold leading-7 tracking-[-0.02em] text-white">{row.topic}</h3>
-                    <p className="mt-3 text-sm leading-7 text-white/66">{row.speaker || "-"}</p>
-                  </article>
-                ))}
-              </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
