@@ -9,7 +9,7 @@ type HeaderProps = {
 };
 
 const navigationItems = [
-  // { id: "forum", label: "CAIO 포럼", to: "/forum", status: "" },
+  { id: "forum", label: "CAIO 포럼", to: "/forum", status: "" },
   { id: "seoul", label: "서울 4기", to: "/seoul", status: "모집 중" },
   { id: "cheonan", label: "천안 1기", to: "/cheonan", status: "진행 중" },
   { id: "gwangju", label: "광주 2기", to: "/gwangju", status: "모집 예정" },
