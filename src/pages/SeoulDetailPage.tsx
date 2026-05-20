@@ -306,9 +306,8 @@ export default function SeoulDetailPage() {
                                 <div className="flex gap-6 border-t border-white/18 py-7 transition-colors duration-300 hover:border-white/38 md:pl-10">
                                     <span className="shrink-0 text-sm font-medium text-white">교육비</span>
                                     <div className="text-sm leading-relaxed text-white/88">
-                                        <p className="text-white">380만원 (VAT 별도)</p>
-                                        <p className="mt-1 text-xs text-white/64">
-                                        </p>
+                                        <p className="text-white">380만원 (VAT 별도)<br/></p>
+                                        <p className="mt-1 text-xs text-white/64">5월 31일까지 신청 및 입금시 20% 할인된 300만원 (VAT 별도)</p>
                                     </div>
                                 </div>
                             </div>
