@@ -6,6 +6,7 @@ import forumLaunch01 from "../assets/img/forum-launch/caio-forum-launch-01.jpg";
 import forumLaunch02 from "../assets/img/forum-launch/caio-forum-launch-02.jpg";
 import forumLaunch03 from "../assets/img/forum-launch/caio-forum-launch-03.jpg";
 import forumLaunch04 from "../assets/img/forum-launch/caio-forum-launch-04.jpg";
+import forumOrganizationBackground from "../assets/img/forum-launch/caio-forum-organization-bg-web.jpg";
 import { FiChevronDown, FiExternalLink } from "react-icons/fi";
 
 type OrganizationCard = {
@@ -31,10 +32,6 @@ const whyForumCards = [
   {
     title: "산·학·연·관 네트워크",
     description: "산·학·연·관의 AI 의사결정권자를 연결합니다.",
-  },
-  {
-    title: "C-Level 리더십",
-    description: "AI 전환을 이끌 차세대 리더의 역량 강화를 지원합니다.",
   },
 ] as const;
 
@@ -330,37 +327,59 @@ export default function ForumPage() {
           </div>
         </section>
 
-        <section id="forum-next-section" className="border-t border-white/6 bg-[#080b12] px-5 py-20 text-white sm:px-8 sm:py-24">
-          <div className="mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14">
-            <div className="reveal-on-scroll max-w-[520px]">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#d7cdaa]">Why Forum</p>
-              <h2 className="mb-6 text-[30px] font-bold leading-tight tracking-[-0.035em] text-white sm:text-[44px]">
+        <section id="forum-next-section" className="relative min-h-[560px] overflow-hidden border-t border-white/6 sm:min-h-[640px] lg:h-[700px]">
+          <div
+            className="absolute inset-0 scale-[1.02] bg-cover bg-center"
+            style={{ backgroundImage: `url(${forumLaunch04})` }}
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,15,0.92)_0%,rgba(6,13,28,0.78)_38%,rgba(7,15,32,0.74)_62%,rgba(3,7,15,0.94)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(33,70,132,0.16),transparent_48%)]" />
+
+          <div className="relative z-10 mx-auto flex min-h-[560px] max-w-[1080px] items-center justify-center px-5 py-16 text-center sm:min-h-[640px] sm:px-8 lg:h-full lg:min-h-0">
+            <div className="reveal-on-scroll reveal-soft" style={{ transitionDelay: "180ms" }}>
+              <p className="mb-5 text-sm font-semibold uppercase tracking-[0.24em] text-[#d7cdaa]">Why Forum</p>
+              <h2 className="text-[34px] font-bold leading-tight tracking-[-0.04em] text-white sm:text-[42px] lg:text-[50px]">
                 왜 한국 CAIO 포럼인가
               </h2>
-              <p className="text-base leading-8 text-white/70 sm:text-lg">
+              <p className="mx-auto mt-9 max-w-[800px] text-base font-semibold leading-8 text-white/88 sm:mt-12 sm:text-xl sm:leading-9">
                 AI 도입이 확산되면서 기업과 기관은 기술 활용을 넘어 윤리, 규제, 책임, 조직 운영의 문제까지 함께
                 마주하고 있습니다.
-              </p>
-              <p className="mt-5 text-base leading-8 text-white/70 sm:text-lg">
+                <br className="hidden sm:block" />
                 개별 기업의 대응만으로는 부족한 시점에서, 산·학·연·관의 AI 의사결정권자가 함께 논의하고 실행 방향을
                 제시하는 공식 협의의 장이 필요합니다.
               </p>
             </div>
+          </div>
+        </section>
 
-            <div className="grid gap-4">
+        <section className="border-t border-white/6 bg-[#080b12] px-5 py-20 text-white sm:px-8 sm:py-24">
+          <div className="mx-auto max-w-[1180px]">
+            <div className="reveal-on-scroll mb-10 max-w-[720px] sm:mb-12">
+              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#d7cdaa]">Core Agenda</p>
+              <h2 className="text-[30px] font-bold leading-tight tracking-[-0.035em] text-white sm:text-[44px]">
+                함께 논의해야 할 AI 시대의 핵심 의제
+              </h2>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
               {whyForumCards.map((card, index) => (
-                <article
+                <div
                   key={card.title}
-                  className="reveal-on-scroll group border-l border-[#d7cdaa]/50 bg-white/[0.02] px-5 py-5 transition-all duration-300 ease-out hover:border-[#d7cdaa] hover:bg-white/[0.035] hover:shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:px-6"
+                  className="reveal-on-scroll"
                   style={{ transitionDelay: `${120 + index * 80}ms` }}
                 >
-                  <h3 className="text-[20px] font-semibold tracking-[-0.025em] text-white transition-colors duration-300 group-hover:text-[#f3e8c5] sm:text-[22px]">
-                    {card.title}
-                  </h3>
-                  <p className="mt-3 max-w-[560px] text-sm leading-7 text-white/66 transition-colors duration-300 group-hover:text-white/82 sm:text-base">
-                    {card.description}
-                  </p>
-                </article>
+                  <article className="min-h-[220px] border-l border-[#d7cdaa]/50 bg-white/[0.02] px-6 py-7 transition-[background-color,border-color] duration-500 ease-in-out hover:border-[#d7cdaa] hover:bg-white/[0.055] sm:px-8 sm:py-8">
+                    <p className="text-[11px] font-semibold tracking-[0.24em] text-[#d7cdaa]/72">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="mt-8 text-[22px] font-semibold tracking-[-0.025em] text-white sm:text-[26px]">
+                      {card.title}
+                    </h3>
+                    <p className="mt-4 max-w-[480px] text-sm leading-7 text-white/66 sm:text-base">
+                      {card.description}
+                    </p>
+                  </article>
+                </div>
               ))}
             </div>
           </div>
@@ -397,17 +416,28 @@ export default function ForumPage() {
           </div>
         </section>
 
-        <section className="border-t border-white/6 bg-[#07090e] px-5 py-20 text-white sm:px-8 sm:py-24">
-          <div className="mx-auto max-w-[1180px]">
-            <div className="reveal-on-scroll mb-10 max-w-[760px] sm:mb-12">
+        <section className="relative overflow-hidden border-t border-white/6 bg-[#07090e] px-5 py-20 text-white sm:px-8 sm:py-24">
+          <div
+            className="absolute inset-0 scale-[1.02] bg-cover bg-center"
+            style={{ backgroundImage: `url(${forumOrganizationBackground})` }}
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,15,0.78)_0%,rgba(5,11,24,0.67)_42%,rgba(3,7,15,0.94)_100%)] lg:bg-[linear-gradient(90deg,rgba(3,7,15,0.3)_0%,rgba(3,7,15,0.4)_36%,rgba(5,11,24,0.9)_55%,rgba(3,7,15,0.98)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,15,0.46)_0%,transparent_28%,transparent_68%,rgba(3,7,15,0.94)_100%)]" />
+
+          <div className="relative z-10 mx-auto max-w-[1180px] lg:grid lg:grid-cols-[minmax(0,0.82fr)_minmax(560px,1.18fr)] lg:gap-12">
+            <div className="reveal-on-scroll mb-10 max-w-[760px] sm:mb-12 lg:mb-0 lg:pt-2">
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#d7cdaa]">Organization</p>
               <h2 className="text-[30px] font-bold leading-tight tracking-[-0.035em] text-white sm:text-[44px]">
                 조직 구성
               </h2>
+              <p className="mt-6 max-w-[420px] text-sm leading-7 text-white/68 sm:text-base">
+                산업과 정책을 연결하는 전문 리더십을 중심으로 포럼의 비전과 주요 의제를 실행합니다.
+              </p>
             </div>
 
+            <div>
             <div className="space-y-6 sm:space-y-8">
-              <div className="reveal-on-scroll reveal-soft mx-auto max-w-[680px] rounded-[22px] border border-white/12 bg-white/[0.03] p-6 text-center sm:p-7">
+              <div className="reveal-on-scroll reveal-soft mx-auto max-w-[680px] rounded-[22px] border border-white/14 bg-[#09111f]/78 p-6 text-center backdrop-blur-[4px] sm:p-7">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/48">{organizationCards[0].eyebrow}</p>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:items-center sm:gap-0">
                   <p className="text-[22px] font-semibold tracking-[-0.03em] text-white sm:text-[28px]">{organizationCards[0].title}</p>
@@ -426,7 +456,7 @@ export default function ForumPage() {
                 {organizationCards.slice(1, 3).map((card, index) => (
                   <article
                     key={card.eyebrow}
-                    className="reveal-on-scroll rounded-[20px] border border-white/12 bg-white/[0.02] p-6 text-center sm:p-7"
+                    className="reveal-on-scroll rounded-[20px] border border-white/14 bg-[#09111f]/74 p-6 text-center backdrop-blur-[4px] sm:p-7"
                     style={{ transitionDelay: `${160 + index * 90}ms` }}
                   >
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/48">{card.eyebrow}</p>
@@ -441,13 +471,14 @@ export default function ForumPage() {
               </div>
 
               <article
-                className="reveal-on-scroll mx-auto max-w-[640px] rounded-[20px] border border-white/12 bg-white/[0.03] p-6 text-center sm:p-7"
+                className="reveal-on-scroll mx-auto max-w-[640px] rounded-[20px] border border-white/14 bg-[#09111f]/78 p-6 text-center backdrop-blur-[4px] sm:p-7"
                 style={{ transitionDelay: "280ms" }}
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/48">{organizationCards[3].eyebrow}</p>
                 <h3 className="mt-3 text-[21px] font-semibold tracking-[-0.025em] text-white sm:text-[24px]">{organizationCards[3].title}</h3>
                 <p className="mt-4 text-sm leading-7 text-white/66">{organizationCards[3].description}</p>
               </article>
+            </div>
             </div>
           </div>
         </section>
