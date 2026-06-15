@@ -17,6 +17,11 @@ html {
   box-sizing: border-box;
 }
 
+::selection {
+  color: #111827;
+  background: #d1d5db;
+}
+
 body {
   margin: 0;
   color: #ffffff;

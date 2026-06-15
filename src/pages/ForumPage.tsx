@@ -2,7 +2,11 @@ import { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import forumBackground from "../assets/img/bg-caio-full.png";
-import { FiExternalLink } from "react-icons/fi";
+import forumLaunch01 from "../assets/img/forum-launch/caio-forum-launch-01.jpg";
+import forumLaunch02 from "../assets/img/forum-launch/caio-forum-launch-02.jpg";
+import forumLaunch03 from "../assets/img/forum-launch/caio-forum-launch-03.jpg";
+import forumLaunch04 from "../assets/img/forum-launch/caio-forum-launch-04.jpg";
+import { FiChevronDown, FiExternalLink } from "react-icons/fi";
 
 type OrganizationCard = {
   eyebrow: string;
@@ -137,6 +141,33 @@ const seminarRows = [
   { time: "15:40-16:00", topic: "중소기업 AI 지원 제도 소개", speaker: "중소벤처기업부 AI단 이상영 사무관" },
   { time: "16:00-16:20", topic: "중소기업 AI 지원사업 소개", speaker: "기술정보진흥원 AI실 송치평 실장" },
   { time: "16:20", topic: "폐회", speaker: "" },
+] as const;
+
+const forumLaunchPhotos = [
+  {
+    src: forumLaunch04,
+    alt: "한국 CAIO포럼 발족식 및 기념 세미나 전경",
+    caption: "한국 CAIO포럼 발족식 및 기념 세미나",
+    featured: true,
+  },
+  {
+    src: forumLaunch01,
+    alt: "한국 CAIO포럼 발족식 연사 발표 장면",
+    caption: "CAIO 포럼 운영 로드맵 발표 · 권영우 부회장",
+    featured: false,
+  },
+  {
+    src: forumLaunch02,
+    alt: "한국 CAIO포럼 기념 세미나 발표와 참석자",
+    caption: "세미나 발표 · PwC 조홍래 파트너",
+    featured: false,
+  },
+  {
+    src: forumLaunch03,
+    alt: "한국 CAIO포럼 발족식 축사 장면",
+    caption: "발족선언 · 최재식 교수",
+    featured: false,
+  },
 ] as const;
 
 const forumHistoryItems = [
@@ -521,7 +552,10 @@ export default function ForumPage() {
                       <p className="text-sm leading-8 text-white/70 sm:text-base">{item.description}</p>
                       <div className="mt-8 grid gap-5 border-t border-white/12 pt-8 sm:grid-cols-2">
                         {item.details.map((detail) => (
-                          <div key={`${item.date}-${detail.label}`}>
+                          <div
+                            key={`${item.date}-${detail.label}`}
+                            className={detail.label === "참석 대상" ? "sm:col-span-2" : undefined}
+                          >
                             <p className="text-[11px] uppercase tracking-[0.24em] text-white/48">{detail.label}</p>
                             <p className="mt-2 text-base font-semibold leading-7 text-white">{detail.value}</p>
                           </div>
@@ -530,8 +564,63 @@ export default function ForumPage() {
                     </div>
                   </div>
 
-                  <div className="mt-10">
-                    <div className="hidden md:block">
+                  <div className="mt-10 border-t border-white/12 pt-10">
+                    <div className="mb-6 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+                      <div>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#d7cdaa]">
+                          Scene Archive
+                        </p>
+                        <h4 className="mt-3 text-[22px] font-semibold tracking-[-0.03em] text-white sm:text-[26px]">
+                          발족식 현장
+                        </h4>
+                      </div>
+                      <p className="text-sm leading-7 text-white/52 lg:whitespace-nowrap">
+                        대한민국 AI 전환을 이끌 리더들이 한자리에 모여 포럼의 출범과 주요 의제를 공유했습니다.
+                      </p>
+                    </div>
+
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      {forumLaunchPhotos.map((photo) => (
+                        <figure
+                          key={photo.src}
+                          className={`group relative isolate overflow-hidden rounded-[18px] border border-white/10 bg-[#070b13] ${
+                            photo.featured ? "aspect-[16/9] sm:col-span-3 sm:aspect-[2.35/1]" : "aspect-[4/3]"
+                          }`}
+                        >
+                          <img
+                            src={photo.src}
+                            alt={photo.alt}
+                            loading="lazy"
+                            className={`h-full w-full object-cover brightness-[0.66] saturate-[0.72] contrast-[1.08] transition duration-700 ease-out group-hover:scale-[1.015] group-hover:brightness-[0.96] group-hover:saturate-[0.96] ${
+                              photo.featured ? "object-[center_58%]" : "object-center"
+                            }`}
+                          />
+                          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(5,10,20,0.12)_10%,rgba(6,12,25,0.22)_52%,rgba(4,9,19,0.88)_100%)] transition-opacity duration-700 group-hover:opacity-55" />
+                          <div className="pointer-events-none absolute inset-0 bg-[#091733]/20 mix-blend-multiply transition-opacity duration-700 group-hover:opacity-25" />
+                          <figcaption className="absolute inset-x-0 bottom-0 z-10 px-5 pb-5 pt-12 text-sm font-medium tracking-[-0.01em] text-white/88 sm:px-6 sm:pb-6">
+                            {photo.caption}
+                          </figcaption>
+                        </figure>
+                      ))}
+                    </div>
+                  </div>
+
+                  <details className="group/schedule mt-10 border-t border-white/12">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-6 text-left marker:content-none">
+                      <div>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#d7cdaa]">
+                          Seminar Schedule
+                        </p>
+                        <h4 className="mt-2 text-[20px] font-semibold tracking-[-0.025em] text-white sm:text-[24px]">
+                          기념 세미나 시간표
+                        </h4>
+                      </div>
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/14 bg-white/[0.04] text-white/72 transition duration-300 group-open/schedule:rotate-180 group-open/schedule:border-[#d7cdaa]/45 group-open/schedule:text-[#d7cdaa]">
+                        <FiChevronDown aria-hidden="true" />
+                      </span>
+                    </summary>
+
+                    <div className="hidden pb-2 md:block">
                       <div className="border-t border-white/12">
                         {item.rows.map((row) => (
                           <div
@@ -546,7 +635,7 @@ export default function ForumPage() {
                       </div>
                     </div>
 
-                    <div className="grid gap-3 md:hidden">
+                    <div className="grid gap-3 pb-2 md:hidden">
                       {item.rows.map((row) => (
                         <div key={`${item.date}-${row.time}-${row.topic}`} className="rounded-[18px] border border-white/12 bg-white/[0.03] p-5">
                           <p className="text-sm font-semibold tracking-[0.04em] text-[#d7cdaa]">{row.time}</p>
@@ -555,7 +644,7 @@ export default function ForumPage() {
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </details>
                 </article>
               ))}
             </div>
