@@ -7,6 +7,13 @@ import CheonanDetailPage from "./pages/CheonanDetailPage";
 import ForumPage from "./pages/ForumPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
+  }
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -26,10 +33,29 @@ function ScrollToTop() {
   return null;
 }
 
+function GoogleAnalytics() {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    if (typeof window.gtag !== "function") {
+      return;
+    }
+
+    window.gtag("event", "page_view", {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: `${pathname}${search}`,
+    });
+  }, [pathname, search]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <HashRouter>
       <ScrollToTop />
+      <GoogleAnalytics />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/forum" element={<ForumPage />} />
