@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import {
     FiArrowRight,
+    FiArrowUpRight,
     FiBarChart2,
     FiCpu,
     FiDatabase,
@@ -88,6 +89,16 @@ const organizers = [
         name: "PWC",
         href: "https://www.pwc.com/kr",
         src: logoPwc,
+    },
+];
+
+const pressReleases = [
+    {
+        title: '한국인공지능협회, 인공지능 최고위과정... "AI 시대, 대표의 역할이 바뀐다"',
+        date: "2026.07.02",
+        media: "인공지능신문",
+        href: "https://www.aitimes.kr/news/articleView.html?idxno=40802",
+        thumbnail: "https://cdn.aitimes.kr/news/photo/202607/40802_61521_210.png",
     },
 ];
 
@@ -633,6 +644,50 @@ export default function SeoulDetailPage() {
                             <span className="absolute bottom-0 left-0 block h-[60%] w-1/2 rounded-bl-lg border-b-1 border-l-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300 group-hover:h-[90%]"></span>
                             <span className="absolute bottom-0 right-0 block h-[20%] w-1/2 rounded-br-lg border-b-1 border-r-1 border-[#D6E0E5] drop-shadow-3xl transition-all duration-300"></span>
                         </a>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-white py-20">
+                <div className="mx-auto max-w-[1080px] px-5 sm:px-8">
+                    <div className="mb-10">
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--page-primary)]">
+                            Press Release
+                        </p>
+                        <h2 className="text-[32px] font-bold leading-tight text-[#1d1628]">보도자료</h2>
+                    </div>
+
+                    <div className="overflow-hidden rounded-xl border border-[#e7e3ea]">
+                        {pressReleases.map((pressRelease) => (
+                            <a
+                                key={pressRelease.href}
+                                href={pressRelease.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group grid gap-6 bg-white p-5 transition-colors duration-300 hover:bg-[#faf8fb] sm:p-6 md:grid-cols-[260px_1fr_auto] md:items-center md:gap-8"
+                            >
+                                <div className="aspect-[16/10] overflow-hidden rounded-lg bg-[#f0edf2]">
+                                    <img
+                                        src={pressRelease.thumbnail}
+                                        alt=""
+                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                    />
+                                </div>
+                                <div>
+                                    <p className="mb-2 text-sm font-semibold text-[var(--page-primary)]">{pressRelease.media}</p>
+                                    <time className="text-sm text-[#7b7480]" dateTime="2026-07-02">
+                                        {pressRelease.date}
+                                    </time>
+                                    <h3 className="mt-4 text-lg font-semibold leading-relaxed text-[#1d1628] transition-colors duration-300 group-hover:text-[var(--page-primary)] sm:text-xl">
+                                        {pressRelease.title}
+                                    </h3>
+                                </div>
+                                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#ded7e2] text-[#6f6675] transition-all duration-300 group-hover:border-[var(--page-primary)] group-hover:bg-[var(--page-primary)] group-hover:text-white">
+                                    <FiArrowUpRight className="text-lg" aria-hidden="true" />
+                                    <span className="sr-only">보도자료 상세 보기</span>
+                                </span>
+                            </a>
+                        ))}
                     </div>
                 </div>
             </section>
